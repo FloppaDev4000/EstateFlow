@@ -111,12 +111,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "entities/CLIENT.md",
+                "file": "entities/BID.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CLIENT"
+              "title": "BID"
             }
           },
           {
@@ -301,17 +301,17 @@
   },
   "active": "4ddbd726b3087046",
   "lastOpenFiles": [
-    "entities/LAND PROPERTY.md",
-    "entities/ESTATE AGENT.md",
+    "entities/CLIENT.md",
+    "entities/ADDRESS.md",
     "entities/SALE.md",
+    "entities/ESTATE AGENT.md",
+    "entities/BID.md",
+    "entities/LAND PROPERTY.md",
     "entities/PROPERTY.md",
     "issues.md",
     "notes/entities.md",
     "entities/RESIDENTIAL PROPERTY.md",
     "entities/OFFICE PROPERTY.md",
-    "entities/ADDRESS.md",
-    "entities/CLIENT.md",
-    "entities/BID.md",
     "entities",
     "notes",
     "Welcome.md"

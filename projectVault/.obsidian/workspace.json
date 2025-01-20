@@ -146,16 +146,6 @@
               "icon": "lucide-file",
               "title": "entities"
             }
-          },
-          {
-            "id": "219b88c57c36a6c5",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
-            }
           }
         ],
         "currentTab": 7
@@ -301,17 +291,17 @@
   },
   "active": "4ddbd726b3087046",
   "lastOpenFiles": [
-    "entities/CLIENT.md",
-    "entities/ADDRESS.md",
-    "entities/SALE.md",
-    "entities/ESTATE AGENT.md",
+    "entities/PROPERTY.md",
     "entities/BID.md",
     "entities/LAND PROPERTY.md",
-    "entities/PROPERTY.md",
-    "issues.md",
-    "notes/entities.md",
-    "entities/RESIDENTIAL PROPERTY.md",
+    "entities/CLIENT.md",
+    "entities/ESTATE AGENT.md",
     "entities/OFFICE PROPERTY.md",
+    "entities/RESIDENTIAL PROPERTY.md",
+    "entities/SALE.md",
+    "notes/entities.md",
+    "entities/ADDRESS.md",
+    "issues.md",
     "entities",
     "notes",
     "Welcome.md"

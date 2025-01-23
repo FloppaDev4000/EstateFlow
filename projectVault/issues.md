@@ -1,6 +1,6 @@
-[[OFFICE PROPERTY]]
-[[LAND PROPERTY]]
-[[RESIDENTIAL PROPERTY]]
-[[PROPERTY]]
-need to look at attributes between three 'property' entities, as well as the super entity
+staff entity? should/should not exist?
+
+does the end user have a login?????
+
+?
 

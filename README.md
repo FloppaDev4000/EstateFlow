@@ -22,7 +22,4 @@ EstateFlow is a **staff-only** estate agency management system designed to strea
 
 ## Authors
 
-Mark Lambert               Adam Noonan            Darius Herdes        Amelia Hamuleqicz
-C00192497                  C00299231              C00296538            C00296605
-marklambert123@gmail.com   c00299231@setu.ie      c00296538@setu.ie    c00296605@setu.ie  
-c00192497@setu.ie          
+Mark Lambert,               Adam Noonan,            Darius Herdes,        Amelia Hamuleqicz

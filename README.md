@@ -17,7 +17,7 @@ EstateFlow is a **staff-only** estate agency management system designed to strea
 ## Installation Guide
 1. Clone the repository:  
    git clone https://github.com/yourusername/EstateFlow.git
-2. Navigate to folder:
+2. Navigate to folder:   
    cd EstateFlow
 
 ## Authors

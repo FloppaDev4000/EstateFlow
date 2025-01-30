@@ -1,0 +1,3 @@
+url: 		https://c2p-auctioneers.candept.com:8443/
+username: 	bidmaster
+password: 	Egg_1122!

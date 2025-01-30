@@ -23,8 +23,9 @@ html, body{
 .menu button{
     /* Button set to slightly brighter hue */
     background-color:#D6C1C1;
-    /*Sets text to white*/
+    /* Font colour is set to a darker hue */
     color: #6D5043;
+    /* Removes border from around buttons */
     border-style: none;
     font-size: x-large;
     font-family: 'Franklin Gothic Medium';
@@ -32,6 +33,7 @@ html, body{
     padding: 20px;
     /* Aligns to left for visual purposes */
     text-align: left;
+    /* Take up full width of sidebar */
     width: 100%;
 }
 
@@ -43,4 +45,19 @@ html, body{
 .menu button.exit{
     /* Push exit button to bottom, for workflow priority */
     margin-top: auto;
+}
+
+
+.logo{
+    /* Sets canvas size for logo */
+    width: 100px;
+    height: 100px;
+    /* Load in logo as a background image, with no repeating tiles */
+    background-image: url("images/logo3.png");
+    background-repeat: no-repeat;
+}
+
+.logo:hover{
+    /* Change to a darker version of logo for hover, simulating live feedback */
+    background-image: url("images/logo4.png");
 }

@@ -1,0 +1,49 @@
+/* Estate Flow Management System Menu page CSS styling */
+/* SEMESTER 1 LAB 2 = RELEVANT MATERIAL */
+html, body{
+    /* Screen is set to 100% starting from the top-left corner */
+    height: 100%;
+    margin: 0;
+}
+
+/* Container for menu */
+.menu{
+    /* Makes all elements within container flex */
+    display: flex;
+    /*Each flex item goes to a new line for VERTICALITY*/
+    flex-direction: column;
+    /* Takes up 100% of height */
+    height: 100%;
+    /* Reduces width to desired amount */
+    width: 20%;
+    /* Sets backgroud colour */
+    background-color:cadetblue;
+}
+
+.menu button{
+    /* Button set to slightly brighter hue */
+    background-color: rgba(143, 190, 192, 0.692);
+    /*Sets text to white*/
+    color: white;   
+    font-size: xx-large;
+    font-family: 'Franklin Gothic Medium';
+    /* 20px padding around text in button */
+    padding: 20px;
+    /* Aligns to left for visual purposes */
+    text-align: left;
+    width: 100%;
+}
+
+/* Hover for all buttons */
+.menu button:hover{
+    background-color: rgb(126, 208, 211);
+}
+
+.menu button.exit{
+    /* Push exit button to bottom, for workflow priority */
+    margin-top: auto;
+}
+
+.menu button.exit:hover{
+    background-color: rgb(48, 82, 83);
+}

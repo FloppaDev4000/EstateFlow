@@ -6,13 +6,20 @@ html, body{
     margin: 0;
 }
 
+/* Flex container for main screen area, ensuring menu stays on left, content on right  */
+/* Takes up 100% of screen height space so menu bar flows through whole winndow view */
+.container{
+    display: flex;
+    height: 100%;
+}
+
 /* Container for menu */
 .menu{
-    /* Makes all elements within container flex */
+    /* Makes all elements (buttons) within container flex items */
     display: flex;
     /*Each flex item goes to a new line for VERTICALITY*/
     flex-direction: column;
-    /* Takes up 100% of height */
+    /* Background up 100% of height */
     height: 100%;
     /* Reduces width to desired amount */
     width: 20%;
@@ -20,6 +27,13 @@ html, body{
     background-color:#c4abab;
 }
 
+/* Container for content, buttons, text, images etc will be affect by whats placed here! */
+.content{
+    font-size: small;
+
+}
+
+/*.menu button elements Styling*/
 .menu button{
     /* Button set to slightly brighter hue */
     background-color:#D6C1C1;
@@ -42,12 +56,13 @@ html, body{
     background-color:#c4abab;
 }
 
+/* Special alignment for exit button */
 .menu button.exit{
     /* Push exit button to bottom, for workflow priority */
     margin-top: auto;
 }
 
-
+/* Logo container */
 .logo{
     /* Sets canvas size for logo */
     width: 100px;
@@ -57,6 +72,7 @@ html, body{
     background-repeat: no-repeat;
 }
 
+/* Hover behaviour changes to new logo */
 .logo:hover{
     /* Change to a darker version of logo for hover, simulating live feedback */
     background-image: url("images/logo4.png");

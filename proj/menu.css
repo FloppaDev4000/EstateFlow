@@ -17,15 +17,16 @@ html, body{
     /* Reduces width to desired amount */
     width: 20%;
     /* Sets backgroud colour */
-    background-color:cadetblue;
+    background-color:#c4abab;
 }
 
 .menu button{
     /* Button set to slightly brighter hue */
-    background-color: rgba(143, 190, 192, 0.692);
+    background-color:#D6C1C1;
     /*Sets text to white*/
-    color: white;   
-    font-size: xx-large;
+    color: #6D5043;
+    border-style: none;
+    font-size: x-large;
     font-family: 'Franklin Gothic Medium';
     /* 20px padding around text in button */
     padding: 20px;
@@ -36,14 +37,10 @@ html, body{
 
 /* Hover for all buttons */
 .menu button:hover{
-    background-color: rgb(126, 208, 211);
+    background-color:#c4abab;
 }
 
 .menu button.exit{
     /* Push exit button to bottom, for workflow priority */
     margin-top: auto;
-}
-
-.menu button.exit:hover{
-    background-color: rgb(48, 82, 83);
 }

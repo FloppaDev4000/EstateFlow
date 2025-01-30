@@ -9,9 +9,9 @@ asking price
 notes
 viewing times
 type:
-- [ ] residential
-- [ ] land
-- [ ] office
+- [ ] [[RESIDENTIAL PROPERTY]]
+- [ ] [[OFFICE PROPERTY]]
+- [ ] [[LAND PROPERTY]]
 status:
 - [ ] for sale
 - [ ] sale agreed

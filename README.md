@@ -3,7 +3,7 @@
 **South East Technological University**
 
 ## Technologies Used
-- HTML, CSS, PHP  
+- HTML, CSS, PHP, JavaScript  
 - Web Server: Blacknight  
 - Database: MySQL (phpMyAdmin)  
 

@@ -1,0 +1,185 @@
+/* ----------------------------
+    Global Styles
+----------------------------- */
+html, body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100vw; /* Set full viewport width */
+    font-family: Arial, sans-serif; /* Define font style */
+    background-color: #fdfefe; /* Set background color- pale GREY */
+    color: #2e201c; /* Set text color- BLACK */
+}
+
+/* ----------------------------
+    Top Bar Styles
+----------------------------- */
+.topBar {
+    position: fixed; /* Fix position at the top */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    height: 50px; /* Define height */
+    background-color: #ffffff; /* Set background color- WHITE */
+    color: #05c98b; /* Set text color- GREEN */
+    display: flex; /* Use flexbox layout */
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Space items evenly */
+    font-size: 30px; /* Set font size */
+    font-weight: bold; /* Make text bold */
+    z-index: 500; /* Set stacking order */
+    margin-left: 250px; /* Offset to align with sidebar */
+    width: calc(100% - 250px); /* Adjust width dynamically */
+    padding: 10px 20px; /* Add padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- BLACK */
+    transition: margin-left 0.3s, width 0.3s; /* Smooth transition effect */
+}
+
+.topBar.shrink {
+    margin-left: 60px; /* Adjust margin when sidebar shrinks */
+    width: calc(100% - 60px); /* Adjust width dynamically */
+}
+
+/* ----------------------------
+    Admin Info Styles (button)
+----------------------------- */
+.admin-info {
+    display: flex; /* Use flexbox layout */
+    align-items: center; /* Align items vertically */
+    font-size: 16px; /* Set font size */
+    color: #000000; /* Set text color- BLACK */
+    margin-right: 50px; /* Add margin to right */
+    cursor: pointer; /* Show pointer on hover */
+    padding: 10px; /* Add padding */
+    background-color: #fefefe; /* Set background color- pale GREY */
+    border-radius: 5px; /* Round corners */
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow effect- black */
+}
+
+.admin-icon {
+    width: 24px; /* Set width of icon */
+    height: 24px; /* Set height of icon */
+}
+
+.admin-info:hover {
+    background-color: #000000; /* Change background on hover- GREEN */
+    color: #ffffff; /* Change text color on hover- WHITE */
+    
+}
+
+.admin-info:hover .admin-icon {
+    content: url('images/user_invert.png'); /* Swap image on hover */
+}
+
+/* -----------------------------------
+    Menu Icon Styles (Sidebar Toggle)
+-------------------------------------- */
+.menu-icon {
+    font-size: 30px; /* Set icon size */
+    cursor: pointer; /* Show pointer on hover */
+    padding: 10px; /* Add padding */
+    position: fixed; /* Fix position at top-left */
+    top: 0; /* Align to top */
+    left: 5px; /* Offset from left */
+    color: #05c98b; /* Set icon color- GREEN */
+    background-color: #fefefe; /* Set background color- pale GREY */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- black */
+    border-radius: 5px; /* Round corners */
+    z-index: 2000; /* Set stacking order */
+    border: none; /* Remove border */
+    transition: opacity 0.3s; /* Smooth transition effect */
+}
+
+.menu-icon:hover {
+    background-color: #05c98b; /* Change background on hover- GREEN */
+    color: #ffffff; /* Change text color on hover- WHITE */
+}
+
+/* ----------------------------
+    Sidebar Styles
+----------------------------- */
+.sidebar {
+    height: 100vh; /* Full viewport height */
+    width: 250px; /* Define width */
+    position: fixed; /* Fix position */
+    left: 0; /* Align to left */
+    top: 0; /* Align to top */
+    background-color: #cdd8d4; /* Set background color- GREY */
+    padding-top: 60px; /* Add padding at top */
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    transition: width 0.3s; /* Smooth transition effect */
+    border-right: 10px solid #ffffff; /* Add border- WHITE */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- BLACK */
+    z-index: 1000; /* Set stacking order */
+}
+
+.sidebar.closed {
+    width: 60px; /* Shrink sidebar when closed */
+}
+
+/* ----------------------------
+    Sidebar Navigation Link Styles
+----------------------------- */
+.sidebar a {
+    width: 90%; /* Set width of links */
+    padding: 12px; /* Add padding */
+    text-decoration: none; /* Remove underline */
+    color: #05c98b; /* Set text color- GREEN */
+    text-align: center; /* Center align text */
+    margin: 5px 0; /* Add margin */
+    background-color: #ffffff; /* Set background color- WHITE */
+    border-radius: 5px; /* Round corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- BLACK */
+    display: block; /* Display as block element */
+    transition: opacity 0.3s; /* Smooth transition effect */
+}
+
+.sidebar a:hover {
+    background-color: #05c98b; /* Change background on hover- GREEN */
+    color: #ffffff; /* Change text color on hover- WHITE */
+}
+
+.sidebar.closed a {
+    font-size: 0; /* Hide text when sidebar is closed */
+    padding: 15px; /* Adjust padding */
+    opacity: 0; /* Hide element */
+}
+
+/* ----------------------------
+    Logo Styles inside Sidebar
+----------------------------- */
+.logo img {
+    width: 180px; /* Set logo size */
+    margin: 10px 0 20px; /* Add margin */
+    border-radius: 5px; /* Round corners */
+    transition: width 0.3s; /* Smooth transition effect */
+}
+
+.logo img:hover {
+    content: url('images/logo_invert.png'); /* Change logo on hover */
+}
+
+.sidebar.closed .logo img {
+    width: 50px; /* Resize logo when sidebar is closed */
+}
+
+/* ----------------------------
+    Main Content Styles
+----------------------------- */
+.content {
+    margin-left: 250px; /* Offset to align with sidebar */
+    margin-top: 60px; /* Add margin at top */
+    padding: 20px; /* Add padding */
+    width: calc(100vw - 250px); /* Adjust width dynamically */
+    max-width: 100vw; /* Prevent overflow */
+    transition: margin-left 0.3s, width 0.3s; /* Smooth transition effect */
+    box-sizing: border-box; /* Include padding in width */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.content.shrink {
+    margin-left: 60px; /* Adjust margin when sidebar shrinks */
+    width: calc(100vw - 60px); /* Adjust width dynamically */
+}

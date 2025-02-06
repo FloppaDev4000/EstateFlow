@@ -77,7 +77,6 @@ html, body {
     transition: width 0.3s; /* Smooth transition effect */
     border-right: 10px solid #ffffff; /* Add border- WHITE */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- BLACK */
-    z-index: 1000; /* Set stacking order */
 }
 
 /* Works as the sidebar is a flex container, so items wrap when shrunk */
@@ -141,11 +140,7 @@ html, body {
     margin-left: 250px; /* Offset to align with sidebar */
     margin-top: 60px; /* Add margin at top */
     padding: 20px; /* Add padding */
-    width: calc(100vw - 250px); /* Adjust width dynamically */
-    max-width: 100vw; /* Prevent overflow */
-    transition: margin-left 0.3s, width 0.3s; /* Smooth transition effect */
-    box-sizing: border-box; /* Include padding in width */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 90%;
 }
 
 .content.shrink {

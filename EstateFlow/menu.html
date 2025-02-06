@@ -6,10 +6,12 @@
     <title>EstateFlow - Welcome</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="menu.css">
+    <!-- JavaScript file to toggle the sidebar open/closed -->
+    <script src="menu.js"></script>    
 </head>
 <body>
     <!-- Fixed Top Bar displaying the page title -->
-    <div class="topBar">
+    <div class="topBar" id = "pageTitle">
         EstateFlow
         </div>
     </div>
@@ -18,7 +20,7 @@
     <button class="menu-icon" onclick="toggleSidebar()">☰</button>
     
     <!-- Sidebar Navigation Menu -->
-    <div class="sidebar">
+    <div class="sidebar" id="mySidebar">
         <!-- Logo Section inside Sidebar -->
         <div class="logo">
             <img src="images/logo.png" alt="EstateFlow Logo">
@@ -33,11 +35,9 @@
     </div>
     
     <!-- Main Content Area -->
-    <div class="content">
+    <div class="content" id ="mainContent">
         <h2>Main Content Area</h2>
     </div>
-    
-    <!-- JavaScript file to toggle the sidebar open/closed -->
-    <script src="menu.js"></script>
+
 </body>
 </html>

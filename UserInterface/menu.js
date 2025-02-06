@@ -1,4 +1,3 @@
-
 function toggleSidebar() {
     // Get elements by their IDs
     const sidebar = document.getElementById("mySidebar");

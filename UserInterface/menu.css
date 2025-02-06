@@ -1,10 +1,9 @@
 /* ----------------------------
-    Global Styles
+    Global Styles - Estate Flow
 ----------------------------- */
 html, body {
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
     width: 100vw; /* Set full viewport width */
     font-family: Arial, sans-serif; /* Define font style */
     background-color: #fdfefe; /* Set background color- pale GREY */
@@ -18,7 +17,7 @@ html, body {
     position: fixed; /* Fix position at the top */
     top: 0; /* Align to top */
     left: 0; /* Align to left */
-    height: 50px; /* Define height */
+    height: 50px; /* Top bar is set to 50px tall */
     background-color: #ffffff; /* Set background color- WHITE */
     color: #05c98b; /* Set text color- GREEN */
     display: flex; /* Use flexbox layout */
@@ -26,9 +25,8 @@ html, body {
     justify-content: space-between; /* Space items evenly */
     font-size: 30px; /* Set font size */
     font-weight: bold; /* Make text bold */
-    z-index: 500; /* Set stacking order */
     margin-left: 250px; /* Offset to align with sidebar */
-    width: calc(100% - 250px); /* Adjust width dynamically */
+    width: 100%;
     padding: 10px 20px; /* Add padding */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- BLACK */
     transition: margin-left 0.3s, width 0.3s; /* Smooth transition effect */
@@ -39,38 +37,6 @@ html, body {
     width: calc(100% - 60px); /* Adjust width dynamically */
 }
 
-/* ----------------------------
-    Admin Info Styles (button)
------------------------------ */
-.admin-info {
-    display: flex; /* Use flexbox layout */
-    align-items: center; /* Align items vertically */
-    font-size: 16px; /* Set font size */
-    color: #000000; /* Set text color- BLACK */
-    margin-right: 50px; /* Add margin to right */
-    cursor: pointer; /* Show pointer on hover */
-    padding: 10px; /* Add padding */
-    background-color: #fefefe; /* Set background color- pale GREY */
-    border-radius: 5px; /* Round corners */
-    border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow effect- black */
-}
-
-.admin-icon {
-    width: 24px; /* Set width of icon */
-    height: 24px; /* Set height of icon */
-}
-
-.admin-info:hover {
-    background-color: #000000; /* Change background on hover- GREEN */
-    color: #ffffff; /* Change text color on hover- WHITE */
-    
-}
-
-.admin-info:hover .admin-icon {
-    content: url('images/user_invert.png'); /* Swap image on hover */
-}
-
 /* -----------------------------------
     Menu Icon Styles (Sidebar Toggle)
 -------------------------------------- */
@@ -79,15 +45,14 @@ html, body {
     cursor: pointer; /* Show pointer on hover */
     padding: 10px; /* Add padding */
     position: fixed; /* Fix position at top-left */
-    top: 0; /* Align to top */
+    top: 5px; /* Align to top */
     left: 5px; /* Offset from left */
     color: #05c98b; /* Set icon color- GREEN */
     background-color: #fefefe; /* Set background color- pale GREY */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- black */
     border-radius: 5px; /* Round corners */
-    z-index: 2000; /* Set stacking order */
+    z-index: 2000; /* Ensures menu icon is pushed to top */
     border: none; /* Remove border */
-    transition: opacity 0.3s; /* Smooth transition effect */
 }
 
 .menu-icon:hover {
@@ -99,7 +64,7 @@ html, body {
     Sidebar Styles
 ----------------------------- */
 .sidebar {
-    height: 100vh; /* Full viewport height */
+    height: 100%; /* Full viewport height */
     width: 250px; /* Define width */
     position: fixed; /* Fix position */
     left: 0; /* Align to left */
@@ -115,13 +80,15 @@ html, body {
     z-index: 1000; /* Set stacking order */
 }
 
+/* Works as the sidebar is a flex container, so items wrap when shrunk */
 .sidebar.closed {
     width: 60px; /* Shrink sidebar when closed */
 }
 
 /* ----------------------------
-    Sidebar Navigation Link Styles
+    Sidebar Navigation Button Styles
 ----------------------------- */
+/* Targets all .sidebar elements that use the <a> tag */
 .sidebar a {
     width: 90%; /* Set width of links */
     padding: 12px; /* Add padding */
@@ -133,14 +100,16 @@ html, body {
     border-radius: 5px; /* Round corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- BLACK */
     display: block; /* Display as block element */
-    transition: opacity 0.3s; /* Smooth transition effect */
 }
-
+/*---------------------------- 
+ Alters the buttons when hovered over 
+----------------------------*/
 .sidebar a:hover {
     background-color: #05c98b; /* Change background on hover- GREEN */
     color: #ffffff; /* Change text color on hover- WHITE */
 }
 
+/* Hides the text when the sidebar is collapsed */
 .sidebar.closed a {
     font-size: 0; /* Hide text when sidebar is closed */
     padding: 15px; /* Adjust padding */
@@ -148,7 +117,7 @@ html, body {
 }
 
 /* ----------------------------
-    Logo Styles inside Sidebar
+    Style the logo to adapt to when the side cascades
 ----------------------------- */
 .logo img {
     width: 180px; /* Set logo size */
@@ -181,5 +150,5 @@ html, body {
 
 .content.shrink {
     margin-left: 60px; /* Adjust margin when sidebar shrinks */
-    width: calc(100vw - 60px); /* Adjust width dynamically */
+    width: 100%;
 }

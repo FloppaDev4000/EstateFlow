@@ -1,40 +1,43 @@
 <!-- Estate Flow - Estate Agency Management System Menu page   -->
 <!DOCTYPE html>
-<html>
-    <head>
-        <!-- Sets title -->
-        <title>EstateFlow - Welcome</title>
-        <link rel="stylesheet" href="menu.css">
-        <link rel="icon" type="image/x-icon" href="images/icon.png">
-        <meta charset="UTF-8">
-    </head>
-        <body>
-            <!-- Flex container for main screen area, ensuring menu stays on left, content on right   -->
-            <div class = "container">
-            <!-- Menu container -->
-            <div class = "menu">
-                <a href = "menu.html"><div class="logo"></div></a>
-                <!-- Go to Deal with Bids page -->
-                <a href = "construction.html"><button>Deal with Bids</button></a></br>
-                <!-- Go to Deal with Sales page -->
-                <a href = "construction.html"><button>Deal with Sales</button></a></br>
-                <!-- Go to Client Maintenance page -->
-                <a href = "construction.html"><button>Client Maintenance</button></a></br>
-                <!-- Go to Propety Maintenance page-->
-                <a href = "construction.html"><button>Property Maintenance</button></a></br>
-                <!-- Go to Reports Menu -->
-                <a href = "construction.html"><button>Reports Menu</button></a></br>
-                <!-- Exit application -->
-                <button class="exit">Exit</button></br>
-                <!-- End menu -->
-            </div>    
-            <!-- Container for MAIN CONTENT -->
-            <div class = "content">
-
-
-                <!-- End MAIN CONTENT -->
-            </div>
+<html lang="en">
+<head>
+    <!-- Sets title -->
+    <title>EstateFlow - Welcome</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <!-- Fixed Top Bar displaying the page title -->
+    <div class="topBar">
+        EstateFlow
         </div>
-            <!-- End body -->
-        </body>
+    </div>
+
+    <!-- Menu Icon for toggling the sidebar -->
+    <button class="menu-icon" onclick="toggleSidebar()">☰</button>
+    
+    <!-- Sidebar Navigation Menu -->
+    <div class="sidebar">
+        <!-- Logo Section inside Sidebar -->
+        <div class="logo">
+            <img src="images/logo.png" alt="EstateFlow Logo">
+        </div>
+        <!-- Navigation Links -->
+        <a href="construction.html">Deal with Bids</a>
+        <a href="construction.html">Deal with Sales</a>
+        <a href="construction.html">Client Maintenance</a>
+        <a href="construction.html">Property Maintenance</a>
+        <a href="construction.html">Reports Menu</a>
+        <a>Exit</a>
+    </div>
+    
+    <!-- Main Content Area -->
+    <div class="content">
+        <h2>Main Content Area</h2>
+    </div>
+    
+    <!-- JavaScript file to toggle the sidebar open/closed -->
+    <script src="menu.js"></script>
+</body>
 </html>

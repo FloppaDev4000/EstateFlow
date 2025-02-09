@@ -2,9 +2,6 @@
     Global Styles - Estate Flow
 ----------------------------- */
 html, body {
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    width: 100vw; /* Set full viewport width */
     font-family: Arial, sans-serif; /* Define font style */
     background-color: #fdfefe; /* Set background color- pale GREY */
     color: #2e201c; /* Set text color- BLACK */
@@ -20,44 +17,12 @@ html, body {
     height: 50px; /* Top bar is set to 50px tall */
     background-color: #ffffff; /* Set background color- WHITE */
     color: #05c98b; /* Set text color- GREEN */
-    display: flex; /* Use flexbox layout */
-    align-items: center; /* Align items vertically */
-    justify-content: space-between; /* Space items evenly */
     font-size: 30px; /* Set font size */
     font-weight: bold; /* Make text bold */
-    margin-left: 250px; /* Offset to align with sidebar */
-    width: 100%;
+    margin-left: 250px; /* Moves the content within the topBar to the spot where the sideBar ends (sideBar = 250px wide)*/
+    width: 100%; /*Sets width to 100% of the screen*/
     padding: 10px 20px; /* Add padding */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- BLACK */
-    transition: margin-left 0.3s, width 0.3s; /* Smooth transition effect */
-}
-
-.topBar.shrink {
-    margin-left: 60px; /* Adjust margin when sidebar shrinks */
-    width: calc(100% - 60px); /* Adjust width dynamically */
-}
-
-/* -----------------------------------
-    Menu Icon Styles (Sidebar Toggle)
--------------------------------------- */
-.menu-icon {
-    font-size: 30px; /* Set icon size */
-    cursor: pointer; /* Show pointer on hover */
-    padding: 10px; /* Add padding */
-    position: fixed; /* Fix position at top-left */
-    top: 5px; /* Align to top */
-    left: 5px; /* Offset from left */
-    color: #05c98b; /* Set icon color- GREEN */
-    background-color: #fefefe; /* Set background color- pale GREY */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- black */
-    border-radius: 5px; /* Round corners */
-    z-index: 2000; /* Ensures menu icon is pushed to top */
-    border: none; /* Remove border */
-}
-
-.menu-icon:hover {
-    background-color: #05c98b; /* Change background on hover- GREEN */
-    color: #ffffff; /* Change text color on hover- WHITE */
 }
 
 /* ----------------------------
@@ -70,36 +35,33 @@ html, body {
     left: 0; /* Align to left */
     top: 0; /* Align to top */
     background-color: #cdd8d4; /* Set background color- GREY */
-    padding-top: 60px; /* Add padding at top */
-    display: flex; /* Use flexbox layout */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    transition: width 0.3s; /* Smooth transition effect */
-    border-right: 10px solid #ffffff; /* Add border- WHITE */
+    padding-top: 10px; /* Add padding at top */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- BLACK */
-}
-
-/* Works as the sidebar is a flex container, so items wrap when shrunk */
-.sidebar.closed {
-    width: 60px; /* Shrink sidebar when closed */
 }
 
 /* ----------------------------
     Sidebar Navigation Button Styles
 ----------------------------- */
 /* Targets all .sidebar elements that use the <a> tag */
-.sidebar a {
+.sidebar a.button{
     width: 90%; /* Set width of links */
     padding: 12px; /* Add padding */
     text-decoration: none; /* Remove underline */
     color: #05c98b; /* Set text color- GREEN */
     text-align: center; /* Center align text */
-    margin: 5px 0; /* Add margin */
+    margin: 10px 0; /* 5px space between and 0 ensures its locked to the margin (very left of sidebar) */
     background-color: #ffffff; /* Set background color- WHITE */
     border-radius: 5px; /* Round corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect- BLACK */
     display: block; /* Display as block element */
 }
+
+/* Targets the currently selected button so user knows what page they are on */
+.sidebar a.button.selected{
+    background-color:#05c98b;
+    color:#ffffff;
+}
+
 /*---------------------------- 
  Alters the buttons when hovered over 
 ----------------------------*/
@@ -108,42 +70,27 @@ html, body {
     color: #ffffff; /* Change text color on hover- WHITE */
 }
 
-/* Hides the text when the sidebar is collapsed */
-.sidebar.closed a {
-    font-size: 0; /* Hide text when sidebar is closed */
-    padding: 15px; /* Adjust padding */
-    opacity: 0; /* Hide element */
-}
-
 /* ----------------------------
-    Style the logo to adapt to when the side cascades
+    Style 
 ----------------------------- */
 .logo img {
     width: 180px; /* Set logo size */
-    margin: 10px 0 20px; /* Add margin */
+    margin: 10px 30px 20px; /* Add margin */
     border-radius: 5px; /* Round corners */
-    transition: width 0.3s; /* Smooth transition effect */
+    
 }
 
 .logo img:hover {
     content: url('images/logo_invert.png'); /* Change logo on hover */
 }
 
-.sidebar.closed .logo img {
-    width: 50px; /* Resize logo when sidebar is closed */
-}
-
 /* ----------------------------
     Main Content Styles
 ----------------------------- */
 .content {
-    margin-left: 250px; /* Offset to align with sidebar */
-    margin-top: 60px; /* Add margin at top */
+    margin-left: 250px; /* Move the margin in 250px, as the sidebar takes up 250px*/
+    margin-top: 50px; /* Move down 50px as the topbar takes up 50Ppx*/
     padding: 20px; /* Add padding */
-    width: 90%;
+    width: 80%;
 }
 
-.content.shrink {
-    margin-left: 60px; /* Adjust margin when sidebar shrinks */
-    width: 100%;
-}

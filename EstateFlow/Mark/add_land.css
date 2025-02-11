@@ -9,6 +9,7 @@ form{
     border-radius: 5px;
     /* Box shadow for blurred effect, 5px horizontal and vertical shadow, 5px blur and a color of black*/
     box-shadow: 5px 5px 5px rgba(75, 74, 74, 0.103);
+    background-color: #cdd8d4; /* Set background color- GREY */
 }
 
 h1{
@@ -26,7 +27,7 @@ form, h1, .inputbox, .date, .button{
 }
 
 /* Changes apperance of all input fields for elements with class inputbox and dob */
-.inputbox input, .date input{
+.inputbox input{
     border-style: solid;
     /* Set borders to invisible and leaves only bottom line */
     border-left: black;
@@ -37,6 +38,7 @@ form, h1, .inputbox, .date, .button{
     width: 250px;
     height: 40px;   
     font-size: large;
+    background-color: #cdd8d4; /* Set background color- GREY */
 }
 
 .myButton{
@@ -50,6 +52,7 @@ form, h1, .inputbox, .date, .button{
     color: white;
     font-size: large;
     border-style: none;
+    border-radius: 5px;
 }
 
 .myButton input:hover{

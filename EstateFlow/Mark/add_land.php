@@ -1,43 +1,4 @@
 <!-- Estate Flow - add land php -->
-<?php
-//  Note: inclusion of db.inc.php file, as we first need to connect to the db.
-// All variables within this file are within scope for this insert.php script
-    include 'db.inc.php';
-    date_default_timezone_set("UTC");
-    echo"The details sent down are: <br>";
-    // Set variables for POST
-    $property_id = $_POST['property_id'];
-    $acres = $_POST['acres'];
-    $buildings = $_POST['buildings'];
-    $details = $_POST['details'];
-    $quotas = $_POST['quotas'];
-    $notes = $_POST['notes'];
-    // Post calls for the element with id "firstname"
-    echo "Property ID:" . $property_id  . "<br>";
-    echo "Acres: " . $acres  . "<br>";
-    echo "Buildings:" . $buildings  . "<br>";
-    echo "Details: " . $details  . "<br>";
-    echo "Quotas:" . $quotas  . "<br>";
-    echo "Notes: " . $notes  . "<br>";
-
-
-    // String sql is assigned the Insert statement for DB. Will insert the values obtained by POST for firstname, surname and dob
-    $sql = "INSERT into Land (property_id,acres,buildings,residence_details, quotas, notes) 
-    VALUES ('$property_id','$acres','$buildings','$details','$quotas','$notes')";
-
-    // If the SQL query fails
-    if(!mysqli_query($con,$sql))
-    {
-        // Print the following message with the last occured error that occured within the connection
-        die ("An Error in the SQL Query: " .mysqli_error($con));
-    }
-    // Otherwise, insert success
-    echo "<br>A record has been added for " . $property_id;
-
-    // Close connection
-    mysqli_close($con);
-?>
-
 <!-- Estate Flow - Add Land Page  -->
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +36,45 @@
     
     <!-- Main Content Area -->
     <div class="content">
-        
+        <?php
+        //  Note: inclusion of db.inc.php file, as we first need to connect to the db.
+        // All variables within this file are within scope for this insert.php script
+            include 'db.inc.php';
+            echo"The details sent down are: <br>";
+            // Set variables for POST
+            $property_id = $_POST['property_id'];
+            $acres = $_POST['acres'];
+            $buildings = $_POST['buildings'];
+            $details = $_POST['details'];
+            $quotas = $_POST['quotas'];
+            $notes = $_POST['notes'];
+            // Post calls for the element with id "firstname"
+            echo "Property ID:" . $property_id  . "<br>";
+            echo "Acres: " . $acres  . "<br>";
+            echo "Buildings:" . $buildings  . "<br>";
+            echo "Details: " . $details  . "<br>";
+            echo "Quotas:" . $quotas  . "<br>";
+            echo "Notes: " . $notes  . "<br>";
+
+
+            // String sql is assigned the Insert statement for DB. Will insert the values obtained by POST for firstname, surname and dob
+            $sql = "INSERT into Land (property_id,acres,buildings,residence_details, quotas, notes) 
+            VALUES ('$property_id','$acres','$buildings','$details','$quotas','$notes')";
+
+            // If the SQL query fails
+            if(!mysqli_query($con,$sql))
+            {
+                // Print the following message with the last occured error that occured within the connection
+                die ("An Error in the SQL Query: " .mysqli_error($con));
+            }
+            // Otherwise, insert success
+            echo "<br>A record has been added for " . $property_id;
+
+            // Close connection
+            mysqli_close($con);
+        ?>    
+
+
         <!-- Form to bring user back to insert another Person -->
         <form action = "add_land.html" method = "POST">
             <br>

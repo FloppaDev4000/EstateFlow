@@ -6,6 +6,7 @@
     <title>EstateFlow - Add Land</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="..\menu.css">
+    <link rel="stylesheet" href="add_land.css">
 
 </head>
 <body>
@@ -34,7 +35,50 @@
     
     <!-- Main Content Area -->
     <div class="content">
-        <h2>Add a New Land Property</h2>
+        <!-- Start form, sending info via Post to add_land.php -->
+        <form action="add_land.php" method="Post">
+            <!-- Set heading for the form -->
+            <h1>Add a New Land Property</h1>
+
+            <!-- Container for Property ID-->
+            <div class = "inputbox">
+                <label for = "property_id">Property ID: </label><br/>
+                <input type="number" name="property_id" id="property_id" required autofocus placeholder="00001">
+            </div>
+
+            <!-- Container for Acres -->
+            <div class = "inputbox">
+                <label for ="acres">Acres: </label><br/>
+                <input type="number" name="acres" id="acres" required placeholder="2500">
+            </div>
+
+            <!-- Container for Buildings -->
+            <div class = "inputbox">
+                <label for = "buildings">Buildings: </label><br/>
+                <input type="text" name="buildings" id="buildings" placeholder="Two large buildings, one shed">
+            </div>
+            <!-- Container for Residence Details -->
+            <div class = "inputbox">
+                <label for ="details">Residence Details: </label><br/>
+                <input type="text" name="details" id="details" required placeholder="4 bedroom period residence in need of repair">
+            </div>
+            <!-- Container for Quotas -->
+            <div class = "inputbox">
+                <label for ="quotas">Quotas: </label><br/>
+                <input type="number" name="quotas" id="quotas" placeholder="50.00">
+            </div>
+            <!-- Container for Notes -->
+            <div class = "inputbox">
+                <label for = "notes">Notes: </label><br/>
+                <input type="text" name="notes" id="notes" placeholder="Exceptional condition, beautiful view, next to local village">
+            </div>
+            <!-- Submit/Reset buttons -->
+            <div class = "myButton">
+                    <input type="submit" value = "Send Form" name = "submit" class ="button"/>
+                    <input type="reset" value = "Clear Form" name = "reset" class ="button"/>
+            </div>
+        </form>
+
     </div>
 
 </body>

@@ -40,10 +40,74 @@
             <!-- Set heading for the form -->
             <h1>Add a New Land Property</h1>
 
+            <div class = "formContainer">
+            <fieldset>
+
+                <legend>Property Details</legend>
+                <div class = "inputbox">
+                    <label for = "property_type">Property Type: </label><br/>
+                    <!-- Set value to Land as it cannot be anything other than Land when entering a Land property, disabled the box so cannot be edited -->
+                    <input type="text" name="property_type" id="property_type" value = "Land">
+                </div>
+    
+                <!-- Container for Address -->
+                <div class = "inputbox">
+                    <label for ="adrs">Address: </label><br/>
+                    <input type="text" name="adrs" id="adrs" required autofocus placeholder="Carlow St, Carlow">
+                </div>
+    
+                <!-- Container for Eircode -->
+                <div class = "inputbox">
+                    <label for = "eircode">Eircode: </label><br/>
+                    <input type="text" name="eircode" id="eircode" placeholder="Y21 234" pattern="[A-Za-z]?\d{2}[A-Za-z\d]{4}">
+                </div>
+                <!-- Container for Location -->
+                <div class = "inputbox">
+                    <label for ="location">Location: </label><br/>
+                    <input type="text" name="location" id="location" required placeholder="Carlow">
+                </div>
+                <!-- Container for Status -->
+                <div class = "inputbox">
+                    <label for ="status">Status: </label><br/>
+                    <input type="int" name="status" id="status" pattern="[0-1]{1}">
+                </div>
+                <!-- Container for Owner -->
+                <div class = "inputbox">
+                    <label for = "owner">Owner: </label><br/>
+                    <input type="number" name="owner" id="owner" placeholder="00001">
+                </div>
+
+                <!-- Container for Highest Bid -->
+                <div class = "inputbox">
+                    <label for = "bid">Highest Bid: </label><br/>
+                    <input type="number" name="bid" id="bid">
+                </div>
+
+                <!-- Container for Asking Price -->
+                <div class = "inputbox">
+                    <label for = "price">Asking Price: </label><br/>
+                    <input type="number" name="price" id="price">
+                </div>
+                
+                <!-- Container for Viewing Times -->
+                <div class = "inputbox">
+                    <label for = "viewing_times">Viewing Times: </label><br/>
+                    <input type="text" name="viewing_times" id="viewing_times">
+                </div>
+                
+                <!-- Container for Date Listed -->
+                <div class = "inputbox">
+                    <label for = "dob">Date Listed: </label><br/>
+                    <input type="date" name="dob" id="dob">
+                </div>                
+                </fieldset>
+
+                <fieldset>
+                <legend>Land-Specific Details</legend>
             <!-- Container for Property ID-->
             <div class = "inputbox">
                 <label for = "property_id">Property ID: </label><br/>
-                <input type="number" name="property_id" id="property_id" required autofocus placeholder="00001">
+                <input type="number" name="property_id" id="property_id" required placeholder="00001">
             </div>
 
             <!-- Container for Acres -->
@@ -72,11 +136,15 @@
                 <label for = "notes">Notes: </label><br/>
                 <input type="text" name="notes" id="notes" placeholder="Exceptional condition, beautiful view, next to local village">
             </div>
-            <!-- Submit/Reset buttons -->
-            <div class = "myButton">
+
+
+        </div>
+
+                <!-- Submit/Reset buttons -->
+                <div class = "myButton">
                     <input type="submit" value = "Send Form" name = "submit" class ="button"/>
                     <input type="reset" value = "Clear Form" name = "reset" class ="button"/>
-            </div>
+                </div>
         </form>
 
     </div>

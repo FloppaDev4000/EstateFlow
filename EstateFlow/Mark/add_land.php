@@ -42,13 +42,38 @@
             include 'db.inc.php';
             echo"The details sent down are: <br>";
             // Set variables for POST
+            // Generic Property Details
+            $property_type = $_POST['property_type'];
+            $adrs = $_POST['adrs'];
+            $eircode = $_POST['eircode'];
+            $location = $_POST['location'];
+            $status = $_POST['status'];
+            $owner = $_POST['owner'];
+            $price = $_POST['price'];
+            $bid = $_POST['bid'];
+            $viewing_times = $_POST['viewing_times'];
+            $dob = date_create($_POST['dob']);
+            $dob = date_format($dob, "Y-m-d");
+            // Land-Specific Details
             $property_id = $_POST['property_id'];
             $acres = $_POST['acres'];
             $buildings = $_POST['buildings'];
             $details = $_POST['details'];
             $quotas = $_POST['quotas'];
             $notes = $_POST['notes'];
-            // Post calls for the element with id "firstname"
+
+            // Echo out the values for Property Generic Details
+            echo "Property Type:" . $property_type  . "<br>";
+            echo "Address: " . $adrs  . "<br>";
+            echo "Eircode:" . $eircode  . "<br>";
+            echo "Location: " . $location  . "<br>";
+            echo "Status:" . $status  . "<br>";
+            echo "Oner: " . $owner  . "<br>";
+            echo "Asking Price: " . $price  . "<br>";
+            echo "Highest Bid: " . $bid  . "<br>";
+            echo "Viewing Times:" . $viewing_times  . "<br>";
+            echo "Date Listed: " . $dob  . "<br>";
+            // Echo out the Land specific values
             echo "Property ID:" . $property_id  . "<br>";
             echo "Acres: " . $acres  . "<br>";
             echo "Buildings:" . $buildings  . "<br>";
@@ -57,9 +82,20 @@
             echo "Notes: " . $notes  . "<br>";
 
 
-            // String sql is assigned the Insert statement for DB. Will insert the values obtained by POST for firstname, surname and dob
-            $sql = "INSERT into Land (property_id,acres,buildings,residence_details, quotas, notes) 
+            // String sql is assigned the Insert statement for DB
+            $sql = "INSERT INTO Land (property_id,acres,buildings,residence_details, quotas, notes) 
             VALUES ('$property_id','$acres','$buildings','$details','$quotas','$notes')";
+
+            // If the SQL query fails
+            if(!mysqli_query($con,$sql))
+            {
+                // Print the following message with the last occured error that occured within the connection
+                die ("An Error in the SQL Query: " .mysqli_error($con));
+            }
+
+            // INSERT statement for the Property table
+            $sql = "INSERT INTO Property (type,address,eircode,location,status,owner,highest_bid,asking_price,viewing_times,date_listed) 
+            VALUES ('$property_type','$adrs','$eircode','$location','$status','$owner','$price','$bid','$viewing_times','$dob')";
 
             // If the SQL query fails
             if(!mysqli_query($con,$sql))

@@ -58,3 +58,8 @@ form, h1, .inputbox, .date, .button{
 .myButton input:hover{
     background-color:rgba(13, 53, 48, 0.637);
 }
+
+.formContainer{
+    display: flex;
+    justify-content: space-evenly;
+}

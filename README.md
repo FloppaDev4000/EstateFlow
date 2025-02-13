@@ -22,4 +22,4 @@ EstateFlow is a **staff-only** estate agency management system designed to strea
 
 ## Authors
 
-Mark Lambert,               Adam Noonan,            Darius Herdes,        Amelia Hamuleqicz
+Adam Noonan,               Amelia Hamulewicz,            Darius Herdes,        Mark Lambert

@@ -8,7 +8,7 @@ form{
     border-style: none;
     border-width: 4px;
     border-radius: 5px;
-
+    font-size: large;
     background-color: #cdd8d4; /* Set background color- GREY */
 }
 
@@ -33,12 +33,13 @@ h1{
     color: white;
 }
 
-form, h1, .inputbox, .date, .button{
+/* Add a uniform padding to all relevant elements within form (note .button is for the text within button to make a larger button) */
+form, h1, .inputbox, .date, .button, .owner-listbox{
     padding: 20px;
 }
 
-/* Changes apperance of all input fields for elements with class inputbox and dob */
-.inputbox input{
+/* Changes apperance of all input fields for elements with class inputbox and owner-listbox */
+.inputbox input, .owner-listbox select{
     border-style: solid;
     /* Set borders to invisible and leaves only bottom line */
     border-left: black;
@@ -55,9 +56,10 @@ form, h1, .inputbox, .date, .button{
 
 .myButton{
     text-align: center;
+    padding: 20px;
 }
 
-/* Alters appearance of all button alements */
+/* Alters appearance of all button elements */
 .myButton input{
     background-color:#05c98b; 
     /* Text color */
@@ -67,10 +69,12 @@ form, h1, .inputbox, .date, .button{
     border-radius: 5px;
 }
 
+/* Changes background colour to LIGHT GREY when hovered over button */
 .myButton input:hover{
     background-color:rgba(13, 53, 48, 0.637);
 }
 
+/* Makes all contents within the form flex items and adds a space between*/
 .formContainer{
     display: flex;
     justify-content: space-evenly;

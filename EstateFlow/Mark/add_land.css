@@ -33,13 +33,14 @@ h1{
     color: white;
 }
 
+
 /* Add a uniform padding to all relevant elements within form (note .button is for the text within button to make a larger button) */
-form, h1, .inputbox, .date, .button, .owner-listbox{
+form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox{
     padding: 20px;
 }
 
 /* Changes apperance of all input fields for elements with class inputbox and owner-listbox */
-.inputbox input, .owner-listbox select{
+.inputbox input, select{
     border-style: solid;
     /* Set borders to invisible and leaves only bottom line */
     border-left: black;
@@ -78,4 +79,9 @@ form, h1, .inputbox, .date, .button, .owner-listbox{
 .formContainer{
     display: flex;
     justify-content: space-evenly;
+}
+
+.buton .exit{
+    /* Push exit button to bottom, for workflow priority */
+    margin-top: auto;
 }

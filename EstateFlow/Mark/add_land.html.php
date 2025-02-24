@@ -27,17 +27,17 @@
         <a class ="button" href="..\Darius/view_residential.html">Amend/View a Residential Property</a>
         <a class ="button selected" href="add_land.html.php">Add a New Land Property</a>
         <a class ="button" href="delete_land.html">Delete a Land Property</a>
-        <a class ="button" href="view_land.html">Amend/View a Land Property</a>
+        <a class ="button" href="view_land.html.php">Amend/View a Land Property</a>
         <a class ="button" href="..\Amelia/add_office.html">Add a New Office Property</a>
         <a class ="button" href="..\Amelia/delete_office.html">Delete a New Office Property</a>
         <a class ="button" href="..\Amelia/view_office.html">Amend/View an Office Property</a>
-        <a class ="button" >Exit</a>
+        <a class ="button" id="exit">Exit</a>
     </div>
     
     <!-- Main Content Area -->
     <div class="content">
-        <!-- Start form, sending info via Post to add_land.php -->
-        <form action="add_land.php" method="Post">
+        <!-- Start form, sending info via Post to add_land.php, an submit call the function confirmCheck to ensure data doesnt send when false is returned -->
+        <form action="add_land.php" onsubmit="return confirmCheck()" method="Post">
             <!-- Set heading for the form -->
             <h1>Add a New Land Property</h1>
 
@@ -62,14 +62,16 @@
                 <!-- Container for Address -->
                 <div class = "inputbox">
                     <label for ="adrs">Address: </label><br/>
-                    <input type="text" name="adrs" id="adrs" required autofocus placeholder="Carlow St, Carlow">
+                    <input type="text" name="adrs" id="adrs" required autofocus placeholder="Line 1 (Required)">
+                    <input type="text" name="adrs2" id="adrs2" autofocus placeholder="Line 2 (Optional)">
+                    <input type="text" name="adrs3" id="adrs3" autofocus placeholder="Line 3 (Optional)">
                 </div>
     
                 <!-- Container for Eircode -->
                 <div class = "inputbox">
                     <label for = "eircode">Eircode: </label><br/>
                     <!-- Pattern: Eircode 1 alpha char(upper or lowercase) followed by TWO digits, any number of spaces then another alpha char and THREE digits -->
-                    <input type="text" name="eircode" id="eircode" placeholder="Y21 234" pattern="[A-Za-z]?\d{2} *[A-Za-z]?\d{3}">
+                    <input type="text" name="eircode" id="eircode" required placeholder="Y21 234" pattern="[A-Za-z]?\d{2} *[A-Za-z]?\d{3}">
                 </div>
                 <!-- Container for Location -->
                 <div class = "inputbox">
@@ -79,52 +81,51 @@
                 <!-- Container for Status -->
                 <div class = "inputbox">
                     <label for ="status">Status: </label><br/>
-                    <input type="int" name="status" id="status" pattern="[0-1]{1}">
+                    <select name = "status" id = status> 
+                        <option value = "0">Not Sold</option>
+                        <option value = "1">Sold</option>
+                    </select>
                 </div>
                 <!-- Container for Owner -->
                 <div class = "inputbox">
                     <label for = "owner">Owner: </label><br/>
-                    <input type="number" name="owner" id="owner" placeholder="00001">
+                    <input type="number" name="owner" id="owner">
                 </div>
 
                 <!-- Container for Highest Bid -->
                 <div class = "inputbox">
                     <label for = "bid">Highest Bid: </label><br/>
-                    <input type="number" name="bid" id="bid" min="1">
+                    <input type="number" name="bid" id="bid" min="1" required>
                 </div>
 
                 <!-- Container for Asking Price -->
                 <div class = "inputbox">
                     <label for = "price">Asking Price: </label><br/>
-                    <input type="number" name="price" id="price" min="1">
+                    <input type="number" name="price" id="price" min="1" required>
                 </div>
                 
                 <!-- Container for Viewing Times -->
                 <div class = "inputbox">
                     <label for = "viewing_times">Viewing Times: </label><br/>
-                    <input type="text" name="viewing_times" id="viewing_times">
+                    <input type="text" name="viewing_times" id="viewing_times" required>
                 </div>
                 
                 <!-- Container for Date Listed -->
                 <div class = "inputbox">
                     <label for = "date_listed">Date Listed: </label><br/>
-                    <input type="date" name="date_listed" id="date_listed" onblur="checkDate(this)">
+                    <input type="date" name="date_listed" id="date_listed" required onload = "getDate()" onblur="checkDate(this)">
                 </div>                
                 </fieldset>
-
+                <!-- Begin Fieldset for Land Specific Details -->
                 <fieldset>
                 <legend>Land-Specific Details</legend>
-            <!-- Container for Property ID-->
-            <!-- <div class = "inputbox">
-                <label for = "property_id">Property ID: </label><br/>
-                <input type="number" name="property_id" id="property_id" required placeholder="00001">
-            </div> -->
 
             <br><br>
 
             <!-- Container for Acres -->
             <div class = "inputbox">
                 <label for ="acres">Acres: </label><br/>
+                <!-- Min 1 - validation that we have atleast an acre of land -->
                 <input type="number" name="acres" id="acres" required placeholder="2500" min="1">
             </div>
 
@@ -133,7 +134,7 @@
             <!-- Container for Buildings -->
             <div class = "inputbox">
                 <label for = "buildings">Buildings: </label><br/>
-                <input type="text" name="buildings" id="buildings" placeholder="Two large buildings, one shed">
+                <input type="text" name="buildings" id="buildings" required placeholder="Two large buildings, one shed">
             </div>
 
             <br><br>
@@ -149,7 +150,7 @@
             <!-- Container for Quotas -->
             <div class = "inputbox">
                 <label for ="quotas">Quotas: </label><br/>
-                <input type="number" name="quotas" id="quotas" placeholder="50.00" min="0" max="100">
+                <input type="number" name="quotas" id="quotas" required placeholder="50.00" min="0" max="100">
             </div>
 
             <br><br>
@@ -165,8 +166,8 @@
 
                 <!-- Submit/Reset buttons -->
                 <div class = "myButton">
-                    <input type="submit" value = "Send Form" name = "submit" class ="button" onclick="confirmCheck()"/>
-                    <input type="reset" value = "Clear Form" name = "reset" class ="button"/>
+                    <input type="submit" value = "Add Land" name = "submit" class ="button" />
+                    <input type="reset" value = "Reset" name = "reset" class ="button"/>
                 </div>
         </form>
 

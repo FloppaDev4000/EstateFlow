@@ -10,6 +10,11 @@ function populate()
     var personDetails = result.split(',');
     // Put the client_ID (located at index 0 in the result set) into the inputbox with id owner
     document.getElementById("owner").value = personDetails[0];
+    document.getElementById("acres").value = personDetails[2];
+    document.getElementById("buildings").value = personDetails[3];
+    document.getElementById("details").value = personDetails[4];
+    document.getElementById("quotas").value = personDetails[5];
+    document.getElementById("notes").value = personDetails[6];
     // Once the client has been selected, we can call the unlock function so that the user may now edit the required fields
     unlock();
 }
@@ -18,8 +23,6 @@ function toggleLock()
 {
     document.getElementById("property_type").disabled = true;
     document.getElementById("adrs").disabled = true;
-    document.getElementById("adrs2").disabled = true;
-    document.getElementById("adrs3").disabled = true;
     document.getElementById("eircode").disabled = true;
     document.getElementById("location").disabled = true;
     document.getElementById("status").disabled = true;
@@ -38,8 +41,6 @@ function toggleLock()
 // as we got that info from the listbox, and we also don't need to edit the property_type tag
 function unlock(){
     document.getElementById("adrs").disabled = false;
-    document.getElementById("adrs2").disabled = false;
-    document.getElementById("adrs3").disabled = false;
     document.getElementById("eircode").disabled = false;
     document.getElementById("location").disabled = false;
     document.getElementById("status").disabled = false;
@@ -61,21 +62,6 @@ function confirmCheck()
     // If user responds TRUE (yes), unlock the final locked fields and return true to insert the details
     if(response)
     {
-        document.getElementById("adrs").disabled = false;
-        document.getElementById("adrs2").disabled = false;
-        document.getElementById("adrs3").disabled = false;
-        document.getElementById("eircode").disabled = false;
-        document.getElementById("location").disabled = false;
-        document.getElementById("status").disabled = false;
-        document.getElementById("bid").disabled = false;
-        document.getElementById("price").disabled = false;
-        document.getElementById("viewing_times").disabled = false;
-        document.getElementById("date_listed").disabled = false;
-        // document.getElementById("property_id").disabled = false;
-        document.getElementById("buildings").disabled = false;
-        document.getElementById("details").disabled = false;
-        document.getElementById("quotas").disabled = false;
-        document.getElementById("notes").disabled = false;
         document.getElementById("property_type").disabled = false;
         document.getElementById("owner").disabled = false;
         return true;

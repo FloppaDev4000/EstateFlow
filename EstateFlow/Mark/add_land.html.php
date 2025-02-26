@@ -26,7 +26,7 @@
         <a class ="button" href="..\Darius/delete_residential.html">Delete a Residential Property</a>
         <a class ="button" href="..\Darius/view_residential.html">Amend/View a Residential Property</a>
         <a class ="button selected" href="add_land.html.php">Add a New Land Property</a>
-        <a class ="button" href="delete_land.html">Delete a Land Property</a>
+        <a class ="button" href="delete_land.html.php">Delete a Land Property</a>
         <a class ="button" href="view_land.html.php">Amend/View a Land Property</a>
         <a class ="button" href="..\Amelia/add_office.html">Add a New Office Property</a>
         <a class ="button" href="..\Amelia/delete_office.html">Delete a New Office Property</a>
@@ -107,7 +107,7 @@
                 <!-- Container for Date Listed -->
                 <div class = "inputbox">
                     <label for = "date_listed">Date Listed: </label><br/>
-                    <input type="date" name="date_listed" id="date_listed" required onblur="checkDate(this)">
+                    <input type="date" name="date_listed" id="date_listed" required  onblur="checkDate(this)">
                 </div>                
                 </fieldset>
                 <!-- Begin Fieldset for Land Specific Details -->

@@ -6,10 +6,26 @@ function populate()
     var result;
     // Returns the value of the selected item in the listbox by going to the index in the listbox and calling .value
     result = sel.options[sel.selectedIndex].value;
-    // Split the details by using the # as a delimeter
-    var personDetails = result.split('#');
-    // Put the client_ID (located at index 0 in the result set) into the inputbox with id owner
-    document.getElementById("owner").value = personDetails[0];
+    // Split the details by using the , as a delimeter
+    var landDetails = result.split('#');
+
+    // Populate each element corresponding to their index in the landDetails array (which in turn is based off of how you inserted the values into the allText var in listbox.php)
+    document.getElementById("property_type").value = landDetails[0];
+    document.getElementById("adrs").value = landDetails[1];
+    document.getElementById("eircode").value = landDetails[2];
+    document.getElementById("location").value = landDetails[3];
+    document.getElementById("status").value = landDetails[4];
+    document.getElementById("bid").value = landDetails[5];
+    document.getElementById("price").value = landDetails[6];
+    document.getElementById("viewing_times").value = landDetails[7];
+    document.getElementById("date_listed").value = landDetails[8];
+    document.getElementById("owner").value = landDetails[9];
+    document.getElementById("acres").value = landDetails[10];
+    document.getElementById("buildings").value = landDetails[11];
+    document.getElementById("details").value = landDetails[12];
+    document.getElementById("quotas").value = landDetails[13];
+    document.getElementById("notes").value = landDetails[14];
+
     // Once the client has been selected, we can call the unlock function so that the user may now edit the required fields
     unlock();
 }
@@ -63,22 +79,6 @@ function confirmCheck()
     // If user responds TRUE (yes), unlock the final locked fields and return true to insert the details
     if(response)
     {
-        document.getElementById("adrs").disabled = false;
-        document.getElementById("adrs2").disabled = false;
-        document.getElementById("adrs3").disabled = false;
-        document.getElementById("eircode").disabled = false;
-        document.getElementById("location").disabled = false;
-        document.getElementById("status").disabled = false;
-        document.getElementById("bid").disabled = false;
-        document.getElementById("price").disabled = false;
-        document.getElementById("viewing_times").disabled = false;
-        document.getElementById("date_listed").disabled = false;
-        // document.getElementById("property_id").disabled = false;
-        document.getElementById("buildings").disabled = false;
-        document.getElementById("acres").disabled = false;
-        document.getElementById("details").disabled = false;
-        document.getElementById("quotas").disabled = false;
-        document.getElementById("notes").disabled = false;
         document.getElementById("property_type").disabled = false;
         document.getElementById("owner").disabled = false;
         return true;
@@ -107,14 +107,4 @@ function checkDate(date){
         document.getElementById("date_listed").setCustomValidity("");
     }
     document.getElementById("date_listed").reportValidity();
-}
-
-function getDate(){
-
-    var today = new Date();
-    var year = today.getFullYear() + '-';
-    var month = (today.getMonth()+1).padStart(2,'0') + '-';
-    var day = (today.getDate().padStart(2,'0'));
-    document.getElementById("date_listed").value = year +  month + day;
-
 }

@@ -1,13 +1,13 @@
-<!-- Estate Flow - View Land Page  -->
+<!-- Estate Flow - Delete Land Page  -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Sets title -->
-    <title>EstateFlow - View Land</title>
+    <title>EstateFlow - Delete Land</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="..\menu.css">
     <link rel="stylesheet" href="add_land.css">
-    <script src="view_land.js"></script>
+    <script src="delete_land.js"></script>
 </head>
 <body onload = "toggleLock()">
 
@@ -25,8 +25,8 @@
         <a class ="button" href="..\Darius/delete_residential.html">Delete a Residential Property</a>
         <a class ="button" href="..\Darius/view_residential.html">Amend/View a Residential Property</a>
         <a class ="button" href="add_land.html.php">Add a New Land Property</a>
-        <a class ="button" href="delete_land.html.php">Delete a Land Property</a>
-        <a class ="button selected" href="view_land.html.php">Amend/View a Land Property</a>
+        <a class ="button selected" href="delete_land.html.php">Delete a Land Property</a>
+        <a class ="button" href="view_land.html.php">Amend/View a Land Property</a>
         <a class ="button" href="..\Amelia/add_office.html">Add a New Office Property</a>
         <a class ="button" href="..\Amelia/delete_office.html">Delete a New Office Property</a>
         <a class ="button" href="..\Amelia/view_office.html">Amend/View an Office Property</a>
@@ -38,12 +38,12 @@
     <!-- Start form, sending info via Post to add_land.php -->
     <form action="add_land.php" onsubmit="return confirmCheck()" method="Post">
         <!-- Set heading for the form -->
-        <h1>Amend a Land Property</h1>
+        <h1>Delete a Land Property</h1>
 
         <div class = "formContainer">
         <fieldset>
 
-            <legend>Amend a Land Property</legend>
+            <legend>Delete a Land Property</legend>
 
             <!-- Container for Listbox containing all clients w/ their client_id in the values-->
             <div class = "view-listbox">

@@ -59,13 +59,7 @@
                     <input type="text" name="property_type" id="property_type" value = "Land">
                 </div>
     
-                <!-- Container for Address -->
-                <div class = "inputbox">
-                    <label for ="adrs">Address: </label><br/>
-                    <input type="text" name="adrs" id="adrs" required autofocus placeholder="Line 1 (Required)">
-                    <input type="text" name="adrs2" id="adrs2" autofocus placeholder="Line 2 (Optional)">
-                    <input type="text" name="adrs3" id="adrs3" autofocus placeholder="Line 3 (Optional)">
-                </div>
+
     
                 <!-- Container for Eircode -->
                 <div class = "inputbox">
@@ -107,20 +101,26 @@
                 <!-- Container for Viewing Times -->
                 <div class = "inputbox">
                     <label for = "viewing_times">Viewing Times: </label><br/>
-                    <input type="text" name="viewing_times" id="viewing_times" required>
+                    <input type="text" name="viewing_times" id="viewing_times" placeholder= "Weekends 12pm - 5pm" required>
                 </div>
                 
                 <!-- Container for Date Listed -->
                 <div class = "inputbox">
                     <label for = "date_listed">Date Listed: </label><br/>
-                    <input type="date" name="date_listed" id="date_listed" required onload = "getDate()" onblur="checkDate(this)">
+                    <input type="date" name="date_listed" id="date_listed" required onblur="checkDate(this)">
                 </div>                
                 </fieldset>
                 <!-- Begin Fieldset for Land Specific Details -->
                 <fieldset>
                 <legend>Land-Specific Details</legend>
 
-            <br><br>
+                            <!-- Container for Address -->
+                <div class = "inputbox">
+                    <label for ="adrs">Address: </label><br/>
+                    <input type="text" name="adrs" id="adrs" required autofocus placeholder="Line 1 (Required)"> <br><br>
+                    <input type="text" name="adrs2" id="adrs2" autofocus placeholder="Line 2 (Optional)"> <br><br>
+                    <input type="text" name="adrs3" id="adrs3" autofocus placeholder="Line 3 (Optional)"> 
+                </div>
 
             <!-- Container for Acres -->
             <div class = "inputbox">
@@ -150,7 +150,7 @@
             <!-- Container for Quotas -->
             <div class = "inputbox">
                 <label for ="quotas">Quotas: </label><br/>
-                <input type="number" name="quotas" id="quotas" required placeholder="50.00" min="0" max="100">
+                <input type="number" name="quotas" id="quotas" required placeholder="50" min="0" max="10000">
             </div>
 
             <br><br>

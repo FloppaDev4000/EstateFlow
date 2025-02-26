@@ -25,7 +25,8 @@
     {
         $id = $row['client_ID'];
         $name = $row['name'];
-        $allText = "$id,$name";
+        // Concatenate all results into one, and use '#' as delim
+        $allText = "$id#$name";
         // Assigns each field in the listbox (each person) with their respective more detailed information
         echo "<option value = '$allText'>$name</option>";
     }

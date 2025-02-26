@@ -6,8 +6,8 @@ function populate()
     var result;
     // Returns the value of the selected item in the listbox by going to the index in the listbox and calling .value
     result = sel.options[sel.selectedIndex].value;
-    // Split the details by using the , as a delimeter
-    var personDetails = result.split(',');
+    // Split the details by using the # as a delimeter
+    var personDetails = result.split('#');
     // Put the client_ID (located at index 0 in the result set) into the inputbox with id owner
     document.getElementById("owner").value = personDetails[0];
     // Once the client has been selected, we can call the unlock function so that the user may now edit the required fields
@@ -30,6 +30,7 @@ function toggleLock()
     document.getElementById("date_listed").disabled = true;
     // document.getElementById("property_id").disabled = true;
     document.getElementById("buildings").disabled = true;
+    document.getElementById("acres").disabled = true;
     document.getElementById("details").disabled = true;
     document.getElementById("quotas").disabled = true;
     document.getElementById("notes").disabled = true;
@@ -49,6 +50,7 @@ function unlock(){
     document.getElementById("date_listed").disabled = false;
     // document.getElementById("property_id").disabled = false;
     document.getElementById("buildings").disabled = false;
+    document.getElementById("acres").disabled = false;
     document.getElementById("details").disabled = false;
     document.getElementById("quotas").disabled = false;
     document.getElementById("notes").disabled = false;
@@ -73,6 +75,7 @@ function confirmCheck()
         document.getElementById("date_listed").disabled = false;
         // document.getElementById("property_id").disabled = false;
         document.getElementById("buildings").disabled = false;
+        document.getElementById("acres").disabled = false;
         document.getElementById("details").disabled = false;
         document.getElementById("quotas").disabled = false;
         document.getElementById("notes").disabled = false;
@@ -104,4 +107,14 @@ function checkDate(date){
         document.getElementById("date_listed").setCustomValidity("");
     }
     document.getElementById("date_listed").reportValidity();
+}
+
+function getDate(){
+    document.getElementById("date_listed").disabled = true;
+    var today = new Date();
+    var year = today.getFullYear() + '-';
+    var month = (today.getMonth()+1).padStart(2,'0') + '-';
+    var day = (today.getDate().padStart(2,'0'));
+    document.getElementById("date_listed").value = year +  month + day;
+    document.getElementById("date_listed").disabled = false;
 }

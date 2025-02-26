@@ -5,22 +5,25 @@ form{
     /* Margin auto = center */
     margin: auto;
     /* Note: alternatively "A more common method to center an element horizontally is by setting display: flex; and justify-content: center; on a container, which centers its flex item children." */
-    border-style: none;
     border-width: 4px;
     border-radius: 5px;
     font-size: large;
-    background-color: #cdd8d4; /* Set background color- GREY */
 }
 
 /* Target form, h1 and fieldset elements and apply a shadow, creating a 3D, stacked, dynamic website feel */
 form, h1, fieldset{
-        /* Box shadow for blurred effect, 5px horizontal and vertical shadow, 5px blur and a color of black*/
-    box-shadow: 5px 5px 5px rgba(75, 74, 74, 0.103);
+    /* Box shadow for blurred effect, 5px horizontal and vertical shadow, 5px blur and a color of black*/
+box-shadow: 5px 5px 5px 5px rgba(75, 74, 74, 0.103);
 }
+
 
 /* Width of each fieldset is 50% (two fieldsets, both take up half of the form each) */
 fieldset{
-     width: 50%;
+    width: 50%;
+	border-style: solid;
+	border-color: #05c98b;
+	color: #05c98b;
+	border-radius: 4px;
 }
 
 h1{
@@ -34,6 +37,7 @@ h1{
 }
 
 
+
 /* Add a uniform padding to all relevant elements within form (note .button is for the text within button to make a larger button) */
 form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox{
     padding: 20px;
@@ -42,17 +46,13 @@ form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox{
 /* Changes apperance of all input fields for elements with class inputbox and owner-listbox */
 .inputbox input, select{
     border-style: solid;
-    /* Set borders to invisible and leaves only bottom line */
-    border-left: black;
-    border-right: black;
-    border-top: black;
-    /* Removes the outline from text box when cursor is focused to element */
+	border-radius: 4px;
+    /* Removes the bold outline from textbox when cursor is focused to element */
     outline: none;
-    /* Set width of each inputbox to be 90% of the fieldset */
-    width: 90%;
+    /* Set width of each inputbox to be 70% of the fieldset */
+    width: 70%;
     height: 40px;   
     font-size: large;
-    background-color: #cdd8d4; /* Set background color- GREY */
 }
 
 .myButton{
@@ -79,9 +79,4 @@ form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox{
 .formContainer{
     display: flex;
     justify-content: space-evenly;
-}
-
-.buton .exit{
-    /* Push exit button to bottom, for workflow priority */
-    margin-top: auto;
 }

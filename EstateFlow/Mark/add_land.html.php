@@ -64,8 +64,8 @@
                 <!-- Container for Eircode -->
                 <div class = "inputbox">
                     <label for = "eircode">Eircode: </label><br/>
-                    <!-- Pattern: Eircode 1 alpha char(upper or lowercase) followed by TWO digits, any number of spaces then another alpha char and THREE digits -->
-                    <input type="text" name="eircode" id="eircode" required placeholder="Y21 234" pattern="[A-Za-z]?\d{2} *[A-Za-z]?\d{3}">
+                    <!-- Pattern: Eircode 1 alpha char(upper or lowercase) followed by TWO digits, a space then another alpha char and THREE digits -->
+                    <input type="text" name="eircode" id="eircode" required placeholder="Y21 234" pattern="[A-Za-z]?\d{2}[ ]?[A-Za-z]?\d{3}">
                 </div>
                 <!-- Container for Location -->
                 <div class = "inputbox">
@@ -106,8 +106,7 @@
                 
                 <!-- Container for Date Listed -->
                 <div class = "inputbox">
-                    <label for = "date_listed">Date Listed: </label><br/>
-                    <input type="date" name="date_listed" id="date_listed" required  onblur="checkDate(this)">
+                    <input type="date" name="date_listed" id="date_listed" hidden>
                 </div>                
                 </fieldset>
                 <!-- Begin Fieldset for Land Specific Details -->

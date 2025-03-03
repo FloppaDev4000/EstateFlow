@@ -53,8 +53,7 @@
             $price = $_POST['price'];
             $bid = $_POST['bid'];
             $viewing_times = $_POST['viewing_times'];
-            $date_listed = date_create($_POST['date_listed']);
-            $date_listed = date_format($date_listed, "Y-m-d");
+
             // Land-Specific Details
             $property_id;
             $acres = $_POST['acres'];
@@ -64,8 +63,8 @@
             $notes = $_POST['notes'];
 
             // INSERT statement for the Property table
-            $sql = "INSERT INTO Property (type,address,eircode,location,status,owner,highest_bid,asking_price,viewing_times,date_listed) 
-            VALUES ('$property_type','$adrs','$eircode','$location','$status','$owner','$price','$bid','$viewing_times','$date_listed')";
+            $sql = "INSERT INTO Property (type,address,eircode,location,status,owner,highest_bid,asking_price,viewing_times) 
+            VALUES ('$property_type','$adrs','$eircode','$location','$status','$owner','$price','$bid','$viewing_times')";
 
             // If the SQL query fails
             if(!mysqli_query($con,$sql))
@@ -112,18 +111,14 @@
                     <!-- Set value to Land as it cannot be anything other than Land when entering a Land property, disabled the box so cannot be edited -->
                     <input type="text" name="property_type" id="property_type" value = "Land">
                 </div>
-				
-                <!-- Container for Owner -->
-                <div class = "inputbox">
-                    <label for = "owner">Owner: </label><br/>
-                    <input type="number" name="owner" id="owner">
-                </div>
-       
+    
+
+    
                 <!-- Container for Eircode -->
                 <div class = "inputbox">
                     <label for = "eircode">Eircode: </label><br/>
-                    <!-- Pattern: Eircode 1 alpha char(upper or lowercase) followed by TWO digits, any number of spaces then another alpha char and THREE digits -->
-                    <input type="text" name="eircode" id="eircode" required placeholder="Y21 234" pattern="[A-Za-z]?\d{2} *[A-Za-z]?\d{3}">
+                    <!-- Pattern: Eircode 1 alpha char(upper or lowercase) followed by TWO digits, a space then another alpha char and THREE digits -->
+                    <input type="text" name="eircode" id="eircode" required placeholder="Y21 234" pattern="[A-Za-z]?\d{2}[ ]?[A-Za-z]?\d{3}">
                 </div>
                 <!-- Container for Location -->
                 <div class = "inputbox">
@@ -138,7 +133,11 @@
                         <option value = "1">Sold</option>
                     </select>
                 </div>
-
+                <!-- Container for Owner -->
+                <div class = "inputbox">
+                    <label for = "owner">Owner: </label><br/>
+                    <input type="number" name="owner" id="owner">
+                </div>
 
                 <!-- Container for Highest Bid -->
                 <div class = "inputbox">
@@ -155,26 +154,26 @@
                 <!-- Container for Viewing Times -->
                 <div class = "inputbox">
                     <label for = "viewing_times">Viewing Times: </label><br/>
-                    <input type="text" name="viewing_times" id="viewing_times" required>
+                    <input type="text" name="viewing_times" id="viewing_times" placeholder= "Weekends 12pm - 5pm" required>
                 </div>
                 
                 <!-- Container for Date Listed -->
                 <div class = "inputbox">
-                    <label for = "date_listed">Date Listed: </label><br/>
-                    <input type="date" name="date_listed" id="date_listed" required onload = "getDate()" onblur="checkDate(this)">
+                    <input type="date" name="date_listed" id="date_listed" hidden>
                 </div>                
                 </fieldset>
                 <!-- Begin Fieldset for Land Specific Details -->
                 <fieldset>
                 <legend>Land-Specific Details</legend>
-                <!-- Container for Address -->
-                <div class = "inputbox address">
+
+                            <!-- Container for Address -->
+                <div class = "inputbox">
                     <label for ="adrs">Address: </label><br/>
-                    <input type="text" name="adrs" id="adrs" required autofocus placeholder="Line 1 (Required)"><br><br>
-                    <input type="text" name="adrs2" id="adrs2" autofocus placeholder="Line 2 (Optional)"><br><br>
-                    <input type="text" name="adrs3" id="adrs3" autofocus placeholder="Line 3 (Optional)">
+                    <input type="text" name="adrs" id="adrs" required autofocus placeholder="Line 1 (Required)"> <br><br>
+                    <input type="text" name="adrs2" id="adrs2" autofocus placeholder="Line 2 (Optional)"> <br><br>
+                    <input type="text" name="adrs3" id="adrs3" autofocus placeholder="Line 3 (Optional)"> 
                 </div>
-					
+
             <!-- Container for Acres -->
             <div class = "inputbox">
                 <label for ="acres">Acres: </label><br/>
@@ -182,7 +181,7 @@
                 <input type="number" name="acres" id="acres" required placeholder="2500" min="1">
             </div>
 
-            <br>
+            <br><br>
 
             <!-- Container for Buildings -->
             <div class = "inputbox">
@@ -190,7 +189,7 @@
                 <input type="text" name="buildings" id="buildings" required placeholder="Two large buildings, one shed">
             </div>
 
-            <br>
+            <br><br>
 
             <!-- Container for Residence Details -->
             <div class = "inputbox">
@@ -198,15 +197,15 @@
                 <input type="text" name="details" id="details" required placeholder="4 bedroom period residence in need of repair">
             </div>
 
-            <br>
-					
+            <br><br>
+
             <!-- Container for Quotas -->
             <div class = "inputbox">
                 <label for ="quotas">Quotas: </label><br/>
-                <input type="number" name="quotas" id="quotas" required placeholder="50.00" min="0" max="100">
+                <input type="number" name="quotas" id="quotas" required placeholder="50" min="0" max="10000">
             </div>
 
-            <br>
+            <br><br>
 
             <!-- Container for Notes -->
             <div class = "inputbox">

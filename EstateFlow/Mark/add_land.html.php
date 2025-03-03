@@ -103,11 +103,11 @@
                     <label for = "viewing_times">Viewing Times: </label><br/>
                     <input type="text" name="viewing_times" id="viewing_times" placeholder= "Weekends 12pm - 5pm" required>
                 </div>
-                
-                <!-- Container for Date Listed -->
+				<!-- Container for Date Listed -->
                 <div class = "inputbox">
                     <input type="date" name="date_listed" id="date_listed" hidden>
-                </div>                
+                </div>        
+        
                 </fieldset>
                 <!-- Begin Fieldset for Land Specific Details -->
                 <fieldset>

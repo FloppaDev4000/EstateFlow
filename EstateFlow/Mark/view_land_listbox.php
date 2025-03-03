@@ -4,8 +4,8 @@
     include "db.inc.php";
     date_default_timezone_set('UTC');
 // Prepare the statement for the SELECT query on LAND which INNER JOINS with the PROPERTY table where their property id's are equal respectively
-//This gives us ALL the Property info for ALL Land entries on the Property table
-    $sql = "SELECT * FROM Land INNER JOIN Property ON Land.property_id = Property.property_id";
+//This gives us ALL info from the Land, Property and Client table by using two inner joins, one from Property on Land, then from Client on Property
+    $sql = "SELECT Land.*, Property.*, Client.client_ID, Client.name FROM Land INNER JOIN Property ON Land.property_id = Property.property_id INNER JOIN Client ON Property.owner = Client.client_ID WHERE Property.delete_flag=0";
 
 // Error handling, if a problem with the query, print a relevant message
     if ( !$result = mysqli_query($con, $sql))
@@ -31,10 +31,11 @@
         $eircode = $row['eircode'];
         $location = $row['location'];
         $status = $row['status'];
+		$owner = $row['owner'];
         $highest_bid = $row['highest_bid'];
         $asking_price = $row['asking_price'];
-        $viewing_times = $row['viewing_times'];
-        $date_listed = $row['date_listed'];
+		$viewing_times = $row['viewing_times']; 
+		$property_id = $row['property_id'];
         // Then Land
         $id = $row['land_id'];
         $acres = $row['acres'];
@@ -42,8 +43,9 @@
         $residence_details = $row['residence_details'];
         $quotas = $row['quotas'];
         $notes = $row['notes'];
+		$ownerName = $row['name'];
 		//Assign allText all of the values, separated by the delim '#'
-        $allText = "$type#$address#$eircode#$location#$status#$highest_bid#$asking_price#$viewing_times#$date_listed#$id#$acres#$buildings#$residence_details#$quotas#$notes";
+        $allText = "$type#$address#$eircode#$location#$status#$owner#$highest_bid#$asking_price#$viewing_times#$property_id#$id#$acres#$ownerName#$buildings#$residence_details#$quotas#$notes#";
         // Assigns each field in the listbox with the values and displays each entry via their eircode
         echo "<option value = '$allText'>$eircode</option>";
     }

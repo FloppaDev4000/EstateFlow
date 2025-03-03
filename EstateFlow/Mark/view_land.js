@@ -8,27 +8,24 @@ function populate()
     result = sel.options[sel.selectedIndex].value;
     // Split the details by using the , as a delimeter
     var landDetails = result.split('#');
-    // Put the client_ID (located at index 0 in the result set) into the inputbox with id owner
-    document.getElementById("owner").value = 
-
-
 
     document.getElementById("property_type").value = landDetails[0];
     document.getElementById("adrs").value = landDetails[1];
     document.getElementById("eircode").value = landDetails[2];
     document.getElementById("location").value = landDetails[3];
     document.getElementById("status").value = landDetails[4];
-    document.getElementById("bid").value = landDetails[5];
-    document.getElementById("price").value = landDetails[6];
-    document.getElementById("viewing_times").value = landDetails[7];
-    document.getElementById("date_listed").value = landDetails[8];
-    document.getElementById("owner").value = landDetails[9];
-    document.getElementById("acres").value = landDetails[10];
-    document.getElementById("buildings").value = landDetails[11];
-
-    document.getElementById("details").value = landDetails[12];
-    document.getElementById("quotas").value = landDetails[13];
-    document.getElementById("notes").value = landDetails[14];
+	    document.getElementById("owner").value = landDetails[5];
+    document.getElementById("bid").value = landDetails[6];
+    document.getElementById("price").value = landDetails[7];
+	document.getElementById("viewing_times").value = landDetails[8];
+	    document.getElementById("property_id").value = landDetails[9];
+	    document.getElementById("id").value = landDetails[10];
+    document.getElementById("acres").value = landDetails[11];
+	document.getElementById("ownerName").value = landDetails[12];
+    document.getElementById("buildings").value = landDetails[13];
+    document.getElementById("details").value = landDetails[14];
+    document.getElementById("quotas").value = landDetails[15];
+    document.getElementById("notes").value = landDetails[16];
 
     // Once the client has been selected, we can call the unlock function so that the user may now edit the required fields
     unlock();
@@ -43,7 +40,6 @@ function toggleLock()
     document.getElementById("eircode").disabled = true;
     document.getElementById("location").disabled = true;
     document.getElementById("status").disabled = true;
-    document.getElementById("owner").disabled = true;
     document.getElementById("bid").disabled = true;
     document.getElementById("price").disabled = true;
     document.getElementById("viewing_times").disabled = true;
@@ -54,6 +50,7 @@ function toggleLock()
     document.getElementById("details").disabled = true;
     document.getElementById("quotas").disabled = true;
     document.getElementById("notes").disabled = true;
+	document.getElementById("owner").disabled = true;
 }
 //When we unlock, we only unlock fields that should be editable, leave the owner inputbox locked,
 // as we got that info from the listbox, and we also don't need to edit the property_type tag
@@ -74,6 +71,7 @@ function unlock(){
     document.getElementById("details").disabled = false;
     document.getElementById("quotas").disabled = false;
     document.getElementById("notes").disabled = false;
+	document.getElementById("owner").disabled = false;
 }
 // // Function confirmCheck() prompts user to confirm if the want to save the changes
 function confirmCheck()
@@ -84,7 +82,6 @@ function confirmCheck()
     if(response)
     {
         document.getElementById("property_type").disabled = false;
-        document.getElementById("owner").disabled = false;
         return true;
     }
     // Otherwise, populate the inputboxes and lock the inputs, then return false

@@ -18,13 +18,14 @@ function populate()
     document.getElementById("bid").value = landDetails[5];
     document.getElementById("price").value = landDetails[6];
     document.getElementById("viewing_times").value = landDetails[7];
-    document.getElementById("date_listed").value = landDetails[8];
-    document.getElementById("owner").value = landDetails[9];
-    document.getElementById("acres").value = landDetails[10];
-    document.getElementById("buildings").value = landDetails[11];
-    document.getElementById("details").value = landDetails[12];
-    document.getElementById("quotas").value = landDetails[13];
-    document.getElementById("notes").value = landDetails[14];
+    document.getElementById("acres").value = landDetails[9];
+    document.getElementById("buildings").value = landDetails[10];
+    document.getElementById("details").value = landDetails[11];
+    document.getElementById("quotas").value = landDetails[12];
+    document.getElementById("notes").value = landDetails[13];
+	document.getElementById("property_id").value = landDetails[14];
+	document.getElementById("land_id").value = landDetails[8];
+	document.getElementById("bid_id").value = landDetails[15];
 
     // Once the client has been selected, we can call the unlock function so that the user may now edit the required fields
     unlock();
@@ -43,8 +44,6 @@ function toggleLock()
     document.getElementById("bid").disabled = true;
     document.getElementById("price").disabled = true;
     document.getElementById("viewing_times").disabled = true;
-    document.getElementById("date_listed").disabled = true;
-    // document.getElementById("property_id").disabled = true;
     document.getElementById("buildings").disabled = true;
     document.getElementById("acres").disabled = true;
     document.getElementById("details").disabled = true;
@@ -63,8 +62,6 @@ function unlock(){
     document.getElementById("bid").disabled = false;
     document.getElementById("price").disabled = false;
     document.getElementById("viewing_times").disabled = false;
-    document.getElementById("date_listed").disabled = false;
-    // document.getElementById("property_id").disabled = false;
     document.getElementById("buildings").disabled = false;
     document.getElementById("acres").disabled = false;
     document.getElementById("details").disabled = false;
@@ -74,8 +71,24 @@ function unlock(){
 // // Function confirmCheck() prompts user to confirm if the want to save the changes
 function confirmCheck()
 {
+	var checkBids;
+	if(document.getElementById("bid_id").value != -1){
+		checkBids = confirm('There are currently active bids on this property, proceeding will delete all associated Bids');
+		//If user confirms they want to, ask once more if they want to delete
+		if(checkBids){
+			var areYouSure;
+			areYouSure = confirm("Are you Sure?");
+			if(areYouSure){
+				return true;	
+			}
+		}
+		else
+			return false;	
+		
+	}
+	
     var response;
-    response = confirm('Confirm new Land Property');
+    response = confirm('Are you sure you want to delete?');
     // If user responds TRUE (yes), unlock the final locked fields and return true to insert the details
     if(response)
     {

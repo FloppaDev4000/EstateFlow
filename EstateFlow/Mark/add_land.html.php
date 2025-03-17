@@ -28,7 +28,7 @@
         <a class ="button selected" href="add_land.html.php">Add a New Land Property</a>
         <a class ="button" href="delete_land.html.php">Delete a Land Property</a>
         <a class ="button" href="view_land.html.php">Amend/View a Land Property</a>
-        <a class ="button" href="..\Amelia/add_office.html">Add a New Office Property</a>
+        <a class ="button" href="..\Amelia/add_office.html.php">Add a New Office Property</a>
         <a class ="button" href="..\Amelia/delete_office.html">Delete a New Office Property</a>
         <a class ="button" href="..\Amelia/view_office.html">Amend/View an Office Property</a>
         <a class ="button" id="exit">Exit</a>
@@ -75,10 +75,11 @@
                 <!-- Container for Status -->
                 <div class = "inputbox">
                     <label for ="status">Status: </label><br/>
-                    <select name = "status" id = status> 
-                        <option value = "0">Not Sold</option>
-                        <option value = "1">Sold</option>
-                    </select>
+                    <select name = "status" id = status> 			
+						<option value="0">For Sale</option>  
+						<option value="1">Sale Agreed</option>  
+                        <option value="2">Sale Complete</option>  
+					</select>
                 </div>
                 <!-- Container for Owner -->
                 <div class = "inputbox">

@@ -14,12 +14,12 @@ function populate()
     document.getElementById("eircode").value = landDetails[2];
     document.getElementById("location").value = landDetails[3];
     document.getElementById("status").value = landDetails[4];
-	    document.getElementById("owner").value = landDetails[5];
+	document.getElementById("owner").value = landDetails[5];
     document.getElementById("bid").value = landDetails[6];
     document.getElementById("price").value = landDetails[7];
 	document.getElementById("viewing_times").value = landDetails[8];
-	    document.getElementById("property_id").value = landDetails[9];
-	    document.getElementById("id").value = landDetails[10];
+	document.getElementById("property_id").value = landDetails[9];
+	document.getElementById("id").value = landDetails[10];
     document.getElementById("acres").value = landDetails[11];
 	document.getElementById("ownerName").value = landDetails[12];
     document.getElementById("buildings").value = landDetails[13];
@@ -33,46 +33,48 @@ function populate()
 // Function toggleLock() is called onload, locking all fields until the user selects a client first
 function toggleLock()
 {
-    document.getElementById("property_type").disabled = true;
-    document.getElementById("adrs").disabled = true;
-    document.getElementById("adrs2").disabled = true;
-    document.getElementById("adrs3").disabled = true;
-    document.getElementById("eircode").disabled = true;
-    document.getElementById("location").disabled = true;
-    document.getElementById("status").disabled = true;
-    document.getElementById("bid").disabled = true;
-    document.getElementById("price").disabled = true;
-    document.getElementById("viewing_times").disabled = true;
-    document.getElementById("date_listed").disabled = true;
-    // document.getElementById("property_id").disabled = true;
-    document.getElementById("buildings").disabled = true;
-    document.getElementById("acres").disabled = true;
-    document.getElementById("details").disabled = true;
-    document.getElementById("quotas").disabled = true;
-    document.getElementById("notes").disabled = true;
-	document.getElementById("owner").disabled = true;
+	if(document.getElementById("amendViewbutton").value == "Amend Details"){
+
+		document.getElementById("adrs").disabled = false;
+		document.getElementById("adrs2").disabled = false;
+		document.getElementById("adrs3").disabled = false;
+		document.getElementById("eircode").disabled = false;
+		document.getElementById("location").disabled = false;
+		document.getElementById("price").disabled = false;
+		document.getElementById("viewing_times").disabled = false;
+		document.getElementById("buildings").disabled = false;
+		document.getElementById("acres").disabled = false;
+		document.getElementById("details").disabled = false;
+		document.getElementById("quotas").disabled = false;
+		document.getElementById("notes").disabled = false;
+		document.getElementById("ownerName").disabled = false;
+		document.getElementById("bid").disabled = false;
+		document.getElementById("amendViewbutton").value = "View Details";
+	}
+	else
+	{
+		    document.getElementById("adrs").disabled = true;
+			document.getElementById("adrs2").disabled = true;
+			document.getElementById("adrs3").disabled = true;
+			document.getElementById("eircode").disabled = true;
+			document.getElementById("location").disabled = true;
+			document.getElementById("status").disabled = true;
+			document.getElementById("bid").disabled = true;
+			document.getElementById("price").disabled = true;
+			document.getElementById("viewing_times").disabled = true;
+			document.getElementById("buildings").disabled = true;
+			document.getElementById("acres").disabled = true;
+			document.getElementById("details").disabled = true;
+			document.getElementById("quotas").disabled = true;
+			document.getElementById("notes").disabled = true;
+			document.getElementById("ownerName").disabled = true;
+			document.getElementById("amendViewbutton").value = "Amend Details";
+	}
 }
-//When we unlock, we only unlock fields that should be editable, leave the owner inputbox locked,
-// as we got that info from the listbox, and we also don't need to edit the property_type tag
-function unlock(){
-    document.getElementById("adrs").disabled = false;
-    document.getElementById("adrs2").disabled = false;
-    document.getElementById("adrs3").disabled = false;
-    document.getElementById("eircode").disabled = false;
-    document.getElementById("location").disabled = false;
-    document.getElementById("status").disabled = false;
-    document.getElementById("bid").disabled = false;
-    document.getElementById("price").disabled = false;
-    document.getElementById("viewing_times").disabled = false;
-    document.getElementById("date_listed").disabled = false;
-    // document.getElementById("property_id").disabled = false;
-    document.getElementById("buildings").disabled = false;
-    document.getElementById("acres").disabled = false;
-    document.getElementById("details").disabled = false;
-    document.getElementById("quotas").disabled = false;
-    document.getElementById("notes").disabled = false;
-	document.getElementById("owner").disabled = false;
-}
+
+
+
+
 // // Function confirmCheck() prompts user to confirm if the want to save the changes
 function confirmCheck()
 {
@@ -93,19 +95,46 @@ function confirmCheck()
     }
 }
 
-//Function to check if the date input is todays date or any date in the future
-function checkDate(date){
-    var today = new Date();
-    var inputDate = new Date(date.value);
+function filterAll(){
+		var options = document.getElementById("listbox");
+    // Returns the value of the selected item in the listbox by going to the index in the listbox and calling .value
+	for(var i = 0; i < options.length; i++){
+			if(options[i].disabled){
+				options[i].disabled = false;	
+			}
+		}
+	}
 
-    //Normalise the date
-    today.setHours(0,0,0,0);
-    
-    if(inputDate > today){
-        document.getElementById("date_listed").setCustomValidity("Date cannot be in the future!");
-    }
-    else{
-        document.getElementById("date_listed").setCustomValidity("");
-    }
-    document.getElementById("date_listed").reportValidity();
+
+function filterBySold(){
+	filterAll();
+	var options = document.getElementById("listbox");
+	var result;
+    // Returns the value of the selected item in the listbox by going to the index in the listbox and calling .value
+	for(var i =0; i < options.length; i++){
+    result = options.options[i].value;
+    // Split the details by using the # as a delimeter
+    var landDetails = result.split('#');
+		if(landDetails[4] == 0){
+			options[i].disabled = true;
+	}
+	}
 }
+	
+function filterByNotSold(){
+	filterAll();
+		var options = document.getElementById("listbox");
+	var result;
+    // Returns the value of the selected item in the listbox by going to the index in the listbox and calling .value
+	for(var i =0; i < options.length; i++){
+    result = options.options[i].value;
+    // Split the details by using the # as a delimeter
+    var landDetails = result.split('#');
+		if(landDetails[4] == 1){
+			options[i].disabled = true;
+		}
+	}
+}
+
+
+

@@ -6,8 +6,10 @@ function populate()
     var result;
     // Returns the value of the selected item in the listbox by going to the index in the listbox and calling .value
     result = sel.options[sel.selectedIndex].value;
+	
     // Split the details by using the # as a delimeter
     var personDetails = result.split('#');
+	
     // Put the client_ID (located at index 0 in the result set) into the inputbox with id owner
     document.getElementById("owner").value = personDetails[0];
     // Once the client has been selected, we can call the unlock function so that the user may now edit the required fields
@@ -28,7 +30,6 @@ function toggleLock()
     document.getElementById("price").disabled = true;
     document.getElementById("viewing_times").disabled = true;
     document.getElementById("date_listed").disabled = true;
-    // document.getElementById("property_id").disabled = true;
     document.getElementById("buildings").disabled = true;
     document.getElementById("acres").disabled = true;
     document.getElementById("details").disabled = true;
@@ -48,7 +49,6 @@ function unlock(){
     document.getElementById("price").disabled = false;
     document.getElementById("viewing_times").disabled = false;
     document.getElementById("date_listed").disabled = false;
-    // document.getElementById("property_id").disabled = false;
     document.getElementById("buildings").disabled = false;
     document.getElementById("acres").disabled = false;
     document.getElementById("details").disabled = false;
@@ -73,7 +73,6 @@ function confirmCheck()
         document.getElementById("price").disabled = false;
         document.getElementById("viewing_times").disabled = false;
         document.getElementById("date_listed").disabled = false;
-        // document.getElementById("property_id").disabled = false;
         document.getElementById("buildings").disabled = false;
         document.getElementById("acres").disabled = false;
         document.getElementById("details").disabled = false;
@@ -90,31 +89,4 @@ function confirmCheck()
         toggleLock();
         return false;
     }
-}
-
-//Function to check if the date input is todays date or any date in the future
-function checkDate(date){
-    var today = new Date();
-    var inputDate = new Date(date.value);
-
-    //Normalise the date
-    today.setHours(0,0,0,0);
-    
-    if(inputDate > today){
-        document.getElementById("date_listed").setCustomValidity("Date cannot be in the future!");
-    }
-    else{
-        document.getElementById("date_listed").setCustomValidity("");
-    }
-    document.getElementById("date_listed").reportValidity();
-}
-
-function getDate(){
-
-    var today = new Date();
-    var year = today.getFullYear() + '-';
-    var month = (today.getMonth()+1).padStart(2,'0') + '-';
-    var day = (today.getDate().padStart(2,'0'));
-    document.getElementById("date_listed").value = year +  month + day;
-
 }

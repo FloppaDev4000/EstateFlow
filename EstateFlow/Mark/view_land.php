@@ -66,12 +66,12 @@
 
     // INSERT statement for the Property table
     $propSQL = "UPDATE Property SET address = '$adrs',
-                                    eircode = '$eircode',
-                                    location = '$location',
-                                    status = '$status',
-                                    highest_bid = $bid,
-                                    asking_price = $price,
-                                    viewing_times = '$viewing_times' WHERE property_id = $_POST[property_id]";
+														eircode = '$eircode',
+														location = '$location',
+														status = '$status',
+														highest_bid = $bid,
+														asking_price = $price,
+														viewing_times = '$viewing_times' WHERE property_id = $_POST[property_id]";
                                                 
     $landSQL =  "UPDATE Land SET acres = $acres,
                                 buildings = '$buildings',

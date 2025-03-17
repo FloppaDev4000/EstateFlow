@@ -1,0 +1,105 @@
+/* General styles for the body */
+content {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;  /* Centers the form horizontally */
+    align-items: flex-start;  /* Aligns items at the start of the vertical axis */
+    min-height: 100vh;       /* Ensures the body takes full viewport height */
+    margin: 0;               /* Resets the default margin */
+    padding: 20px;           /* Adds padding to create space around the form */
+}
+
+/* Heading style */
+h2 {
+    text-align: center;
+    color: #05c98b;
+    font-size: 28px;
+    margin-bottom: 40px;    /* Space below the heading */
+}
+
+/* Form styling */
+form {
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 1000px;           /* Fixed width for the form */
+}
+.formContainer
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+input:read-only{
+    background-color: #dedede;
+    color: #333;
+    border: 1px solid #cecece;
+}
+
+/* Fieldset styling */
+fieldset {
+    border: 2px solid #05c98b;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;    /* Space below each fieldset */
+}
+
+/* Legend styling */
+legend {
+    font-weight: bold;
+    color: #05c98b;
+}
+
+/* Input box styling */
+.inputbox,
+.radiobox,
+.checkbox1 {
+    margin-bottom: 15px;     /* Space below input sections */
+}
+
+label {
+    font-weight: bold;
+    color: #555;             /* Color for the labels */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="checkbox"],
+input[type="date"],
+select
+{
+    width: 100%;             /* Full width for input fields */
+    padding: 10px;          /* Padding inside input fields */
+    margin-top: 5px;        /* Space above input fields */
+    border: 1px solid #858585;
+    border-radius: 5px;     /* Rounded corners for inputs */
+    box-sizing: border-box;  /* Includes padding and border in element's total width */
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;      /* Space away from buttons */
+}
+
+/* Button styling */
+.myButton {
+    text-align: center;      /* Center buttons inside the div */
+}
+
+input[type="submit"],
+input[type="reset"] {
+    background-color: #05c98b; /* Button color */
+    color: white;               /* Text color for buttons */
+    padding: 10px 20px;        /* Padding inside buttons */
+    margin: 5px;               /* Space between buttons */
+    border: none;              /* Removes border */
+    border-radius: 5px;       /* Rounded corners for buttons */
+    cursor: pointer;           /* Changes cursor to pointer */
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: #05c98b; /* Darker shade for hover */
+}

@@ -1,5 +1,5 @@
 /* Estate Flow - add_land style sheet */
-form{
+form, .report{
     /* Form width is 80% of the main content area */
     width: 80%;
     /* Margin auto = center */
@@ -39,7 +39,7 @@ h1{
 
 
 /* Add a uniform padding to all relevant elements within form (note .button is for the text within button to make a larger button) */
-form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox{
+form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox, .report{
     padding: 20px;
 }
 
@@ -79,4 +79,8 @@ form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox{
 .formContainer{
     display: flex;
     justify-content: space-evenly;
+}
+
+.myButton input:disabled{
+    background-color:rgba(13, 53, 48, 0.637);
 }

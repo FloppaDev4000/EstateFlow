@@ -89,9 +89,8 @@ html, body {
 ----------------------------- */
 .content {
     margin-left: 250px; /* Move the margin in 250px, as the sidebar takes up 250px*/
-    margin-top: 100px; /* Move down 50px as the topbar takes up 50Ppx*/
+    margin-top: 50px; /* Move down 50px as the topbar takes up 50Ppx*/
     padding: 20px; /* Add padding */
     width: 80%;
-
 }
 

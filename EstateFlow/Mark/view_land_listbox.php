@@ -5,8 +5,8 @@
     date_default_timezone_set('UTC');
 // Prepare the statement for the SELECT query on LAND which INNER JOINS with the PROPERTY table where their property id's are equal respectively
 //This gives us ALL info from the Land, Property and Client table by using two inner joins, one from Property on Land, then from Client on Property
-    $sql = "SELECT Land.*, Property.*, Client.client_ID, Client.name FROM Land INNER JOIN Property ON Land.property_id = Property.property_id INNER JOIN Client ON Property.owner = Client.client_ID WHERE Property.delete_flag=0";
-
+    $sql = "SELECT Land.*, Property.*, Client.client_ID, Client.name FROM Land INNER JOIN Property ON Land.property_id = Property.property_id INNER JOIN Client ON Client.client_id = Property.owner WHERE Land.delete_flag= 0";
+		
 // Error handling, if a problem with the query, print a relevant message
     if ( !$result = mysqli_query($con, $sql))
     {
@@ -16,7 +16,7 @@
 
 
     // Creates a dropdown list (<select>) with a id listbox, when the user clicks the dropdown the function populate() when a user is clicked
-    echo "<br><select name = 'listbox' id = 'listbox' onblur = 'populate()' required>";
+    echo "<br><select name = 'listbox' id = 'listbox' onclick = 'populate()' required>";
     // populate(), populates the forms inputboxes with further information from the db about the person
 
     //Adds a hidden option to the listbox, which is hidden and disabled so that the user can't accidentally add this to the D/B

@@ -4,8 +4,8 @@
     include "db.inc.php";
     date_default_timezone_set('UTC');
 // Prepare the statement for the SELECT query on LAND which INNER JOINS with the PROPERTY table where their property id's are equal respectively
-//This gives us ALL the Property info for ALL Land entries on the Property table
-    $sql = "SELECT * FROM Land INNER JOIN Property ON Land.property_id = Property.property_id";
+//This gives us ALL the Property info for ALL Land entries on the Property table, AS WELL as Bids if there is any via LEFT JOIN
+    $sql = "SELECT Land.*, Property.*, Bid.bid_id FROM Land INNER JOIN Property ON Land.property_id = Property.property_id LEFT JOIN Bid ON Land.property_id = Bid.property_id WHERE Land.delete_flag = 0";
 
 // Error handling, if a problem with the query, print a relevant message
     if ( !$result = mysqli_query($con, $sql))
@@ -16,7 +16,7 @@
 
 
     // Creates a dropdown list (<select>) with a id listbox, when the user clicks the dropdown the function populate() when a user is clicked
-    echo "<br><select name = 'listbox' id = 'listbox' onblur = 'populate()' required>";
+    echo "<br><select name = 'listbox' id = 'listbox' onclick = 'populate()' required>";
     // populate(), populates the forms inputboxes with further information from the db about the person
 
     //Adds a hidden option to the listbox, which is hidden and disabled so that the user can't accidentally add this to the D/B
@@ -34,16 +34,23 @@
         $highest_bid = $row['highest_bid'];
         $asking_price = $row['asking_price'];
         $viewing_times = $row['viewing_times'];
-        $date_listed = $row['date_listed'];
+		$property_id = $row['property_id'];
         // Then Land
-        $id = $row['land_id'];
+        $land_id = $row['land_id'];
         $acres = $row['acres'];
         $buildings = $row['buildings'];
         $residence_details = $row['residence_details'];
         $quotas = $row['quotas'];
         $notes = $row['notes'];
+		
+		$bid_id = $row['bid_id'];
+		
+		//If there isnt any bid's associated with the property, assign it a default value 
+		if($bid_id == null){
+			$bid_id = -1;	
+		}
 		//Assign allText all of the values, separated by the delim '#'
-        $allText = "$type#$address#$eircode#$location#$status#$highest_bid#$asking_price#$viewing_times#$date_listed#$id#$acres#$buildings#$residence_details#$quotas#$notes";
+        $allText = "$type#$address#$eircode#$location#$status#$highest_bid#$asking_price#$viewing_times#$land_id#$acres#$buildings#$residence_details#$quotas#$notes#$property_id#$bid_id";
         // Assigns each field in the listbox with the values and displays each entry via their eircode
         echo "<option value = '$allText'>$eircode</option>";
     }

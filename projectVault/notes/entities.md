@@ -1,9 +1,0 @@
-- client
-- bid
-- property
-	- residential
-	- land
-	- office
-- estate agent
-- sale
-- address

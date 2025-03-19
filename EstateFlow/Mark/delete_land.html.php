@@ -1,4 +1,8 @@
 <!-- Estate Flow - Delete Land Page  -->
+<!--Name: Mark Lambert,
+Student ID: C00192497
+ Purpose: Delete Land HTML form page
+EstateFlow Project Y2 2025 -->
 <!DOCTYPE html>
 <?php
 	session_start();
@@ -9,8 +13,9 @@
     <title>EstateFlow - Delete Land</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="..\menu.css">
-    <link rel="stylesheet" href="add_land.css">
+    <link rel="stylesheet" href="land.css">
     <script src="delete_land.js"></script>
+	<link rel="icon" type="image/x-icon" href="../images/icon.png">
 </head>
 <body onload = "toggleLock()">
 
@@ -24,16 +29,10 @@
             <a href ="..\menu.html"><img src="..\images/logo.png" alt="EstateFlow Logo"/>
         </div>
         <!-- Navigation Links -->
-        <a class ="button" href="..\Darius/add_residential.html">Add a New Resedential Property</a>
-        <a class ="button" href="..\Darius/delete_residential.html">Delete a Residential Property</a>
-        <a class ="button" href="..\Darius/view_residential.html">Amend/View a Residential Property</a>
         <a class ="button" href="add_land.html.php">Add a New Land Property</a>
         <a class ="button selected" href="delete_land.html.php">Delete a Land Property</a>
         <a class ="button" href="view_land.html.php">Amend/View a Land Property</a>
-        <a class ="button" href="..\Amelia/add_office.html.php">Add a New Office Property</a>
-        <a class ="button" href="..\Amelia/delete_office.html">Delete a New Office Property</a>
-        <a class ="button" href="..\Amelia/view_office.html">Amend/View an Office Property</a>
-        <a class ="button" >Exit</a>
+        <a class ="button" id="exit" href="../menu.html">Return to Menu</a>
     </div>
     
    <!-- Main Content Area -->
@@ -42,23 +41,42 @@
     <form action="delete_land.php" onsubmit="return confirmCheck()" method="Post">
         <!-- Set heading for the form -->
         <h1>Delete a Land Property</h1>
+		
+			<!-- Script to echo out that the land property has been deleted-->
+			<?php
+		
+			if(ISSET($_SESSION["land_id"]) && ISSET($_SESSION["eircode"]))
+			{
+				if(ISSET($_SESSION["bid"])){
+					echo "<h2>Land Property with ID: " . $_SESSION["land_id"] . ", Eircode " . $_SESSION["eircode"] . " and all bids have been deleted</h2>";
+				}
+				else
+				echo "<h2>Land Property with ID: " . $_SESSION["land_id"] . " and Eircode " . $_SESSION["eircode"] . " has been deleted</h2>";
+			}
+			session_destroy();
+			?>
+		
+		<!-- Container for Listbox containing all clients w/ their client_id in the values-->
+		<div class = "view-listbox">
+			<label for = "view-listbox"><h2>Select a Land Property to Delete</h2></label> 
+			<!-- Calls the php script to make the dynamic listbox and insert it into the form via an echo -->
+			<?php include 'delete_land_listbox.php'; ?>
+		</div>    
 
         <div class = "formContainer">
         <fieldset>
 
             <legend>Delete a Land Property</legend>
+			
+			
 
-			            <!-- Container for Listbox containing all clients w/ their client_id in the values-->
-            <div class = "view-listbox">
-                <label for = "view-listbox">Land Property: </label> 
-                <!-- Calls the php script to make the dynamic listbox and insert it into the form via an echo -->
-                <?php include 'delete_land_listbox.php'; ?>
-            </div>    
+
+
 		
             <div class = "inputbox">
                     <label for = "property_type">Property Type: </label><br/>
                     <!-- Set value to Land as it cannot be anything other than Land when entering a Land property, disabled the box so cannot be edited -->
-                    <input type="text" name="property_type" id="property_type" value = "Land" disabled>
+                    <input type="text" name="property_type" id="property_type" disabled>
                 </div>
         
                 <!-- Container for Eircode -->
@@ -81,13 +99,8 @@
                         <option value="2">Sale Complete</option>  
 					</select>
                 </div>
-                <!-- Container for Owner -->
-                <div class = "inputbox">
-                    <label for = "ownerName">Owner: </label><br/>
-                    <input type="text" name="ownerName" id="ownerName" disabled>
-                </div>
 
-                <!-- Container for Highest Bid -->
+			<!-- Container for Highest Bid -->
                 <div class = "inputbox">
                     <label for = "bid">Highest Bid: </label><br/>
                     <input type="number" name="bid" id="bid" min="1" required disabled>
@@ -184,14 +197,7 @@
                     <input type="reset" value = "Reset" name = "reset" class ="button"/>
                 </div>
         </form>
-	<?php
-		
-			if(ISSET($_SESSION["land_id"]) && ISSET($_SESSION["eircode"]))
-			{
-				echo "<h1>Record deleted for " . $_SESSION["eircode"] . "</h1>";
-			}
-			session_destroy();
-		?>
+
     </div>
 
 </body>

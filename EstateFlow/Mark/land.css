@@ -1,7 +1,11 @@
 /* Estate Flow - add_land style sheet */
+/*Name; Mark Lambert
+Student ID: C00192497
+Purpose: CSS used throughout all LAND property pages
+EsateFlow - Project Y2 2025*/
 form, .report{
-    /* Form width is 80% of the main content area */
-    width: 80%;
+    /* Form width is 70% of the main content area */
+    width: 70%;
     /* Margin auto = center */
     margin: auto;
     /* Note: alternatively "A more common method to center an element horizontally is by setting display: flex; and justify-content: center; on a container, which centers its flex item children." */
@@ -27,10 +31,7 @@ fieldset{
 }
 
 h1{
-    /* vvvCode to push heading to RIGHT of bannervvv */
-    display: flex;
-    justify-content: flex-end;
-    /* ^^^Code to push heading to RIGHT of banner^^^ */
+	text-align: center;
     background-color:#05c98b; 
     border-radius: 5px;
     color: white;
@@ -50,7 +51,7 @@ form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox, .report{
     /* Removes the bold outline from textbox when cursor is focused to element */
     outline: none;
     /* Set width of each inputbox to be 70% of the fieldset */
-    width: 70%;
+    width: 90%;
     height: 40px;   
     font-size: large;
 }
@@ -84,3 +85,11 @@ form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox, .report{
 .myButton input:disabled{
     background-color:rgba(13, 53, 48, 0.637);
 }
+
+.owner-listbox, .view-listbox{
+    text-align: center; 
+    margin: 0 auto; /* Center horizontally */
+    width: 50%; 
+	padding: 0px; /*Reduce Padding produced by h2*/
+}
+

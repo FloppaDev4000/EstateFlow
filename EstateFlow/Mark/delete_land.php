@@ -1,11 +1,14 @@
-<!-- Estate Flow - View Land Page  -->
+<!-- Estate Flow - Delete Land Page php  -->
+<!--Name: Mark Lambert
+ Purpose: php script for deleting a land propert
+Student ID: C00192497y-->
 <!DOCTYPE html>
-<? php
+<?php
 		session_start();
 ?>
 
 <?php
-    include 'db.inc.php';
+    include '../db.inc.php';
     date_default_timezone_set('UTC');
     //UPDATE statements for deleting the entries in the table
 	// UPDATE statement for the Property table
@@ -26,12 +29,7 @@
         // So long as AT LEAT 1 row was affected, we will execute the update
         if(mysqli_affected_rows($con) !=0)
         {
-            echo mysqli_affected_rows($con) . " record(s) updated <br>";
-        }
-        // Otherwise, the user didn't input anything new, so let them know that the detials have stayed the same
-        else
-        {
-            echo "No records were changed";
+			$_SESSION['land_id'] = $_POST['property_id'];
         }
     }
 		
@@ -46,12 +44,7 @@
             // So long as AT LEAT 1 row was affected, we will execute the update
             if(mysqli_affected_rows($con) !=0)
             {
-				echo mysqli_affected_rows($con) . " record(s) updated <br>";
-            }
-            // Otherwise, the user didn't input anything new, so let them know that the detials have stayed the same
-            else
-            {
-                echo "No records were changed";
+				$_SESSION['eircode'] = $_POST['eircode'];
             }
 		}
 		// If there's a problem with the query for BID
@@ -64,23 +57,15 @@
             // So long as AT LEAT 1 row was affected, we will execute the update
             if(mysqli_affected_rows($con) !=0)
             {
-                echo mysqli_affected_rows($con) . " record(s) updated <br>";
-            }
-            // Otherwise, the user didn't input anything new, so let them know that the detials have stayed the same
-            else
-            {
-                echo "No records were changed";
+                 $_SESSION['bid'] = 1;
             }
         }
-                $_SESSION['land_id'] = $_POST['land_id'];
-				$_SESSION['eircode'] = $_POST['eircode'];
+                
+
+	header('Location: delete_land.html.php');
     mysqli_close($con);
+
     ?>
 	
-		
-    <script>
-        // Send to the main Delete page
-        window.location = "delete_land.html.php"
 
-    </script>
 

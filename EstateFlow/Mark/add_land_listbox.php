@@ -1,7 +1,7 @@
-<!-- Name:  Mark Lambert, Student ID:   C00192497, Purpose: listbox.php 12/2/2025 -->
+<!-- Name:  Mark Lambert, Student ID:   C00192497, Purpose: add_land listbox.php 12/2/2025 -->
 <?php
 // Include php script that connects to the db
-    include "db.inc.php";
+    include "../db.inc.php";
     date_default_timezone_set('UTC');
 // Prepare the statement for the SELECT query
     $sql = "SELECT client_ID, name FROM Client";

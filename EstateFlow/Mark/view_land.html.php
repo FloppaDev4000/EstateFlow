@@ -1,14 +1,22 @@
 
 <!-- Estate Flow - View Land Page  -->
+<!--Name: Mark Lambert
+ Student ID: C00192497
+Purpose: View/Amend land form page
+EstateFow Y2 Project 2025-->
 <!DOCTYPE html>
+<?php
+	session_start();
+?>
 <html lang="en">
 <head>
     <!-- Sets title -->
     <title>EstateFlow - View Land</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="..\menu.css">
-    <link rel="stylesheet" href="add_land.css">
+    <link rel="stylesheet" href="land.css">
     <script src="view_land.js"></script>
+	<link rel="icon" type="image/x-icon" href="../images/icon.png">
 </head>
 <body>
 
@@ -22,51 +30,59 @@
             <a href ="..\menu.html"><img src="..\images/logo.png" alt="EstateFlow Logo"/>
         </div>
         <!-- Navigation Links -->
-        <a class ="button" href="..\Darius/add_residential.html">Add a New Resedential Property</a>
-        <a class ="button" href="..\Darius/delete_residential.html">Delete a Residential Property</a>
-        <a class ="button" href="..\Darius/view_residential.html">Amend/View a Residential Property</a>
         <a class ="button" href="add_land.html.php">Add a New Land Property</a>
         <a class ="button" href="delete_land.html.php">Delete a Land Property</a>
         <a class ="button selected" href="view_land.html.php">Amend/View a Land Property</a>
-        <a class ="button" href="..\Amelia/add_office.html.php">Add a New Office Property</a>
-        <a class ="button" href="..\Amelia/delete_office.html">Delete a New Office Property</a>
-        <a class ="button" href="..\Amelia/view_office.html">Amend/View an Office Property</a>
-        <a class ="button" >Exit</a>
+        <a class ="button" id="exit" href="../menu.html">Return to Menu</a>
     </div>
     
    <!-- Main Content Area -->
    <div class="content">
     <!-- Start form, sending info via Post to add_land.php -->
-    <form action="view_land.php" onsubmit="return confirmCheck()" method="Post">
+    <form action="view_land.php" onsubmit="return confirmCheck()"  method="Post">
 		
 
-		<!-- Button which when clicked, calls the toggleLock function (toggleLock, switches between the two states of Amend and View) -->
-			<div class = "myButton">
-            	<input type = "button" value = "Amend Details" id = "amendViewbutton" onclick = "toggleLock()">
-				<input type='button' value='Filter by Sold' id='filterLand' onclick='filterBySold()'>
-				<input type='button' value='Filter by Not Sold' id='filterNotSold' onclick='filterByNotSold()'>
-				<input type='button' value='Show All' id='filterAll' onclick='filterAll()'>
 
-			</div>
         <!-- Set heading for the form -->
         <h1>Amend a Land Property</h1>
-
+			<?php
+		
+			if(ISSET($_SESSION["land_id"]) && ISSET($_SESSION["eircode"]))
+			{
+				if(ISSET($_SESSION["client"])){
+					echo "<h2>Land Property with ID: " . $_SESSION["land_id"] . ", Eircode " . $_SESSION["eircode"] . " and client info has been updated</h2>";
+				}
+				else
+				echo "<h2>Land Property with ID: " . $_SESSION["land_id"] . " and Eircode " . $_SESSION["eircode"] . " has been updated</h2>";
+			}
+			session_destroy();
+			?>
+		
+		<!-- Container for Listbox containing all clients w/ their client_id in the values-->
+		<div class = "view-listbox">
+			<label for = "view-listbox"><h2>Select a Land Property to Edit</h2></label> 
+			<!-- Calls the php script to make the dynamic listbox and insert it into the form via an echo -->
+			<?php include 'view_land_listbox.php'; ?>
+		</div>    
+		
+		<!-- Button which when clicked, calls the toggleLock function (toggleLock, switches between the two states of Amend and View) -->
+		<div class = "myButton">
+			<input type = "button" value = "Amend Details" id = "amendViewbutton" onclick = "toggleLock()">
+			<input type='button' value='Filter by Sold' id='filterSold' onclick='filterBySold()'>
+			<input type='button' value='Filter by Not Sold' id='filterNotSold' onclick='filterByNotSold()'>
+		</div>
+		
         <div class = "formContainer">
         <fieldset>
 
             <legend>Amend a Land Property</legend>
 			
-			            <!-- Container for Listbox containing all clients w/ their client_id in the values-->
-            <div class = "view-listbox">
-                <label for = "view-listbox">Land Property: </label> 
-                <!-- Calls the php script to make the dynamic listbox and insert it into the form via an echo -->
-                <?php include 'view_land_listbox.php'; ?>
-            </div>    
+
 		
             <div class = "inputbox">
                     <label for = "property_type">Property Type: </label><br/>
                     <!-- Set value to Land as it cannot be anything other than Land when entering a Land property, disabled the box so cannot be edited -->
-                    <input type="text" name="property_type" id="property_type" value = "Land" disabled>
+                    <input type="text" name="property_type" id="property_type" disabled>
                 </div>
         
                 <!-- Container for Eircode -->
@@ -83,7 +99,7 @@
                 <!-- Container for Status -->
                 <div class = "inputbox">
                     <label for ="status">Status: </label><br/>
-                    <select name = "status" id = status> 			
+                    <select name = "status" id = status disabled> 			
 						<option value="0">For Sale</option>  
 						<option value="1">Sale Agreed</option>  
                         <option value="2">Sale Complete</option>  
@@ -186,7 +202,8 @@
 
                 <!-- Submit/Reset buttons -->
                 <div class = "myButton">
-                    <input type="submit" value = "Update Record" name = "submit" class ="button" />
+					<!-- Submit button is initially disabled, as user will only be able to submit details when in the amend state-->
+                    <input type="submit" value = "Update Record" name = "submit" class ="button" id="submit" disabled>
                     <input type="reset" value = "Reset" name = "reset" class ="button"/>
                 </div>
         </form>

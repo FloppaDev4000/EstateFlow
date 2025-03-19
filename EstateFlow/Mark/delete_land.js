@@ -1,3 +1,8 @@
+//Name: Mark Lambert
+//Student ID: C00192497
+//Purpose: delete_land javascript file
+//EstateFlow Y2 2025
+
 // Function populate which populates the textboxes when the desired user is selected from the listbox            
 function populate()
 {

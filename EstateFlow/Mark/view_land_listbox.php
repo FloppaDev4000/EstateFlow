@@ -1,7 +1,7 @@
 <!-- Name:  Mark Lambert, Student ID:   C00192497, Purpose: listbox.php 12/2/2025 -->
 <?php
 // Include php script that connects to the db
-    include "db.inc.php";
+    include "../db.inc.php";
     date_default_timezone_set('UTC');
 // Prepare the statement for the SELECT query on LAND which INNER JOINS with the PROPERTY table where their property id's are equal respectively
 //This gives us ALL info from the Land, Property and Client table by using two inner joins, one from Property on Land, then from Client on Property
@@ -47,7 +47,7 @@
 		//Assign allText all of the values, separated by the delim '#'
         $allText = "$type#$address#$eircode#$location#$status#$owner#$highest_bid#$asking_price#$viewing_times#$property_id#$id#$acres#$ownerName#$buildings#$residence_details#$quotas#$notes#";
         // Assigns each field in the listbox with the values and displays each entry via their eircode
-        echo "<option value = '$allText'>$eircode</option>";
+        echo "<option value = '$allText'>$eircode ($address)</option>";
     }
 
     // End the select (listbox)

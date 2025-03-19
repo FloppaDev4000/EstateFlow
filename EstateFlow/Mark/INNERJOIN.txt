@@ -1,6 +1,0 @@
-SELECT Land.acres, Land.residence_details, Property.highest_bid FROM Land, Property WHERE Land.land_id = 1
-
-
-
-
-THE COMMA IN THE FROM SYMBOLISES THAT IT IS AN INNER JOIN

@@ -1,4 +1,27 @@
-// Function populate which populates the textboxes when the desired user is selected from the listbox            
+//Name: Mark Lambert
+//Student ID: C00192497
+//Purpose: JavaScript file for view/amend a land property
+//EstateFlow Y2 Project 2025
+
+
+// // Function confirmCheck() prompts user to confirm if the want to save the changes
+function confirmCheck()
+{
+    var response = confirm('Confirm Update?');
+	console.log("User response:", response); // Log the user's response
+    return response; // Return the response directly
+	if(response){
+		document.getElementById("property_type").disabled = false;
+		return true;
+	}
+	else
+	{
+		populate();
+		toggleLock();
+		return false;
+	}
+}
+// Function populate which populates the textboxes when the desired user is selected from the listbox
 function populate()
 {
     // Selected person is got by the element with id listbox
@@ -9,30 +32,34 @@ function populate()
     // Split the details by using the , as a delimeter
     var landDetails = result.split('#');
 
-    document.getElementById("property_type").value = landDetails[0];
-    document.getElementById("adrs").value = landDetails[1];
-    document.getElementById("eircode").value = landDetails[2];
-    document.getElementById("location").value = landDetails[3];
-    document.getElementById("status").value = landDetails[4];
-	document.getElementById("owner").value = landDetails[5];
-    document.getElementById("bid").value = landDetails[6];
-    document.getElementById("price").value = landDetails[7];
-	document.getElementById("viewing_times").value = landDetails[8];
-	document.getElementById("property_id").value = landDetails[9];
-	document.getElementById("id").value = landDetails[10];
-    document.getElementById("acres").value = landDetails[11];
-	document.getElementById("ownerName").value = landDetails[12];
-    document.getElementById("buildings").value = landDetails[13];
-    document.getElementById("details").value = landDetails[14];
-    document.getElementById("quotas").value = landDetails[15];
-    document.getElementById("notes").value = landDetails[16];
+        document.getElementById("property_type").value = landDetails[0];
+        document.getElementById("adrs").value = landDetails[1];
+        document.getElementById("eircode").value = landDetails[2];
+        document.getElementById("location").value = landDetails[3];
+        document.getElementById("status").value = landDetails[4];
+        document.getElementById("owner").value = landDetails[5];
+        document.getElementById("bid").value = landDetails[6];
+        document.getElementById("price").value = landDetails[7];
+        document.getElementById("viewing_times").value = landDetails[8];
+        document.getElementById("property_id").value = landDetails[9];
+        document.getElementById("id").value = landDetails[10];
+        document.getElementById("acres").value = landDetails[11];
+        document.getElementById("ownerName").value = landDetails[12];
+        document.getElementById("buildings").value = landDetails[13];
+        document.getElementById("details").value = landDetails[14];
+        document.getElementById("quotas").value = landDetails[15];
+        document.getElementById("notes").value = landDetails[16];
 
-    // Once the client has been selected, we can call the unlock function so that the user may now edit the required fields
-    unlock();
 }
 // Function toggleLock() is called onload, locking all fields until the user selects a client first
 function toggleLock()
 {
+    // Checkls if the user has first actually selected a property, which will be known if the Property Type field is populated with "Land", otherwise, 
+    // if it reads none, null, undefined etc it wont allow the user to insert/amend 
+	if(document.getElementById("property_type").value == "Land")
+	{	
+		document.getElementById("submit").disabled = false;
+	}
 	if(document.getElementById("amendViewbutton").value == "Amend Details"){
 
 		document.getElementById("adrs").disabled = false;
@@ -48,11 +75,15 @@ function toggleLock()
 		document.getElementById("quotas").disabled = false;
 		document.getElementById("notes").disabled = false;
 		document.getElementById("ownerName").disabled = false;
-		document.getElementById("bid").disabled = false;
+	
 		document.getElementById("amendViewbutton").value = "View Details";
 	}
 	else
 	{
+		unlock();	
+	}
+}
+		function unlock(){
 		    document.getElementById("adrs").disabled = true;
 			document.getElementById("adrs2").disabled = true;
 			document.getElementById("adrs3").disabled = true;
@@ -68,32 +99,14 @@ function toggleLock()
 			document.getElementById("quotas").disabled = true;
 			document.getElementById("notes").disabled = true;
 			document.getElementById("ownerName").disabled = true;
+		
+			document.getElementById("submit").disabled = true;
+
 			document.getElementById("amendViewbutton").value = "Amend Details";
 	}
-}
 
 
 
-
-// // Function confirmCheck() prompts user to confirm if the want to save the changes
-function confirmCheck()
-{
-    var response;
-    response = confirm('Confirm new Land Property');
-    // If user responds TRUE (yes), unlock the final locked fields and return true to insert the details
-    if(response)
-    {
-        document.getElementById("property_type").disabled = false;
-        return true;
-    }
-    // Otherwise, populate the inputboxes and lock the inputs, then return false
-    else
-    {
-        populate();
-        toggleLock();
-        return false;
-    }
-}
 
 function filterAll(){
 		var options = document.getElementById("listbox");
@@ -115,10 +128,14 @@ function filterBySold(){
     result = options.options[i].value;
     // Split the details by using the # as a delimeter
     var landDetails = result.split('#');
+		//Disable any property that is tagged with a 0 (meaning any properties NOT SOLD get disabled)
 		if(landDetails[4] == 0){
 			options[i].disabled = true;
 	}
 	}
+	
+	document.getElementById("filterSold").disabled = true;
+	document.getElementById("filterNotSold").disabled = false;
 }
 	
 function filterByNotSold(){
@@ -130,10 +147,13 @@ function filterByNotSold(){
     result = options.options[i].value;
     // Split the details by using the # as a delimeter
     var landDetails = result.split('#');
-		if(landDetails[4] == 1){
+		//Disable any properties that ARE sold or sale agreed
+		if(landDetails[4] != 0)  {
 			options[i].disabled = true;
 		}
 	}
+	document.getElementById("filterNotSold").disabled = true;
+	document.getElementById("filterSold").disabled = false;
 }
 
 

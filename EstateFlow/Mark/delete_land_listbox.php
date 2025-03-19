@@ -1,11 +1,12 @@
-<!-- Name:  Mark Lambert, Student ID:   C00192497, Purpose: listbox.php 12/2/2025 -->
+<!-- Name:  Mark Lambert, Student ID:   C00192497, Purpose: delete land listbox.php 12/2/2025 -->
 <?php
 // Include php script that connects to the db
-    include "db.inc.php";
+    include "../db.inc.php";
     date_default_timezone_set('UTC');
-// Prepare the statement for the SELECT query on LAND which INNER JOINS with the PROPERTY table where their property id's are equal respectively
-//This gives us ALL the Property info for ALL Land entries on the Property table, AS WELL as Bids if there is any via LEFT JOIN
-    $sql = "SELECT Land.*, Property.*, Bid.bid_id FROM Land INNER JOIN Property ON Land.property_id = Property.property_id LEFT JOIN Bid ON Land.property_id = Bid.property_id WHERE Land.delete_flag = 0";
+// Prepare the statement for the SELECT query on LAND which INNER JOINS with the PROPERTY table where their property id's are equal respectively, finally a LEFT join joins this with the BId table and group by the land_id, so that we do not see repeats in the dropdown
+    $sql = "SELECT Land.*, Property.*, Bid.bid_id FROM Land INNER JOIN Property ON Land.property_id = Property.property_id LEFT JOIN Bid ON Land.property_id = Bid.property_id WHERE Land.delete_flag = 0 GROUP BY Land.land_id";
+
+		
 
 // Error handling, if a problem with the query, print a relevant message
     if ( !$result = mysqli_query($con, $sql))
@@ -52,7 +53,7 @@
 		//Assign allText all of the values, separated by the delim '#'
         $allText = "$type#$address#$eircode#$location#$status#$highest_bid#$asking_price#$viewing_times#$land_id#$acres#$buildings#$residence_details#$quotas#$notes#$property_id#$bid_id";
         // Assigns each field in the listbox with the values and displays each entry via their eircode
-        echo "<option value = '$allText'>$eircode</option>";
+        echo "<option value = '$allText'>$eircode ($address)</option>";
     }
 
     // End the select (listbox)

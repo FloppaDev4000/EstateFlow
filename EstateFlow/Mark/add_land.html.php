@@ -1,13 +1,21 @@
 <!-- Estate Flow - Add Land Page  -->
+<!--Name: Mark Lambert,
+Student ID: C00192497
+ Purpose: Add Land HTML form page
+EstateFlow Project Y2 2025 -->
 <!DOCTYPE html>
+<?php
+	session_start();
+?>
 <html lang="en">
 <head>
     <!-- Sets title -->
     <title>EstateFlow - Add Land</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="..\menu.css">
-    <link rel="stylesheet" href="add_land.css">
+    <link rel="stylesheet" href="land.css">
     <script src="add_land.js"></script>
+	<link rel="icon" type="image/x-icon" href="../images/icon.png">
 
 </head>
 <body onload="toggleLock()">
@@ -22,16 +30,10 @@
             <a href ="..\menu.html"><img src="..\images/logo.png" alt="EstateFlow Logo"></a>
         </div>
         <!-- Navigation Links -->
-        <a class ="button" href="..\Darius/add_residential.html">Add a New Resedential Property</a>
-        <a class ="button" href="..\Darius/delete_residential.html">Delete a Residential Property</a>
-        <a class ="button" href="..\Darius/view_residential.html">Amend/View a Residential Property</a>
         <a class ="button selected" href="add_land.html.php">Add a New Land Property</a>
         <a class ="button" href="delete_land.html.php">Delete a Land Property</a>
         <a class ="button" href="view_land.html.php">Amend/View a Land Property</a>
-        <a class ="button" href="..\Amelia/add_office.html.php">Add a New Office Property</a>
-        <a class ="button" href="..\Amelia/delete_office.html">Delete a New Office Property</a>
-        <a class ="button" href="..\Amelia/view_office.html">Amend/View an Office Property</a>
-        <a class ="button" id="exit">Exit</a>
+        <a class ="button" id="exit" href="../menu.html">Return to Menu</a>
     </div>
     
     <!-- Main Content Area -->
@@ -40,18 +42,25 @@
         <form action="add_land.php" onsubmit="return confirmCheck()" method="Post">
             <!-- Set heading for the form -->
             <h1>Add a New Land Property</h1>
-
+			<!-- Script which checks if the session variable has been set for when a land property has been added, if so, echo a message out -->
+			<?php
+				if(ISSET($_SESSION["property_id"])){
+					echo "<h2>Land Property added with Property ID: " . $_SESSION["property_id"];		
+				}
+				session_destroy();
+			?>
+			
+			     <!-- Container for Listbox containing all clients w/ their client_id in the values-->
+                <div class = "owner-listbox">
+                    <label for = "owner-listbox"><h2>Select a Property Owner<h2></label>
+                    <!-- Calls the php script to make the dynamic listbox and insert it into the form via an echo -->
+                    <?php include 'add_land_listbox.php'; ?>
+                </div>
+			
             <div class = "formContainer">
             <fieldset>
 
                 <legend>Property Details</legend>
-
-                <!-- Container for Listbox containing all clients w/ their client_id in the values-->
-                <div class = "owner-listbox">
-                    <label for = "owner-listbox">Property Owner: </label> 
-                    <!-- Calls the php script to make the dynamic listbox and insert it into the form via an echo -->
-                    <?php include 'add_land_listbox.php'; ?>
-                </div>
 
                 <div class = "inputbox">
                     <label for = "property_type">Property Type: </label><br/>
@@ -161,9 +170,7 @@
                 <input type="text" name="notes" id="notes" placeholder="Exceptional condition, beautiful view, next to local village">
             </div>
 
-
         </div>
-
                 <!-- Submit/Reset buttons -->
                 <div class = "myButton">
                     <input type="submit" value = "Add Land" name = "submit" class ="button" />

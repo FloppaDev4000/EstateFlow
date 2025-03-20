@@ -59,7 +59,9 @@ function toggleLock()
 	if(document.getElementById("property_type").value == "Land")
 	{	
 		document.getElementById("submit").disabled = false;
+		document.getElementById("amendViewbutton").disabled = false;
 	}
+	
 	if(document.getElementById("amendViewbutton").value == "Amend Details"){
 
 		document.getElementById("adrs").disabled = false;

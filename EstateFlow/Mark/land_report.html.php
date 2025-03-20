@@ -117,7 +117,7 @@ Estate Flow Y2 Project 2025-->
 				//If the client report form has been submitted, then the user has clicked the button
 				IF(ISSET($_POST['clientInfo']))
 				{
-					$sqlClient = "SELECT * FROM Client INNER JOIN Property ON Property.owner = Client.client_id WHERE client_id = " . $_POST['clientInfo'];
+					$sqlClient = "SELECT Client.* FROM Client INNER JOIN Property ON Property.owner = Client.client_id WHERE client_id = " . $_POST['clientInfo'];
 					produceClientReport($con, $sqlClient);
 				}
 
@@ -213,8 +213,14 @@ Estate Flow Y2 Project 2025-->
 				
 				
 				echo "<script>
-				alert('Client Name:  " . $row['name'] . "');
+				alert('Client Name:  " . $row['name'] . 
+					"\\nEmail: " .  $row['email'] . 
+					"\\nPhone No: " .  $row['phone_no'] .
+					"\\nAddress: " .  $row['address'] .
+					"\\nEircode: " .  $row['eircode'] ."');
 				</script>";
+				
+
 			}
 mysqli_close($con);
 ?>

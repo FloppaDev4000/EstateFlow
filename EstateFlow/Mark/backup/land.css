@@ -1,0 +1,95 @@
+/* Estate Flow - add_land style sheet */
+/*Name; Mark Lambert
+Student ID: C00192497
+Purpose: CSS used throughout all LAND property pages
+EsateFlow - Project Y2 2025*/
+form, .report{
+    /* Form width is 70% of the main content area */
+    width: 70%;
+    /* Margin auto = center */
+    margin: auto;
+    /* Note: alternatively "A more common method to center an element horizontally is by setting display: flex; and justify-content: center; on a container, which centers its flex item children." */
+    border-width: 4px;
+    border-radius: 5px;
+    font-size: large;
+}
+
+/* Target form, h1 and fieldset elements and apply a shadow, creating a 3D, stacked, dynamic website feel */
+form, h1, fieldset{
+    /* Box shadow for blurred effect, 5px horizontal and vertical shadow, 5px blur and a color of black*/
+box-shadow: 5px 5px 5px 5px rgba(75, 74, 74, 0.103);
+}
+
+
+/* Width of each fieldset is 50% (two fieldsets, both take up half of the form each) */
+fieldset{
+    width: 50%;
+	border-style: solid;
+	border-color: #05c98b;
+	color: #05c98b;
+	border-radius: 4px;
+}
+
+h1{
+	text-align: center;
+    background-color:#05c98b; 
+    border-radius: 5px;
+    color: white;
+}
+
+
+
+/* Add a uniform padding to all relevant elements within form (note .button is for the text within button to make a larger button) */
+form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox, .report{
+    padding: 20px;
+}
+
+/* Changes apperance of all input fields for elements with class inputbox and owner-listbox */
+.inputbox input, select{
+    border-style: solid;
+	border-radius: 4px;
+    /* Removes the bold outline from textbox when cursor is focused to element */
+    outline: none;
+    /* Set width of each inputbox to be 70% of the fieldset */
+    width: 90%;
+    height: 40px;   
+    font-size: large;
+}
+
+.myButton{
+    text-align: center;
+    padding: 20px;
+}
+
+/* Alters appearance of all button elements */
+.myButton input{
+    background-color:#05c98b; 
+    /* Text color */
+    color: white;
+    font-size: large;
+    border-style: none;
+    border-radius: 5px;
+}
+
+/* Changes background colour to LIGHT GREY when hovered over button */
+.myButton input:hover{
+    background-color:rgba(13, 53, 48, 0.637);
+}
+
+/* Makes all contents within the form flex items and adds a space between*/
+.formContainer{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.myButton input:disabled{
+    background-color:rgba(13, 53, 48, 0.637);
+}
+
+.owner-listbox, .view-listbox{
+    text-align: center; 
+    margin: 0 auto; /* Center horizontally */
+    width: 50%; 
+	padding: 0px; /*Reduce Padding produced by h2*/
+}
+

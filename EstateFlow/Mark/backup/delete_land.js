@@ -31,11 +31,9 @@ function populate()
 	document.getElementById("property_id").value = landDetails[14];
 	document.getElementById("land_id").value = landDetails[8];
 	document.getElementById("bid_id").value = landDetails[15];
-	
-	//Unlock everything to populate the form
-	unlock();
-	//Then re-lock the fields so the user can't enter any info
-	toggleLock();
+
+    // Once the client has been selected, we can call the unlock function so that the user may now edit the required fields
+    unlock();
 }
 // Function toggleLock() is called onload, locking all fields until the user selects a client first
 function toggleLock()
@@ -78,8 +76,6 @@ function unlock(){
 // // Function confirmCheck() prompts user to confirm if the want to save the changes
 function confirmCheck()
 {
-	//Unlock the fields before submitting the form, so that we can correctly set the session variables 
-	unlock();
 	var checkBids;
 	if(document.getElementById("bid_id").value != -1){
 		checkBids = confirm('There are currently active bids on this property, proceeding will delete all associated Bids');
@@ -112,4 +108,21 @@ function confirmCheck()
         toggleLock();
         return false;
     }
+}
+
+//Function to check if the date input is todays date or any date in the future
+function checkDate(date){
+    var today = new Date();
+    var inputDate = new Date(date.value);
+
+    //Normalise the date
+    today.setHours(0,0,0,0);
+    
+    if(inputDate > today){
+        document.getElementById("date_listed").setCustomValidity("Date cannot be in the future!");
+    }
+    else{
+        document.getElementById("date_listed").setCustomValidity("");
+    }
+    document.getElementById("date_listed").reportValidity();
 }

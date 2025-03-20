@@ -112,13 +112,10 @@ function filterAll(){
 		var options = document.getElementById("listbox");
     // Returns the value of the selected item in the listbox by going to the index in the listbox and calling .value
 	for(var i = 0; i < options.length; i++){
-			if(options[i].hidden){
-				options[i].hidden = false;	
+			if(options[i].disabled){
+				options[i].disabled = false;	
 			}
 		}
-	
-		document.getElementById("filterSold").disabled = false;
-		document.getElementById("filterNotSold").disabled = false;
 	}
 
 
@@ -133,7 +130,7 @@ function filterBySold(){
     var landDetails = result.split('#');
 		//Disable any property that is tagged with a 0 (meaning any properties NOT SOLD get disabled)
 		if(landDetails[4] == 0){
-			options[i].hidden = true;
+			options[i].disabled = true;
 	}
 	}
 	
@@ -152,7 +149,7 @@ function filterByNotSold(){
     var landDetails = result.split('#');
 		//Disable any properties that ARE sold or sale agreed
 		if(landDetails[4] != 0)  {
-			options[i].hidden = true;
+			options[i].disabled = true;
 		}
 	}
 	document.getElementById("filterNotSold").disabled = true;

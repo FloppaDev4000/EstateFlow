@@ -47,18 +47,6 @@ EstateFow Y2 Project 2025-->
         <form action="view_land.php" onsubmit="return confirmCheck()"  method="Post">
             <!-- Set heading for the form -->
             <h1>Amend a Land Property</h1>
-                <!-- Script which checks if the session variable has been set for when a land property has been edited, if so, echo a message out -->
-                <?php
-                    if(ISSET($_SESSION["land_id"]) && ISSET($_SESSION["eircode"]))
-                    {
-                        if(ISSET($_SESSION["client"])){
-                            echo "<h2>Land Property with ID: " . $_SESSION["land_id"] . ", Eircode " . $_SESSION["eircode"] . " and client info has been updated</h2>";
-                        }
-                        else
-                        echo "<h2>Land Property with ID: " . $_SESSION["land_id"] . " and Eircode " . $_SESSION["eircode"] . " has been updated</h2>";
-                    }
-                    session_destroy();
-                ?>
             
             <!-- Container for Listbox containing all clients w/ their client_id in the values-->
             <div class = "view-listbox">
@@ -69,29 +57,32 @@ EstateFow Y2 Project 2025-->
             
             <!-- Button which when clicked, calls the toggleLock function (toggleLock, switches between the two states of Amend and View) -->
             <div class = "myButton">
-                <input type = "button" value = "Amend Details" id = "amendViewbutton" onclick = "toggleLock()">
+                <input type = "button" value = "Amend Details" id = "amendViewbutton" onclick = "toggleLock()" disabled>
                 <input type='button' value='Filter by Sold' id='filterSold' onclick='filterBySold()'>
                 <input type='button' value='Filter by Not Sold' id='filterNotSold' onclick='filterByNotSold()'>
                 <input type='button' value='Reset Filter' id='resetFilter' onclick='filterAll()'>			
             </div>
+			
+			<!-- Script which checks if the session variable has been set for when a land property has been edited, if so, echo a message out -->
+			<?php
+				if(isset($_SESSION['property_id'])){
+					echo "<h2>Land Property with ID: " . $_SESSION['property_id'] . " has been updated</h2>";	
+				}
+			session_destroy();
+			?>
             
             <div class = "formContainer">
 
                 <fieldset>
 
                     <legend>Amend a Land Property</legend>
-                    
-                        <div class = "inputbox">
-                            <label for = "property_type">Property Type: </label><br>
-                            <!-- Set value to Land as it cannot be anything other than Land when entering a Land property, disabled the box so cannot be edited -->
-                            <input type="text" name="property_type" id="property_type" disabled>
-                        </div>
+
                 
                         <!-- Container for Eircode -->
                         <div class = "inputbox">
                             <label for = "eircode">Eircode: </label><br>
                             <!-- Pattern: Eircode 1 alpha char(upper or lowercase) followed by TWO digits, any number of spaces then another alpha char and THREE digits -->
-                            <input type="text" name="eircode" id="eircode" required autofocus placeholder="Y21 234" pattern="[A-Za-z]?\d{2} *[A-Za-z]?\d{3}" disabled autofocus>
+                            <input type="text" name="eircode" id="eircode" required autofocus placeholder="Y21 234" pattern="[A-Za-z]?\d{2}[ ]?[A-Za-z]?\d{3}" disabled autofocus>
                         </div>
 
                         <!-- Container for Location -->
@@ -119,13 +110,13 @@ EstateFow Y2 Project 2025-->
                         <!-- Container for Highest Bid -->
                         <div class = "inputbox">
                             <label for = "bid">Highest Bid: </label><br>
-                            <input type="number" name="bid" id="bid" min="1" required disabled>
+                            <input type="number" name="bid" id="bid" placeholder="€385000" min="1" required disabled>
                         </div>
 
                         <!-- Container for Asking Price -->
                         <div class = "inputbox">
                             <label for = "price">Asking Price: </label><br>
-                            <input type="number" name="price" id="price" min="1" required disabled>
+                            <input type="number" name="price" id="price" placeholder="€400000" min="1" required disabled>
                         </div>
                         
                         <!-- Container for Viewing Times -->
@@ -171,7 +162,7 @@ EstateFow Y2 Project 2025-->
                         <!-- Container for Quotas -->
                         <div class = "inputbox">
                             <label for ="quotas">Quotas: </label><br>
-                            <input type="number" name="quotas" id="quotas" required placeholder="50" min="0" max="10000" disabled>
+                            <input type="number" name="quotas" id="quotas" required placeholder="50000" min="0" max="1000000" disabled>
                         </div>
 
                         <!-- Container for Notes -->
@@ -181,19 +172,17 @@ EstateFow Y2 Project 2025-->
                         </div>
                                 
                         <!-- Container for Owner ID - Hidden, as ID is only needed when updating to the correct entry in table -->
-                        <div class = "inputbox">
-                            <input type="number" name="owner" id="owner" hidden>
-                        </div>		
+                        <input type="number" name="owner" id="owner" hidden>
 
-                       <!-- Container for Property ID - Hidden, as ID is only needed when updating to the correct entry in table -->
-                        <div class = "inputbox">
-                            <input type="number" name="property_id" id="property_id" hidden>
-                        </div>
+                        <!-- Container for Property ID - Hidden, as ID is only needed when updating to the correct entry in table -->
+                        <input type="number" name="property_id" id="property_id" hidden>
                                 
                         <!-- Container for Land ID - Hidden, as ID is only needed when updating to the correct entry in table -->
-                        <div class = "inputbox">
-                            <input type="number" name="id" id="id" hidden>
-                        </div>		
+                        <input type="number" name="id" id="id" hidden>
+						
+						<!-- Hidden for UI tidyness as only needed for query-->
+                        <input type="text" name="property_type" id="property_type" hidden>
+					
                 </fieldset>
             <!-- End Form Container -->
             </div>
@@ -202,7 +191,8 @@ EstateFow Y2 Project 2025-->
             <div class = "myButton">
                 <!-- Submit button is initially disabled, as user will only be able to submit details when in the amend state-->
                 <input type="submit" value = "Update Record" name = "submit" class ="button" id="submit" disabled>
-                <input type="reset" value = "Reset" name = "reset" class ="button">
+				<!-- Note, on click reset re-locks fields -->
+                <input type="reset" value = "Reset" name = "reset" class ="button" onclick="toggleLock()">
             </div>
         </form>
     <!-- End Main Content Area -->

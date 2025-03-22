@@ -4,7 +4,7 @@
     include "../db.inc.php";
     date_default_timezone_set('UTC');
 // Prepare the statement for the SELECT query
-    $sql = "SELECT client_ID, name FROM Client";
+    $sql = "SELECT client_ID, name FROM Client WHERE delete_flag=0";
 
 // Error handling, if a problem with the query, print a relevant message
     if ( !$result = mysqli_query($con, $sql))
@@ -35,5 +35,4 @@
     echo "</select>";
     // Close connection
     mysqli_close($con);
-
 ?>

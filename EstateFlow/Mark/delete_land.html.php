@@ -22,6 +22,7 @@ EstateFlow Project Y2 2025 -->
 
     </head>
 
+<!-- Onload, the form locks, unlocks once user selects a property-->
 <body onload = "toggleLock()">
 
     <!-- Fixed Top Bar displaying the page title -->
@@ -82,14 +83,14 @@ EstateFlow Project Y2 2025 -->
                         <div class = "inputbox">
                                 <label for = "property_type">Property Type: </label><br>
                                 <!-- Set value to Land as it cannot be anything other than Land when entering a Land property, disabled the box so cannot be edited -->
-                                <input type="text" name="property_type" id="property_type" disabled>
+                                <input type="text" name="property_type" id="property_type" placeholder="Land" disabled>
                         </div>
                     
                         <!-- Container for Eircode -->
                         <div class = "inputbox">
                             <label for = "eircode">Eircode: </label><br>
                             <!-- Pattern: Eircode 1 alpha char(upper or lowercase) followed by TWO digits, any number of spaces then another alpha char and THREE digits -->
-                            <input type="text" name="eircode" id="eircode" required placeholder="Y21 234" pattern="[A-Za-z]?\d{2} *[A-Za-z]?\d{3}" disabled >
+                            <input type="text" name="eircode" id="eircode" required placeholder="Y21 234" pattern="[A-Za-z]?\d{2}[ ]?[A-Za-z]?\d{3}" disabled >
                         </div>
 
                         <!-- Container for Location -->
@@ -111,13 +112,13 @@ EstateFlow Project Y2 2025 -->
                         <!-- Container for Highest Bid -->
                         <div class = "inputbox">
                             <label for = "bid">Highest Bid: </label><br>
-                            <input type="number" name="bid" id="bid" min="1" required disabled>
+                            <input type="number" name="bid" id="bid" min="1" placeholder="€385000" required disabled>
                         </div>
 
                         <!-- Container for Asking Price -->
                         <div class = "inputbox">
                             <label for = "price">Asking Price: </label><br>
-                            <input type="number" name="price" id="price" min="1" required disabled>
+                            <input type="number" name="price" id="price" placeholder="€400000" min="1" required disabled>
                         </div>
                         
                         <!-- Container for Viewing Times -->
@@ -125,7 +126,7 @@ EstateFlow Project Y2 2025 -->
                             <label for = "viewing_times">Viewing Times: </label><br>
                             <input type="text" name="viewing_times" id="viewing_times" placeholder= "Weekends 12pm - 5pm" required disabled>
                         </div>
-                                    
+					                                    
                 </fieldset>
 
                 <!-- Begin Fieldset for Land Specific Details -->
@@ -148,7 +149,6 @@ EstateFlow Project Y2 2025 -->
                             <input type="number" name="acres" id="acres" required placeholder="2500" min="1" disabled>
                         </div>
 
-
                         <!-- Container for Buildings -->
                         <div class = "inputbox">
                             <label for = "buildings">Buildings: </label><br>
@@ -164,45 +164,36 @@ EstateFlow Project Y2 2025 -->
                         <!-- Container for Quotas -->
                         <div class = "inputbox">
                             <label for ="quotas">Quotas: </label><br>
-                            <input type="number" name="quotas" id="quotas" required placeholder="50" min="0" max="10000" disabled>
+                            <input type="number" name="quotas" id="quotas" required placeholder="50000" min="0" max="1000000" disabled>
                         </div>
-
-                        <br>
 
                         <!-- Container for Notes -->
                         <div class = "inputbox">
                             <label for = "notes">Notes: </label><br>
                             <input type="text" name="notes" id="notes" placeholder="Exceptional condition, beautiful view, next to local village" disabled>
                         </div>
-                                
-                                    <!-- Container for Owner ID - Hidden, as ID is only needed when updating to the correct entry in table -->
-                        <div class = "inputbox">
-                            <input type="number" name="owner" id="owner" hidden>
-                        </div>		
 
-                                    <!-- Container for Property ID - Hidden, as ID is only needed when updating to the correct entry in table -->
-                        <div class = "inputbox">
-                            <input type="number" name="property_id" id="property_id" hidden>
-                        </div>
-                                
-                                    <!-- Container for Land ID - Hidden, as ID is only needed when updating to the correct entry in table -->
-                        <div class = "inputbox">
-                            <input type="number" name="land_id" id="land_id" hidden>
-                        </div>	
-                                
-                        <div class = "inputbox">
-                            <input type="number" name="bid_id" id="bid_id" hidden>
-                        </div>	
+                        <!-- Container for Land ID - Hidden, as ID is only needed when updating to the correct entry in table -->
+                        <input type="number" name="land_id" id="land_id" hidden>
+                        
+                        <!-- Container for Property ID - Hidden, as ID is only needed when updating to the correct entry in table -->
+                        <input type="number" name="property_id" id="property_id" hidden>		
+                        
+                        <!-- Container for bid_id hidden, only needed for getting relevant record to delete-->
+                        <input type="number" name="bid_id" id="bid_id" hidden>
+					
                 </fieldset>
             <!-- End Form Container  -->
             </div>
 
-                <!-- Submit/Reset buttons -->
-                <div class = "myButton">
-                    <input type="submit" value = "Delete Record" name = "submit" class ="button" >
-                    <input type="reset" value = "Reset" name = "reset" class ="button">
-                </div>
+            <!-- Submit/Reset buttons -->
+            <div class = "myButton">
+                <input type="submit" value = "Delete Record" name = "submit" class ="button" >
+                <input type="reset" value = "Reset" name = "reset" class ="button">
+            </div>
+            
         </form>
+
     <!-- End Main Content Area -->
     </div>
 

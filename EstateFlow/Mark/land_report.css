@@ -4,15 +4,18 @@ th, td{
 	padding: 20px;
 }
 
+/* Targets all table headings */
 th{
 	background-color: #05c98b;
 	color: white;
 }
 
+/* When hovered over a row, change colour */
 tr:hover {
 	background-color: #f1f1f1;
 }
 
+/* Change colour of data cells */
 td {
 	color: #555;
 }

@@ -23,24 +23,25 @@
 
     // INSERT statement for the Property table
     $propSQL = "UPDATE Property SET address = '$adrs',
-														eircode = '$eircode',
-														location = '$location',
-														asking_price = $price,
-														viewing_times = '$viewing_times' WHERE property_id = $_POST[property_id]";
+                eircode = '$eircode',
+                location = '$location',
+                asking_price = $price,
+                viewing_times = '$viewing_times' WHERE property_id = $_POST[property_id]";
                                                 
     $landSQL =  "UPDATE Land SET acres = $acres,
-                                buildings = '$buildings',
-                                residence_details = '$details',
-                                quotas = $quotas,
-                                notes = '$notes' WHERE land_id = $_POST[id]";
+                buildings = '$buildings',
+                residence_details = '$details',
+                quotas = $quotas,
+                notes = '$notes' WHERE land_id = $_POST[id]";
 
+    // Note, client_ID = 
     $clientSQL = "UPDATE Client SET name = '$ownerName' WHERE client_ID = '{$_POST['owner']}'";
 
 
     // If there's a problem with the query
     if(!mysqli_query($con, $propSQL))
     {
-        echo "There was an error with your query: " . mysqli_error();
+        die("There was an error with your Property Query: " . mysqli_error($con));
     }
     // Otherwise
     else
@@ -48,41 +49,46 @@
         // So long as AT LEAT 1 row was affected, we will execute the update
         if(mysqli_affected_rows($con) !=0)
         {
-			$_SESSION['land_id'] = $_POST['property_id'];
+			//Set the property_id session variable upon success
+			$_SESSION['property_id'] = $_POST['property_id'];
         }
     }
 		
-		
-        // If there's a problem with the query for LAND
-        if(!mysqli_query($con, $landSQL))
-        {
-            echo "There was an error with your query: " . mysqli_error();
-        }
-        // Otherwise
-		else{
-            // So long as AT LEAT 1 row was affected, we will execute the update
-            if(mysqli_affected_rows($con) !=0)
-            {
-				$_SESSION['eircode'] = $_POST['eircode'];
-            }
+	// If there's a problem with the query for LAND
+	if(!mysqli_query($con, $landSQL))
+	{
+        die("There was an error with your Land Property Query: " . mysqli_error($con));
+	}
+	// Otherwise
+	else{
+		// So long as AT LEAT 1 row was affected, we will execute the update
+		if(mysqli_affected_rows($con) !=0)
+		{
+			//Set the eircode session variable upon success
+			$_SESSION['eircode'] = $_POST['eircode'];
 		}
-		// If there's a problem with the query for BID
-        if(!mysqli_query($con, $clientSQL))
-        {
-            echo "There was an error with your query: " . mysqli_error();
-        }
-        // Otherwise
-		else{
-            // So long as AT LEAT 1 row was affected, we will execute the update
-            if(mysqli_affected_rows($con) !=0)
-            {
-                 $_SESSION['client'] = 1;
-            }
-        }
+	}
+
+	// If there's a problem with the query for CLIENT
+	if(!mysqli_query($con, $clientSQL))
+	{
+        die("There was an error with your Client Query: " . mysqli_error($con));
+	}
+	// Otherwise
+	else{
+		// So long as AT LEAT 1 row was affected, we will execute the update
+		if(mysqli_affected_rows($con) !=0)
+		{
+			//Set the client session var to 1, to use as a signifier that the client was updated also
+			//$_SESSION['client'] = 1;
+			//Set the eircode session variable upon success
+			$_SESSION['eircode'] = $_POST['eircode'];
+		}
+	}
                 
 
 	header('Location: view_land.html.php');
     mysqli_close($con);
 
-    ?>
+?>
 	

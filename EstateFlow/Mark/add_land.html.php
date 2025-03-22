@@ -14,13 +14,17 @@ EstateFlow Project Y2 2025 -->
         <!-- Sets title -->
         <title>EstateFlow - Add Land</title>
         <meta charset="UTF-8">
+        <!-- Style sheets -->
         <link rel="stylesheet" href="../menu.css">
         <link rel="stylesheet" href="land.css">
+        <!-- Javascript import -->
         <script src="add_land.js"></script>
+        <!-- Set browser icon -->
         <link rel="icon" type="image/x-icon" href="../images/icon.png">
 
     </head>
 
+<!-- Onload, the form locks, unlocks once user selects a client-->
 <body onload="toggleLock()">
 
     <!-- Fixed Top Bar displaying the page title -->
@@ -46,20 +50,22 @@ EstateFlow Project Y2 2025 -->
         <form action="add_land.php" onsubmit="return confirmCheck()" method="Post">
             <!-- Set heading for the form -->
             <h1>Add a New Land Property</h1>
-                <!-- Script which checks if the session variable has been set for when a land property has been added, if so, echo a message out -->
-                <?php
-                    if(ISSET($_SESSION["property_id"])){
-                        echo "<h2>Land Property added with Property ID: " . $_SESSION["property_id"];		
-                    }
-                    session_destroy();
-                ?>
 			
-                <!-- Container for Listbox containing all clients w/ their client_id in the values-->
+            <!-- Container for Listbox containing all clients w/ their client_id in the values-->
             <div class = "owner-listbox">
                 <label for = "owner-listbox"><h2>Select a Property Owner</h2></label>
                 <!-- Calls the php script to make the dynamic listbox and insert it into the form via an echo -->
                 <?php include 'add_land_listbox.php'; ?>
             </div>
+			
+			<!-- Script which checks if the session variable has been set for when a land property has been added, if so, echo a message out -->
+            <?php
+                if(ISSET($_SESSION["property_id"]))
+                {
+                    echo "<h2>Land Property added with Property ID: " . $_SESSION["property_id"];		
+                }
+                session_destroy();
+            ?>
 			
             <!-- Begin Form Input Section -->
             <div class = "formContainer">
@@ -72,7 +78,7 @@ EstateFlow Project Y2 2025 -->
                         <div class = "inputbox">
                             <label for = "property_type">Property Type: </label><br>
                             <!-- Set value to Land as it cannot be anything other than Land when entering a Land property, disabled the box so cannot be edited -->
-                            <input type="text" name="property_type" id="property_type" value = "Land">
+                            <input type="text" name="property_type" id="property_type" value = "Land" disabled>
                         </div>
             
 
@@ -83,47 +89,40 @@ EstateFlow Project Y2 2025 -->
                             <!-- Pattern: Eircode 1 alpha char(upper or lowercase) followed by TWO digits, a space then another alpha char and THREE digits -->
                             <input type="text" name="eircode" id="eircode" required autofocus placeholder="Y21 234" pattern="[A-Za-z]?\d{2}[ ]?[A-Za-z]?\d{3}">
                         </div>
+
                         <!-- Container for Location -->
                         <div class = "inputbox">
                             <label for ="location">Location: </label><br>
                             <input type="text" name="location" id="location" required placeholder="Carlow">
                         </div>
+
                         <!-- Container for Status -->
                         <div class = "inputbox">
                             <label for ="status">Status: </label><br>
-                            <select name = "status" id = status> 			
+                            <select name = "status" id = status disabled> 			
                                 <option value="0">For Sale</option>  
                                 <option value="1">Sale Agreed</option>  
                                 <option value="2">Sale Complete</option>  
                             </select>
                         </div>
+
                         <!-- Container for Owner -->
                         <div class = "inputbox">
                             <label for = "owner">Owner: </label><br>
                             <input type="number" name="owner" id="owner">
                         </div>
 
-                        <!-- Container for Highest Bid -->
-                        <div class = "inputbox">
-                            <label for = "bid">Highest Bid: </label><br>
-                            <input type="number" name="bid" id="bid" min="1" required>
-                        </div>
-
                         <!-- Container for Asking Price -->
                         <div class = "inputbox">
                             <label for = "price">Asking Price: </label><br>
-                            <input type="number" name="price" id="price" min="1" required>
+                            <input type="number" name="price" id="price" placeholder="€400000" min="1" required>
                         </div>
                         
                         <!-- Container for Viewing Times -->
                         <div class = "inputbox">
                             <label for = "viewing_times">Viewing Times: </label><br>
                             <input type="text" name="viewing_times" id="viewing_times" placeholder= "Weekends 12pm - 5pm" required>
-                        </div>
-                        <!-- Container for Date Listed -->
-                        <div class = "inputbox">
-                            <input type="date" name="date_listed" id="date_listed" hidden>
-                        </div>        
+                        </div>  
             
                 </fieldset>
 
@@ -147,15 +146,11 @@ EstateFlow Project Y2 2025 -->
                         <input type="number" name="acres" id="acres" required placeholder="2500" min="1">
                     </div>
 
-                    <br><br>
-
                     <!-- Container for Buildings -->
                     <div class = "inputbox">
                         <label for = "buildings">Buildings: </label><br>
                         <input type="text" name="buildings" id="buildings" required placeholder="Two large buildings, one shed">
                     </div>
-
-                    <br><br>
 
                     <!-- Container for Residence Details -->
                     <div class = "inputbox">
@@ -163,15 +158,12 @@ EstateFlow Project Y2 2025 -->
                         <input type="text" name="details" id="details" required placeholder="4 bedroom period residence in need of repair">
                     </div>
 
-                    <br><br>
-
                     <!-- Container for Quotas -->
                     <div class = "inputbox">
                         <label for ="quotas">Quotas: </label><br>
-                        <input type="number" name="quotas" id="quotas" required placeholder="50" min="0" max="10000">
+						<!-- Max set to 1 million -->
+                        <input type="number" name="quotas" id="quotas" required placeholder="50000" min="0" max="1000000">
                     </div>
-
-                    <br><br>
 
                     <!-- Container for Notes -->
                     <div class = "inputbox">
@@ -186,7 +178,8 @@ EstateFlow Project Y2 2025 -->
             <!-- Submit/Reset buttons -->
             <div class = "myButton">
                 <input type="submit" value = "Add Land" name = "submit" class ="button">
-                <input type="reset" value = "Reset" name = "reset" class ="button">
+				<!-- Note, on click reset re-locks fields -->
+                <input type="reset" value = "Reset" name = "reset" class ="button" onclick="toggleLock()">
             </div>
 
         </form>

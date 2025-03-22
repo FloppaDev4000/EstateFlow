@@ -73,37 +73,43 @@ Estate Flow Y2 Project 2025-->
 		</div>
 		<br><br>
 		
-			<!-- Begin javascript -->
+			<!-- Begin javascript for filtering and client info buttons -->
 			<script>
 				//Super variable to track if the radio button has been clicked
 				var client = null;
 				// Function acreOrder, sets the buttons value to acre and submits the form that the button is in, therin applying the filter
-				function acreOrder(){
+				function acreOrder()
+				{
 					document.reportForm.choice.value = "Acre";
 					document.reportForm.submit();
 				}
 				
 				// Filter by price
-				function priceOrder(){
+				function priceOrder()
+				{
 					document.reportForm.choice.value = "Price";
 					document.reportForm.submit();
 				}
 				
 				//When radio button is clicked, assign the super variable the client id and enable the button
-				function selectProperty(clientID){
+				function selectProperty(clientID)
+				{
 					client = clientID;
 					document.getElementById("clientButton").disabled = false;
 				}
 				//If the super var has been set and user pressed button, submit form
-				function clientInformation(){
-					if(client !== null){
+				function clientInformation()
+				{
+					if(client !== null)
+					{
 						document.clientForm.clientInfo.value = client;
 						document.clientForm.submit();
 					}
 				}
+			//End Javascript
 			</script>
 		
-			<!-- Begin php -->
+			<!-- Begin php for default choice-->
 			<?php
 				// Var choice initialised to "Price", as filtering by Price will serve as the default
 				$choice = "Price";
@@ -124,18 +130,19 @@ Estate Flow Y2 Project 2025-->
 				// Event where Choice = Price
 				if($choice == "Price")
 				{
-
+			//End php
 			?>
 
-				<!-- Enable the acre button, so that now the user may only switch to filter by acre as Price is active -->
-				<script>
-					document.getElementById("acreButton").disabled = false;
-					document.getElementById("priceButton").disabled = true;
-				</script>
+					<!-- Enable the acre button, so that now the user may only switch to filter by acre as Price is active -->
+					<script>
+						document.getElementById("acreButton").disabled = false;
+						document.getElementById("priceButton").disabled = true;
+					</script>
 					  
+			<!-- Begin php for default choice select statement -->
 			<?php
-			// Prepare the SQL statement for execution, produceReport() then handles the execution
-					$sql = "SELECT * FROM Land INNER JOIN Property ON Land.property_id = Property.property_id WHERE Land.delete_flag = 0 AND Property.status != 3 ORDER BY asking_price ASC";
+				// Prepare the SQL statement for execution, produceReport() then handles the execution
+				$sql = "SELECT * FROM Land INNER JOIN Property ON Land.property_id = Property.property_id WHERE Land.delete_flag = 0 AND Property.status != 2 ORDER BY asking_price ASC";
 					produceReport($con, $sql);
 				}
 				// End if for Price
@@ -143,20 +150,23 @@ Estate Flow Y2 Project 2025-->
 				//Event for choice being Acre
 				if($choice == "Acre")
 				{
+			//End php
 			?>
-		
-				<script>
-					document.getElementById("acreButton").disabled = true;
-					document.getElementById("priceButton").disabled = false;
-				</script>
-		
-				<?php
-				//Prepare the statement for execution for filtering by acres
-					$sql = "SELECT * FROM Land INNER JOIN Property ON Land.property_id = Property.property_id WHERE Land.delete_flag = 0 AND Property.status != 3 ORDER BY acres ASC";
-					produceReport($con, $sql);
-				
-				};
 
+					<!-- Begin script to disable acre button -->
+					<script>
+						document.getElementById("acreButton").disabled = true;
+						document.getElementById("priceButton").disabled = false;
+					</script>
+
+			<!-- Begin php for ACRE filter-->
+			<?php
+						//Prepare the statement for execution for filtering by acres
+							$sql = "SELECT * FROM Land INNER JOIN Property ON Land.property_id = Property.property_id WHERE Land.delete_flag = 0 AND Property.status != 2 ORDER BY acres ASC";
+							produceReport($con, $sql);
+				
+				}
+					
             // Function produceReport, ehco's out the structure of the report, then executes SQL and echo's out the results all using CLIENT SIDE RENDERING
 			function produceReport($con, $sql)
 			{
@@ -201,16 +211,16 @@ Estate Flow Y2 Project 2025-->
 			}
 			
 			//Function to produce a small report on a client when button is clicked
-			function produceClientReport($con, $sql){
+			function produceClientReport($con, $sql)
+			{
 				$result = mysqli_query($con, $sql);
 				
-				if(!$result){
+				if(!$result)
+				{
 					die("Error with your statement" . mysql_error($con));	
 				}
 				
 				$row = mysqli_fetch_array($result);
-				
-				
 				
 				echo "<script>
 				alert('Client Name:  " . $row['name'] . 
@@ -222,9 +232,9 @@ Estate Flow Y2 Project 2025-->
 				
 
 			}
-mysqli_close($con);
-?>
-    </div>
+			mysqli_close($con);
+		?>
+    	</div>
 	</div>
 	
 </body>

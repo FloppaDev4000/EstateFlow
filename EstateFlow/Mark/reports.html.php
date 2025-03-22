@@ -1,4 +1,9 @@
 <!-- Estate Flow - Reports Page   -->
+<!-- Name: Mark Lambert
+Student ID: C00192497
+Purpose: Land Report Page
+Date: March 2025
+Estate Flow Y2 Project 2025-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +30,7 @@
         </div>
         <!-- Navigation Links -->
         <a class ="button" href="../construction/residential_report.html">Residential Property Report</a>
-        <a class ="button selected" href="land_report.html.php">Land Property Report</a>
+        <a class ="button" href="land_report.html.php">Land Property Report</a>
         <a class ="button" href="../construction/office_report.html">Office Property Report</a>
         <a class ="button" href="../Darius/bid_report.html">Bid Report</a>
         <a class ="button" href="../construction/client_report.html">Client Report</a>

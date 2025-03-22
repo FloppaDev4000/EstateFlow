@@ -8,16 +8,20 @@ form, .report{
     width: 70%;
     /* Margin auto = center */
     margin: auto;
-    /* Note: alternatively "A more common method to center an element horizontally is by setting display: flex; and justify-content: center; on a container, which centers its flex item children." */
     border-width: 4px;
     border-radius: 5px;
     font-size: large;
 }
 
+/*Allow report to be 100% width so information is easier to read*/
+.report{
+	width: 100%;	
+}
+
 /* Target form, h1 and fieldset elements and apply a shadow, creating a 3D, stacked, dynamic website feel */
 form, h1, fieldset{
     /* Box shadow for blurred effect, 5px horizontal and vertical shadow, 5px blur and a color of black*/
-box-shadow: 5px 5px 5px 5px rgba(75, 74, 74, 0.103);
+    box-shadow: 5px 5px 5px 5px rgba(75, 74, 74, 0.103);
 }
 
 
@@ -25,15 +29,20 @@ box-shadow: 5px 5px 5px 5px rgba(75, 74, 74, 0.103);
 fieldset{
     width: 50%;
 	border-style: solid;
+    /* Set border colour to green */
 	border-color: #05c98b;
+    /* Set fieldset text to green */
 	color: #05c98b;
 	border-radius: 4px;
+	font-weight: bold;
 }
 
 h1{
 	text-align: center;
+    /* Set h1 background = green */
     background-color:#05c98b; 
     border-radius: 5px;
+    /* Set font colour white */
     color: white;
 }
 
@@ -63,8 +72,9 @@ form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox, .report{
 
 /* Alters appearance of all button elements */
 .myButton input{
+    /* Button background colour to green */
     background-color:#05c98b; 
-    /* Text color */
+    /* Text color to white */
     color: white;
     font-size: large;
     border-style: none;
@@ -76,16 +86,17 @@ form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox, .report{
     background-color:rgba(13, 53, 48, 0.637);
 }
 
-/* Makes all contents within the form flex items and adds a space between*/
+/* Makes all contents within the form flex items and adds a space evenly between all items*/
 .formContainer{
     display: flex;
     justify-content: space-evenly;
 }
 
+/* Change disabled buttons to greyed out colour */
 .myButton input:disabled{
-    background-color:rgba(13, 53, 48, 0.637);
+    background-color:rgba(13, 53, 48, 0.301);
 }
-
+/* Style all listboxes*/
 .owner-listbox, .view-listbox{
     text-align: center; 
     margin: 0 auto; /* Center horizontally */
@@ -93,3 +104,7 @@ form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox, .report{
 	padding: 0px; /*Reduce Padding produced by h2*/
 }
 
+/* Sets label text colour to black*/
+.inputbox label{
+	color:black;
+}

@@ -4,7 +4,7 @@
 Student ID: C00192497y-->
 <!DOCTYPE html>
 <?php
-		session_start();
+	session_start();
 ?>
 
 <?php
@@ -21,7 +21,7 @@ Student ID: C00192497y-->
     // If there's a problem with the query
     if(!mysqli_query($con, $propSQL))
     {
-        echo "There was an error with your query: " . mysqli_error();
+        die("There was an error with your Property Query: " . mysqli_error($con));
     }
     // Otherwise
     else
@@ -33,39 +33,41 @@ Student ID: C00192497y-->
         }
     }
 		
-		
-        // If there's a problem with the query for LAND
-        if(!mysqli_query($con, $landSQL))
-        {
-            echo "There was an error with your query: " . mysqli_error();
-        }
-        // Otherwise
-		else{
-            // So long as AT LEAT 1 row was affected, we will execute the update
-            if(mysqli_affected_rows($con) !=0)
-            {
-				$_SESSION['eircode'] = $_POST['eircode'];
-            }
+	// If there's a problem with the query for LAND
+	if(!mysqli_query($con, $landSQL))
+	{
+		die("There was an error with your Land Property Query: " . mysqli_error($con));
+	}
+	// Otherwise
+	else
+	{
+		// So long as AT LEAT 1 row was affected, we will execute the update
+		if(mysqli_affected_rows($con) !=0)
+		{
+			$_SESSION['eircode'] = $_POST['eircode'];
 		}
-		// If there's a problem with the query for BID
-        if(!mysqli_query($con, $bidSQL))
-        {
-            echo "There was an error with your query: " . mysqli_error();
-        }
-        // Otherwise
-		else{
-            // So long as AT LEAT 1 row was affected, we will execute the update
-            if(mysqli_affected_rows($con) !=0)
-            {
-                 $_SESSION['bid'] = 1;
-            }
-        }
+	}
+
+	// If there's a problem with the query for BID
+	if(!mysqli_query($con, $bidSQL))
+	{
+		die("There was an error with your Bid Query: " . mysqli_error($con));
+	}
+	// Otherwise
+	else
+	{
+		// So long as AT LEAT 1 row was affected, we will execute the update
+		if(mysqli_affected_rows($con) !=0)
+		{
+			$_SESSION['bid'] = 1;
+		}
+	}
                 
 
 	header('Location: delete_land.html.php');
     mysqli_close($con);
 
-    ?>
+?>
 	
 
 

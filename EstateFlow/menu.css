@@ -65,7 +65,7 @@ html, body {
 /*---------------------------- 
  Alters the buttons when hovered over 
 ----------------------------*/
-.sidebar a:hover {
+.sidebar a.button:hover {
     background-color: #05c98b; /* Change background on hover- GREEN */
     color: #ffffff; /* Change text color on hover- WHITE */
 }

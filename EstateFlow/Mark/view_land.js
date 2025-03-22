@@ -3,7 +3,6 @@
 //Purpose: JavaScript file for view/amend a land property
 //EstateFlow Y2 Project 2025
 
-
 // // Function confirmCheck() prompts user to confirm if the want to save the changes
 function confirmCheck()
 {
@@ -59,7 +58,12 @@ function populate()
 }
 // Function toggleLock() is called onload, locking all fields until the user selects a client first
 function toggleLock()
-{
+{	
+	//Set title
+	document.title = "EstateFlow - Amend Land";
+	//Set a href class to button selected for specified page
+	document.getElementById("amendLand").className = "button selected";
+	
     // Checkls if the user has first actually selected a property, which will be known if the Property Type field is populated with "Land", otherwise, 
     // if it reads none, null, undefined etc it wont allow the user to insert/amend 
 	if(document.getElementById("property_type").value == "Land")

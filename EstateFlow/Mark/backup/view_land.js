@@ -10,7 +10,8 @@ function confirmCheck()
     var response = confirm('Confirm Update?');
 	console.log("User response:", response); // Log the user's response
     return response; // Return the response directly
-	if(response){
+	if(response)
+	{
 		document.getElementById("property_type").disabled = false;
 		return true;
 	}
@@ -32,6 +33,10 @@ function populate()
     // Split the details by using the , as a delimeter
     var landDetails = result.split('#');
 
+	//Check if the user has clicked an entry on the listbox
+	if(!(landDetails[0] == "none")){
+		//If they have, then we can enable the amendView button
+		document.getElementById("amendViewbutton").disabled = false;
         document.getElementById("property_type").value = landDetails[0];
         document.getElementById("adrs").value = landDetails[1];
         document.getElementById("eircode").value = landDetails[2];
@@ -49,6 +54,7 @@ function populate()
         document.getElementById("details").value = landDetails[14];
         document.getElementById("quotas").value = landDetails[15];
         document.getElementById("notes").value = landDetails[16];
+	}
 
 }
 // Function toggleLock() is called onload, locking all fields until the user selects a client first
@@ -59,7 +65,10 @@ function toggleLock()
 	if(document.getElementById("property_type").value == "Land")
 	{	
 		document.getElementById("submit").disabled = false;
+		document.getElementById("amendViewbutton").disabled = false;
 	}
+	
+	//If the button reads Amend Details, then we are in the View Details state, so lock all the fields
 	if(document.getElementById("amendViewbutton").value == "Amend Details"){
 
 		document.getElementById("adrs").disabled = false;
@@ -76,6 +85,7 @@ function toggleLock()
 		document.getElementById("notes").disabled = false;
 		document.getElementById("ownerName").disabled = false;
 	
+		//Change the button to View Details
 		document.getElementById("amendViewbutton").value = "View Details";
 	}
 	else
@@ -83,7 +93,9 @@ function toggleLock()
 		unlock();	
 	}
 }
-		function unlock(){
+
+function unlock()
+{
 		    document.getElementById("adrs").disabled = true;
 			document.getElementById("adrs2").disabled = true;
 			document.getElementById("adrs3").disabled = true;
@@ -100,6 +112,7 @@ function toggleLock()
 			document.getElementById("notes").disabled = true;
 			document.getElementById("ownerName").disabled = true;
 		
+			//Enable the submit button when in amend mode
 			document.getElementById("submit").disabled = true;
 
 			document.getElementById("amendViewbutton").value = "Amend Details";
@@ -107,51 +120,66 @@ function toggleLock()
 
 
 
-
-function filterAll(){
-		var options = document.getElementById("listbox");
+// Function filterAll() resets the listbox back to no filtered state
+function filterAll()
+{
+	var options = document.getElementById("listbox");
     // Returns the value of the selected item in the listbox by going to the index in the listbox and calling .value
-	for(var i = 0; i < options.length; i++){
-			if(options[i].disabled){
-				options[i].disabled = false;	
+	for(var i = 0; i < options.length; i++)
+	{
+			if(options[i].hidden)
+			{
+				options[i].hidden = false;	
 			}
 		}
+		//Enable both buttons
+		document.getElementById("filterSold").disabled = false;
+		document.getElementById("filterNotSold").disabled = false;
 	}
 
-
-function filterBySold(){
+// Function filterrBySold() hides all options that are currently NOT SOLD
+function filterBySold()
+{
 	filterAll();
 	var options = document.getElementById("listbox");
 	var result;
     // Returns the value of the selected item in the listbox by going to the index in the listbox and calling .value
-	for(var i =0; i < options.length; i++){
-    result = options.options[i].value;
-    // Split the details by using the # as a delimeter
-    var landDetails = result.split('#');
+	for(var i =0; i < options.length; i++)
+	{
+		result = options.options[i].value;
+		// Split the details by using the # as a delimeter
+		var landDetails = result.split('#');
 		//Disable any property that is tagged with a 0 (meaning any properties NOT SOLD get disabled)
-		if(landDetails[4] == 0){
-			options[i].disabled = true;
+		if(landDetails[4] == 0)
+		{
+			options[i].hidden = true;
+		}
 	}
-	}
-	
+	//Disable filterSold button
 	document.getElementById("filterSold").disabled = true;
 	document.getElementById("filterNotSold").disabled = false;
 }
-	
-function filterByNotSold(){
+
+//Function filterByNotSold() hides all elements that ARE SOLD or SALE AGREED
+function filterByNotSold()
+{
 	filterAll();
-		var options = document.getElementById("listbox");
+	var options = document.getElementById("listbox");
 	var result;
     // Returns the value of the selected item in the listbox by going to the index in the listbox and calling .value
-	for(var i =0; i < options.length; i++){
-    result = options.options[i].value;
-    // Split the details by using the # as a delimeter
-    var landDetails = result.split('#');
+	for(var i =0; i < options.length; i++)
+	{
+		result = options.options[i].value;
+		// Split the details by using the # as a delimeter
+		var landDetails = result.split('#');
 		//Disable any properties that ARE sold or sale agreed
-		if(landDetails[4] != 0)  {
-			options[i].disabled = true;
+		if(landDetails[4] != 0)  
+		{
+			options[i].hidden = true;
 		}
 	}
+	
+	//Disable filterNotSold button
 	document.getElementById("filterNotSold").disabled = true;
 	document.getElementById("filterSold").disabled = false;
 }

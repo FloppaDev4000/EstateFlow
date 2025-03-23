@@ -6,44 +6,12 @@ Date: February 2025
 EstateFlow Project Y2 2025 -->
 <!DOCTYPE html>
 <?php
+	include "land_maintenance.html.php";
 	session_start();
-?>
-
-<html lang="en">
-
-    <head>
-        <!-- Sets title -->
-        <title>EstateFlow - Delete Land</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="../menu.css">
-        <link rel="stylesheet" href="land.css">
-        <script src="delete_land.js"></script>
-        <link rel="icon" type="image/x-icon" href="../images/icon.png">
-
-    </head>
-
-<!-- Onload, the form locks, unlocks once user selects a property-->
-<body onload = "toggleLock()">
-
-    <!-- Fixed Top Bar displaying the page title -->
-    <div class="topBar">EstateFlow</div>
-   
-    <!-- Sidebar Navigation Menu -->
-    <div class="sidebar" id="mySidebar">
-        <!-- Logo Section inside Sidebar -->
-        <div class="logo">
-            <a href ="../menu.html"><img src="../images/logo.png" alt="EstateFlow Logo"></a>
-        </div>
-        <!-- Navigation Links -->
-        <a class ="button" href="add_land.html.php">Add a New Land Property</a>
-        <a class ="button selected" href="delete_land.html.php">Delete a Land Property</a>
-        <a class ="button" href="view_land.html.php">Amend/View a Land Property</a>
-        <a class ="button" id="exit" href="../menu.html">Return to Menu</a>
-    </div>
-    
+?>   
    <!-- Main Content Area -->   
     <div class="content">
-
+        <script src="delete_land.js"></script>
         <!-- Start form, sending info via Post to add_land.php -->
         <form action="delete_land.php" onsubmit="return confirmCheck()" method="Post">
             <!-- Set heading for the form -->

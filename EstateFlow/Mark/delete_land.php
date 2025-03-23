@@ -1,7 +1,8 @@
 <!-- Estate Flow - Delete Land Page php  -->
 <!--Name: Mark Lambert
- Purpose: php script for deleting a land propert
-Student ID: C00192497y-->
+Purpose: php script for deleting a land propert
+Date: February 2025
+Student ID: C00192497-->
 <!DOCTYPE html>
 <?php
 	session_start();

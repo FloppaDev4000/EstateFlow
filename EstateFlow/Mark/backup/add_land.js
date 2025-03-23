@@ -27,6 +27,11 @@ function populate()
 // Function toggleLock() is called onload, locking all fields until the user selects a client first
 function toggleLock()
 {
+	//Set title
+	document.title = "EstateFlow - Add Land";
+	//Set a href class to button selected for specified page
+	document.getElementById("addLand").className = "button selected";
+	
     document.getElementById("adrs").disabled = true;
     document.getElementById("adrs2").disabled = true;
     document.getElementById("adrs3").disabled = true;

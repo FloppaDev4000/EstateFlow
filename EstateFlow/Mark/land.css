@@ -2,6 +2,7 @@
 /*Name; Mark Lambert
 Student ID: C00192497
 Purpose: CSS used throughout all LAND property pages
+Date: February 2025
 EsateFlow - Project Y2 2025*/
 form, .report{
     /* Form width is 70% of the main content area */
@@ -99,7 +100,7 @@ form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox, .report{
 /* Style all listboxes*/
 .owner-listbox, .view-listbox{
     text-align: center; 
-    margin: 0 auto; /* Center horizontally */
+    margin: auto; /* Center horizontally */
     width: 50%; 
 	padding: 0px; /*Reduce Padding produced by h2*/
 }
@@ -107,4 +108,10 @@ form, h1, .inputbox, .date, .button, .owner-listbox, .view-listbox, .report{
 /* Sets label text colour to black*/
 .inputbox label{
 	color:black;
+}
+
+/* Sets the asterisk to a bold red for all required fields*/
+.required {
+    color: red;
+    font-weight: bold;
 }

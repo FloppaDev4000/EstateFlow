@@ -1,6 +1,7 @@
 //Name: Mark Lambert
 //Student ID: C00192497
 //Purpose: add_land javascript file
+//Date: February 2025
 //EstateFlow Y2 2025
 
 // Function populate which populates the textboxes when the desired user is selected from the listbox            
@@ -18,6 +19,8 @@ function populate()
     // If the user hasn't selected an element, then the first field in personDetails (owner id) wont have a value
 	if(personDetails[0] >= 0)
     {
+		//Unlock the submit button if the user has selected a client
+		document.getElementById("submit").disabled = false;
 		// Put the client_ID (located at index 0 in the result set) into the inputbox with id owner
 		document.getElementById("owner").value = personDetails[0];
 		// Once the client has been selected, we can call the unlock function so that the user may now edit the required fields
@@ -45,6 +48,8 @@ function toggleLock()
     document.getElementById("details").disabled = true;
     document.getElementById("quotas").disabled = true;
     document.getElementById("notes").disabled = true;
+	
+	document.getElementById("submit").disabled = true;
 }
 //When we unlock, we only unlock fields that should be editable, leave the owner inputbox locked,
 // as we got that info from the listbox, and we also don't need to edit the property_type tag
@@ -63,6 +68,7 @@ function unlock()
     document.getElementById("quotas").disabled = false;
     document.getElementById("notes").disabled = false;
 }
+
 // // Function confirmCheck() prompts user to confirm if the want to save the changes
 function confirmCheck()
 {

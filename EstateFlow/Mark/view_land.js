@@ -1,6 +1,7 @@
 //Name: Mark Lambert
 //Student ID: C00192497
 //Purpose: JavaScript file for view/amend a land property
+//Date: February 2025
 //EstateFlow Y2 Project 2025
 
 // // Function confirmCheck() prompts user to confirm if the want to save the changes
@@ -56,6 +57,7 @@ function populate()
 	}
 
 }
+
 // Function toggleLock() is called onload, locking all fields until the user selects a client first
 function toggleLock()
 {	
@@ -73,7 +75,8 @@ function toggleLock()
 	}
 	
 	//If the button reads Amend Details, then we are in the View Details state, so lock all the fields
-	if(document.getElementById("amendViewbutton").value == "Amend Details"){
+	//also checks if property_id has a value, otherwise, don't allow the body onload tag to execute, as it would cause the form to unlock
+	if(document.getElementById("amendViewbutton").value == "Amend Details" && document.getElementById("property_id").value > 0){
 
 		document.getElementById("adrs").disabled = false;
 		document.getElementById("adrs2").disabled = false;
@@ -96,6 +99,33 @@ function toggleLock()
 	{
 		unlock();	
 	}
+}
+
+function lock(){
+	//If the button reads Amend Details, then we are in the View Details state, so lock all the fields
+	//also checks if property_id has a value, otherwise, don't allow the body onload tag to execute, as it would cause the form to unlock
+	if(document.getElementById("amendViewbutton").value == "View Details"){
+		document.getElementById("adrs").disabled = true;
+		document.getElementById("adrs2").disabled = true;
+		document.getElementById("adrs3").disabled = true;
+		document.getElementById("eircode").disabled = true;
+		document.getElementById("location").disabled = true;
+		document.getElementById("price").disabled = true;
+		document.getElementById("viewing_times").disabled = true;
+		document.getElementById("buildings").disabled = true;
+		document.getElementById("acres").disabled = true;
+		document.getElementById("details").disabled = true;
+		document.getElementById("quotas").disabled = true;
+		document.getElementById("notes").disabled = true;
+		document.getElementById("ownerName").disabled = true;
+	
+		//Change the button to View Details
+		document.getElementById("amendViewbutton").value = "Amend Details";
+				//Change the button to View Details
+		document.getElementById("amendViewbutton").disabled = true;
+				//Change the button to View Details
+		document.getElementById("submit").disabled = true;
+	}	
 }
 
 function unlock()

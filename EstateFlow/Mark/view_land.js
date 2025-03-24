@@ -91,7 +91,8 @@ function toggleLock()
 		document.getElementById("quotas").disabled = false;
 		document.getElementById("notes").disabled = false;
 		document.getElementById("ownerName").disabled = false;
-	
+		// Set focus to the eircode field
+        document.getElementById('eircode').focus();
 		//Change the button to View Details
 		document.getElementById("amendViewbutton").value = "View Details";
 	}

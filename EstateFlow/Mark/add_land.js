@@ -7,7 +7,7 @@
 // Function populate which populates the textboxes when the desired user is selected from the listbox            
 function populate()
 {
-    // Selected person is got by the element with id listbox
+	// Selected person is got by the element with id listbox
     var sel = document.getElementById("listbox");
     var result;
     // Returns the value of the selected item in the listbox by going to the index in the listbox and calling .value
@@ -69,7 +69,7 @@ function unlock()
     document.getElementById("notes").disabled = false;
 }
 
-// // Function confirmCheck() prompts user to confirm if the want to save the changes
+// Function confirmCheck() prompts user to confirm if the want to save the changes
 function confirmCheck()
 {
     var response;

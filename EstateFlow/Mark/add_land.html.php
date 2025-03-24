@@ -54,7 +54,7 @@ EstateFlow Project Y2 2025 -->
 					<!-- Use of span for required fields to signify to user -->
 					<label for = "eircode">Eircode: <span class="required">*</span></label><br>
 					<!-- Pattern: Eircode 1 alpha char(upper or lowercase) followed by TWO digits, zero to one spaces any four of a alpha char or number -->
-					<input type="text" name="eircode" id="eircode" required autofocus placeholder="Y21 234" pattern="[A-Za-z]{1}\d{2}[ ]?[A-Za-z\d]{4}" disabled autofocus title="Valid Eircode is required (e.g Y21 R234)">
+					<input type="text" name="eircode" id="eircode" required autofocus placeholder="Y21 234" pattern="[A-Za-z]{1}\d{2}[ ]?[A-Za-z\d]{4}" autofocus title="Valid Eircode is required (e.g Y21 R234)">
 				</div>
 
 				<!-- Container for Location -->

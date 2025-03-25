@@ -1,0 +1,217 @@
+/* General styles for the body */
+content {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;  /* Centers the form horizontally */
+    align-items: flex-start;  /* Aligns items at the start of the vertical axis */
+    min-height: 100vh;       /* Ensures the body takes full viewport height */
+    margin: 0;               /* Resets the default margin */
+    padding: 20px;           /* Adds padding to create space around the form */
+}
+
+/* Banner Heading Style */
+h2 {
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    margin: 0 auto; /* Center it */
+    padding: 20px; /* Adjust padding for better visibility */
+    background-color: #05c98b; /* Same green color for a banner effect */
+    display: block; /* Ensure it's treated as a block */
+    width: 100%; /* Full width */
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adds slight depth */
+}
+
+
+/* Heading style */
+h4 {
+    text-align: center;
+    color: #6b6b6b;
+    font-size: 20px;
+	font-weight: 500; /* Normal weight, lighter than default bold */
+    margin-bottom: 20px;    /* Space below the heading */
+}
+
+
+/* Button styling for Amend/View */
+#amendViewbutton {
+    width: 350px;
+    background-color: #05c98b;
+    margin: 0 auto; /* Centers the button */
+    display: block; /* Ensures auto margins work */
+    color: white;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+	padding: 10px;
+	margin-bottom: 20px;    /* Space below */
+	font-size: 16px;
+}
+#listbox {
+    display: block; /* Allows margin auto to work */
+    width: 50%; /* Adjust as needed */
+    max-width: 400px; /* Optional: Limits size */
+    margin: 0 auto; /* Centers horizontally */
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 16px;
+	margin-bottom: 20px;    /* Space below */
+}
+
+/* Add office- listbox style  */
+#ownerSelect {
+    display: block; /* Allows margin auto to work */
+    width: 50%; /* Adjust as needed */
+    max-width: 400px; /* Optional: Limits size */
+    margin: 0 auto; /* Centers horizontally */
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 16px;
+	margin-bottom: 20px;    /* Space below */
+}
+/* filter buttons for ammend view */
+.button-container {
+	text-align: center;
+	margin-bottom: 15px;
+}
+.filter-button {
+	background-color: #007BFF;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	margin: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	border-radius: 5px;
+	width: 120px;
+}
+.filter-button:hover {
+	background-color: #05c98b;
+	color: white;
+}
+.filter-button:disabled {
+	background-color: #05c98b;
+	color: white;
+}
+/* #filterForm {
+    display: none;
+}
+#filterChoice {
+    display: none;
+} */
+
+
+/* Center the select dropdown */
+.selectContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Ensure select element is properly styled */
+.selectContainer select {
+    width: 350px; /* Keep the width as you had it */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+select{
+    width: 350px;
+    margin: 0 auto; /* Centers the form */
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/* Form styling */
+form {
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 1000px;           /* Fixed width for the form */
+}
+.formContainer
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+input:read-only{
+    background-color: #d3d3d3;
+    color: #333;
+    border: 1px solid #cecece;
+}
+
+/* Fieldset styling */
+fieldset {
+    border: 2px solid #05c98b;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;    /* Space below each fieldset */
+}
+
+/* Legend styling */
+legend {
+    font-weight: bold;
+    color: #05c98b;
+}
+
+/* Input box styling */
+.inputbox,
+.radiobox,
+.checkbox1 {
+    margin-bottom: 15px;     /* Space below input sections */
+}
+
+label {
+    font-weight: bold;
+    color: #555;             /* Color for the labels */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="checkbox"],
+input[type="date"],
+select
+{
+    width: 100%;             /* Full width for input fields */
+    padding: 10px;          /* Padding inside input fields */
+    margin-top: 5px;        /* Space above input fields */
+    border: 1px solid #858585;
+    border-radius: 5px;     /* Rounded corners for inputs */
+    box-sizing: border-box;  /* Includes padding and border in element's total width */
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;      /* Space away from buttons */
+}
+
+/* Button styling */
+.myButton {
+    text-align: center;      /* Center buttons inside the div */
+}
+
+input[type="submit"],
+input[type="reset"] {
+    background-color: #05c98b; /* Button color */
+    color: white;               /* Text color for buttons */
+    padding: 10px 20px;        /* Padding inside buttons */
+    margin: 5px;               /* Space between buttons */
+    border: none;              /* Removes border */
+    border-radius: 5px;       /* Rounded corners for buttons */
+    cursor: pointer;           /* Changes cursor to pointer */
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: #05c98b; /* Darker shade for hover */
+}

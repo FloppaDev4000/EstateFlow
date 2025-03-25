@@ -1,11 +1,25 @@
 <?php
 
+//NAME:   Adam Noonan
+//NUMBER: C00299231
+//FILE:   addClient.php
+
 // include database connection file
 include '../../db.inc.php';
 
 // set timezone
 date_default_timezone_set("UTC");
 
+include "../clientHead.php";
+
+// print header
+echo "<!-- Main Content Area -->
+        <div class='content'>
+		<h1>Add a New Client</h1>
+		<!--form w/ submit button-->
+<form class='mainForm' action = 'addClient.html.php' method = 'POST' >";
+
+// get int values from bools
 $isBuyer = (int)isset($_POST['buyer']);
 $isSeller = (int)isset($_POST['seller']);
 
@@ -26,8 +40,12 @@ echo "<br>A record has been added for " . $_POST['name'] . ".";
 mysqli_close($con);
 
 ?>
-<!--form w/ submit button-->
-<form action = "addClient.html" method = "POST" >
-    <br>
-    <input type="submit" value="Return to Insert Page"/>
+<!--closing html values-->
+<br>
+<br>
+<input class="myButton" type="submit" value="Return"/>
 </form>
+
+</div> 
+</body>
+</html>

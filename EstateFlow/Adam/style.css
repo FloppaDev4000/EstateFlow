@@ -1,0 +1,147 @@
+/*NAME:		Adam Noonan	*/
+/*NUMBER:	C00299231	*/
+/*FILE:		CSS file	*/
+
+/* main encompassing form */
+.mainForm{
+    width: 70%;
+    margin: auto;
+    border-width: 4px;
+    border-radius: 5px;
+    font-size: large;
+}
+
+/* uniform shadow for relevant elements */
+form, h1, fieldset
+{
+	box-shadow: 5px 5px 5px 5px rgba(75, 74, 74, 0.103);
+}
+
+/* fieldset dividers  */
+fieldset
+{
+	flex-basis: 40%;
+	border-style: solid;
+	border-color: #05c98b;
+	color: #05c98b;
+	border-radius: 4px;
+	margin:30px;
+}
+
+/* main populated fields */
+.canPopulate, .clientFields, .propertyFields, .landFields, .residentialFields, .officeFields
+{
+	border: 1px solid #dddddd;
+	border-radius: 6px;
+}
+
+/* main populated fields, set to readonly */
+.canPopulate:read-only, .clientFields:read-only, .propertyFields:read-only, .landFields:read-only, .residentialFields:read-only, .officeFields:read-only
+{
+	font-size: small;
+	color: #67706e;
+	background-color: #eeeeee;
+}
+
+/* labels for field boxes */
+div.field > label
+{
+	display: block;
+	margin-top: 25px;
+}
+
+/* user input field boxes */
+div.myInput > input{
+	font-size: large;
+}
+
+/* checkbox */
+#buyer, #seller{
+	margin-left: 0px;
+	width: 14px;
+}
+
+/* all main field boxes */
+div.field > input{
+	box-sizing: border-box; 
+	padding: 10px;
+	width: 100%;
+}
+
+/* listbox */
+select{
+	width: 100%;
+	padding: 10px;
+	font-size: large;
+}
+
+/* header */
+h1{
+	text-align: center;
+    background-color:#05c98b; 
+    border-radius: 5px;
+    color: white;
+}
+
+/* uniform padding for relevant elements */
+form, h1, .inputbox,  .button{
+    padding: 20px;
+}
+
+/* parent for submit/clear buttons */
+.buttons
+{
+	display: flex;
+	justify-content: center;
+}
+
+/* submit/clear buttons */
+.myButton{
+    text-align: center;
+    padding: 15px;
+	width: 160px;
+	margin: 5px;
+}
+
+/* Alters appearance of all button elements */
+input.myButton{
+    background-color:#05c98b; 
+    /* Text color */
+    color: white;
+    font-size: large;
+    border-style: none;
+    border-radius: 5px;
+}
+
+/* Changes background colour to LIGHT GREY when hovered over button */
+input.myButton:hover{
+    background-color:rgba(13, 53, 48, 0.637);
+}
+
+/* Makes all contents within the form flex items and adds a space between*/
+.formContainer{
+    display: flex;
+	flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+/* submit/clear buttons when disabled */
+.myButton input:disabled{
+    background-color:rgba(13, 53, 48, 0.637);
+}
+
+/* parent for user input boxes */
+.myInput{
+	width: 50%;
+	margin: auto;
+	
+}
+
+/* parent for listbox */
+.listBox
+{
+	width: 50%;
+	margin: auto;
+}
+
+

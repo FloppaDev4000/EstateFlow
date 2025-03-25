@@ -1,7 +1,3 @@
-<!-- Name:                 Amelia Hamulewicz -->
-<!-- Student Number:       C00296605 -->
-<!-- Title:                Select Option  -->
-<!-- Date:                 26 February 2025 -->
 <?php
 // Include database connection
 include "db.inc.php"; 
@@ -13,7 +9,9 @@ $sqlProperty = "SELECT eircode, property_id, owner, type, address, location, ask
                 WHERE type = 'Office' AND delete_flag = 0";
 
 $resultProperty = mysqli_query($con, $sqlProperty);
-if (!$resultProperty) {
+// if query fails
+if (!$resultProperty) 
+{
     die('Error querying Property table: ' . mysqli_error($con));
 }
 
@@ -37,8 +35,13 @@ while ($rowProperty = mysqli_fetch_assoc($resultProperty))
         'telephone_system', 'reception', 'security', 'canteen', 'ownership'
     ], "");  // Fill missing office data with empty values
 
+	
+    // Ensure date_listed is properly formatted (DD/MM/YYYY)
+    $dateListed = !empty($rowProperty['date_listed']) ? date("d/m/Y", strtotime($rowProperty['date_listed'])) : "N/A";
+    // Merge property and office data (include formatted date_listed)
+    $rowProperty['date_listed'] = $dateListed;
     // Merge property and office data in the correct order
-    $optionValue = implode(',', array_merge($rowProperty, $rowOffice));
+    $optionValue = implode(';', array_merge($rowProperty, $rowOffice));
 
     $eircode = $rowProperty['eircode'];
     

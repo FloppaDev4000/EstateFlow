@@ -1,6 +1,5 @@
-<!-- Created by: Mark Lambert -->
- <!-- ESTATE FLOW -->
- <!-- db.inc.php -> PHP script to connect to database -->
+
+ <!-- PHP script to connect to database -->
  <?php
 // Variables containing login information for DB
     $hostname = "localhost";
@@ -14,7 +13,7 @@
     // If connection fails, print an error message
     if(!$con)
     {
-        // Exit w/ relevant message
+        // Exit
         die("Failed to connect to MySQL: " . mysqli_connect_error());
     }
 ?>

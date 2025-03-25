@@ -1,10 +1,24 @@
 <?php
 
+//NAME:   Adam Noonan
+//NUMBER: C00299231
+//FILE:   amendViewClient.php
+
 // include database connection file
 include '../../db.inc.php';
 
 // set timezone
 date_default_timezone_set("UTC");
+
+include "../clientHead.php";
+
+// print header
+echo "<!-- Main Content Area -->
+        <div class='content'>
+		<h1>Amend/View a Client</h1>
+		
+		<!--option to return-->
+<form class='mainForm' action='amendViewClient.html.php' method='post'>";
 
 // prepare statement
 $sql = "UPDATE Client SET
@@ -32,7 +46,7 @@ else // success
     else
     {
         // no effect
-        echo "No records were changed.";
+        echo "<br>No records were changed.";
     }
 }
 
@@ -40,7 +54,12 @@ else // success
 mysqli_close($con);
 ?>
 
-<!--option to return-->
-<form action="amendViewClient.html.php" method="post" />
-    <input type="submit" value="Return to Previous Screen">
+	<br><br>
+    <input class="myButton" type="submit" value="Return">
 </form>
+
+</div>
+</form>
+</div> 
+</body>
+</html>

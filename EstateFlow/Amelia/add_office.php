@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Page title and metadata -->
+    <title>EstateFlow - Add Office</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add office </title> 
+    <!-- External CSS stylesheets -->
+    <link rel="stylesheet" href="..\menu.css">
+    <link rel="stylesheet" href="office.css">
+	<link rel="icon" type="image/x-icon" href="../images/icon.png">
+
 </head>
 <body>
+    <!-- Top bar displaying the application name -->
+    <div class="topBar">EstateFlow</div>
+
+    <!-- Sidebar navigation menu -->
+    <div class="sidebar" id="mySidebar">
+        <!-- Logo that links back to the main menu -->
+        <div class="logo">
+            <a href ="..\menu.html"><img src="..\images/logo.png" alt="EstateFlow Logo"></a>
+        </div>
+
+        <!-- Navigation buttons -->
+        <a class ="button selected" href="add_office.html.php">Add a New Office Property</a>
+        <a class ="button" href="delete_office.html.php">Delete an Office Property</a>
+        <a class ="button" href="ammendview_office.html.php">Amend/View an Office Property</a>
+        <a class ="button" id="exit" href="../menu.html">Return to Menu</a>
+    </div>
+    
+<!-- Main Content Area -->
+<div class="content">
     <?php
         // Include database connection file
         include 'db.inc.php';
 
         // Set the default timezone to Coordinated Universal Time (UTC)
         date_default_timezone_set("UTC");
+		
+		// Combine address fields into one string
+		$addressLine1 = $_POST['address_line1'];
+		$addressLine2 = $_POST['address_line2'];
+		$addressLine3 = $_POST['address_line3'];
 
-        // Display user-submitted data
-        echo "The details sent down are: <br>";
-
-        echo "Owner: " . $_POST['owner'] . "<br>";
-        echo "Property Type: " . $_POST['type'] . "<br>";
-        echo "Address: " . $_POST['address'] . "<br>";
-        echo "Eircode: " . $_POST['eircode'] . "<br>";
-        echo "Location: " . $_POST['location'] . "<br>";
-        echo "Asking Price: " . $_POST['asking_price'] . "<br>";
-        echo "Viewing Times: " . $_POST['viewing_times'] . "<br>";
-        echo "Status: " . $_POST['status'] . "<br>";
-        echo "Highest Bid: " . $_POST['highest_bid'] . "<br>";
-
+		// Combine them into one address string
+		$combinedAddress = $addressLine1 . ", " . $addressLine2 . ", " . $addressLine3;
 
         // SQL query to insert the received data into the 'Property' table
         $sql = "INSERT INTO Property (owner, type, address, eircode, location, asking_price, viewing_times, status, highest_bid, delete_flag)
-        VALUES ('$_POST[owner]', '$_POST[type]', '$_POST[address]', '$_POST[eircode]', '$_POST[location]', 
+        VALUES ('$_POST[id]', '$_POST[type]', '$combinedAddress', '$_POST[eircode]', '$_POST[location]', 
         '$_POST[asking_price]', '$_POST[viewing_times]', '$_POST[status]', '$_POST[highest_bid]', '0')";
 
         // Execute the query and check for errors
@@ -37,24 +55,9 @@
             die("An Error in the SQL Query: " . mysqli_error($con)); // Output error message if query fails
         }
 
-        // Display user-submitted data
-        echo "The details sent down are: <br>";
-
         // Get the last inserted property_id
         $property_id = mysqli_insert_id($con);
-        echo "Property ID: " . $property_id . "<br>";
-        echo "Floor: " . $_POST['floor'] . "<br>";
-        echo "Area (sqm): " . $_POST['area'] . "<br>";
-        echo "Layout: " . $_POST['layout'] . "<br>";
-        echo "Internet: " . $_POST['internet'] . "<br>";
-        echo "Access: " . $_POST['access'] . "<br>";
-        echo "Telephone System: " . $_POST['telephone_system'] . "<br>";
-        echo "Reception Facilities: " . $_POST['reception'] . "<br>";
-        echo "Type of Security: " . $_POST['security'] . "<br>";
-        echo "Canteen Facilities: " . $_POST['canteen'] . "<br>";
-        echo "Type of Ownership: " . $_POST['ownership'] . "<br>";
-
-
+	
         // SQL query to insert the received data into the 'Property' table
         $sql = "INSERT INTO Office (property_id, floor, area, layout, internet, access, telephone_system, reception, security, canteen, ownership, delete_flag)
         VALUES ($property_id, '$_POST[floor]', '$_POST[area]', '$_POST[layout]', '$_POST[internet]', '$_POST[access]', 
@@ -66,18 +69,17 @@
             die("An Error in the SQL Query: " . mysqli_error($con)); // Output error message if query fails
         }
 
-        // Confirm successful record addition
-        echo "<br>A record has been added for " . $_POST['owner'] ;
-
         // Close the database connection
         mysqli_close($con);
     ?>
 
-    <!-- Form to return to the insert page -->
-    <form action="add_office.html.php" method="POST">
-        <br>
-        <input type="submit" value="Return to Insert Page"/>
-    </form>
-
+    <div class="formContainer">
+		<!-- Form to return to the insert page -->
+		<form action="add_office.html.php" method="POST">
+			<br>
+			<input type="submit" value="Return to Insert Page"/>
+		</form>
+    </div>
+</div>
 </body>
 </html>

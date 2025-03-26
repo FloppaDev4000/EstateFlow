@@ -38,7 +38,19 @@ function populate()
 		//If they have, then we can enable the amendView button
 		document.getElementById("amendViewbutton").disabled = false;
         document.getElementById("property_type").value = landDetails[0];
-        document.getElementById("adrs").value = landDetails[1];
+		//Address values get split using a seperate delimeter, the ', ' sequence of characters
+        document.getElementById("adrs").value = landDetails[1].split(', ')[0];
+		
+		//Check if the split details have a value, if they are null, give them a default value
+		//ensuring that "undefined" isn't displayed
+		if((landDetails[1].split(', ')[1] == null)){ 
+			document.getElementById("adrs2").value = "";
+			document.getElementById("adrs3").value = "";
+		}else{
+			document.getElementById("adrs2").value = landDetails[1].split(', ')[1];
+			document.getElementById("adrs3").value = landDetails[1].split(', ')[2];
+		}
+		
         document.getElementById("eircode").value = landDetails[2];
         document.getElementById("location").value = landDetails[3];
         document.getElementById("status").value = landDetails[4];

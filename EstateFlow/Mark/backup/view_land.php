@@ -1,4 +1,4 @@
-<!-- Name:  Mark Lambert, Student ID:   C00192497, Purpose: AmendView.php 12/2/2025 -->
+<!-- Name:  Mark Lambert, Student ID: C00192497, Purpose: AmendView.php 12/2/2025 -->
 <?php
 	session_start();
     include '../db.inc.php';

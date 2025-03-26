@@ -28,9 +28,7 @@
         <a class ="button selected" href="land_report.html.php">Land Property Report</a>
         <a class ="button" href="../construction/office_report.html">Office Property Report</a>
         <a class ="button" href="../Darius/bid_report.html">Bid Report</a>
-        <a class ="button" href="../construction/client_report.html">Client Report</a>
         <a class ="button" href="../construction/individual_report.html">Individual Client Report</a>
-        <a class ="button" href="../construction/sales_report.html">Sales Report</a>
 		<br>
         <a class ="button" id="exit" href="../menu.html">Exit</a>
     </div>

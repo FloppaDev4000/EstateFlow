@@ -47,12 +47,13 @@ EstateFow Y2 Project 2025-->
                     <legend>Amend a Land Property</legend>
 
                 
-                        <!-- Container for Eircode -->
-                        <div class = "inputbox">
-                            <label for = "eircode">Eircode: </label><br>
-                            <!-- Pattern: Eircode 1 alpha char(upper or lowercase) followed by TWO digits, any number of spaces then another alpha char and THREE digits -->
-                            <input type="text" name="eircode" id="eircode" required autofocus placeholder="Y21 234" pattern="[A-Za-z]?\d{2}[ ]?[A-Za-z]?\d{3}" disabled autofocus>
-                        </div>
+				<!-- Container for Eircode -->
+				<div class = "inputbox">
+					<!-- Use of span for required fields to signify to user -->
+					<label for = "eircode">Eircode: <span class="required">*</span></label><br>
+					<!-- Pattern: Eircode 1 alpha char(upper or lowercase) followed by TWO digits, zero to one spaces any four of a alpha char or number -->
+					<input type="text" name="eircode" id="eircode" required autofocus placeholder="Y21 234" pattern="[A-Za-z]{1}\d{2}[ ]?[A-Za-z\d]{4}" disabled autofocus title="Valid Eircode is required (e.g Y21 R234)" disabled>
+				</div>
 
                         <!-- Container for Location -->
                         <div class = "inputbox">
@@ -79,20 +80,22 @@ EstateFow Y2 Project 2025-->
                         <!-- Container for Highest Bid -->
                         <div class = "inputbox">
                             <label for = "bid">Highest Bid: </label><br>
-                            <input type="number" name="bid" id="bid" placeholder="€385000" min="1" required disabled>
+                            <input type="number" name="bid" id="bid" placeholder="€385000" min="1" disabled>
                         </div>
 
-                        <!-- Container for Asking Price -->
-                        <div class = "inputbox">
-                            <label for = "price">Asking Price: </label><br>
-                            <input type="number" name="price" id="price" placeholder="€400000" min="1" required disabled>
-                        </div>
+						<!-- Container for Asking Price -->
+					<div class = "inputbox">
+						<label for = "price">Asking Price: <span class="required">*</span></label><br>
+						<!-- Min = €1, max = €100 million-->
+						<input type="number" name="price" id="price" placeholder="€400000" min="1" max="100000000" required disabled>
+					</div>
                         
                         <!-- Container for Viewing Times -->
                         <div class = "inputbox">
                             <label for = "viewing_times">Viewing Times: </label><br>
-                            <input type="text" name="viewing_times" id="viewing_times" placeholder= "Weekends 12pm - 5pm" required disabled>
-                        </div>
+					<!-- Pattern  allows for any alphabetic/number character, space's hyphens and colons-->
+					<input type="text" name="viewing_times" id="viewing_times" placeholder= "Weekends 12pm - 5pm" required pattern="[A-Za-z \d\-\:]+" title="The following characters are only permitted: A-Z (Upper/lowercase) digits, - and :" disabled>
+				</div> 
                                     
                 </fieldset>
                 
@@ -103,7 +106,7 @@ EstateFow Y2 Project 2025-->
 
                         <!-- Container for Address -->
                         <div class = "inputbox">
-                            <label for ="adrs">Address: </label><br>
+                            <label for ="adrs">Address: <span class="required">*</span></label><br>
                             <input type="text" name="adrs" id="adrs" required placeholder="Line 1 (Required)" disabled> <br><br>
                             <input type="text" name="adrs2" id="adrs2" placeholder="Line 2 (Optional)" disabled> <br><br>
                             <input type="text" name="adrs3" id="adrs3" placeholder="Line 3 (Optional)" disabled> 
@@ -111,14 +114,14 @@ EstateFow Y2 Project 2025-->
 
                         <!-- Container for Acres -->
                         <div class = "inputbox">
-                            <label for ="acres">Acres: </label><br>
-                            <!-- Min 1 - validation that we have atleast an acre of land -->
-                            <input type="number" name="acres" id="acres" required placeholder="2500" min="1" disabled>
+                            <label for ="acres">Acres: <span class="required">*</span></label><br>
+						<!-- Min 1 - validation that we have atleast an acre of land, max=1000000 (one hundread thousand acres)-->
+						<input type="number" name="acres" id="acres" required placeholder="2500" min="1" max="100000" disabled>
                         </div>
 
                         <!-- Container for Buildings -->
                         <div class = "inputbox">
-                            <label for = "buildings">Buildings: </label><br>
+                            <label for = "buildings">Buildings: <span class="required">*</span></label><br>
                             <input type="text" name="buildings" id="buildings" required placeholder="Two large buildings, one shed" disabled>
                         </div>
 
@@ -128,11 +131,12 @@ EstateFow Y2 Project 2025-->
                             <input type="text" name="details" id="details" required placeholder="4 bedroom period residence in need of repair" disabled>
                         </div>
 
-                        <!-- Container for Quotas -->
-                        <div class = "inputbox">
-                            <label for ="quotas">Quotas: </label><br>
-                            <input type="number" name="quotas" id="quotas" required placeholder="50000" min="0" max="1000000" disabled>
-                        </div>
+				<!-- Container for Quotas -->
+				<div class = "inputbox">
+					<label for ="quotas">Quotas: <span class="required">*</span></label><br>
+					<!-- Max set to 1 million -->
+					<input type="number" name="quotas" id="quotas" required placeholder="50000" min="0" max="1000000" title = "A quota may represent the amount of produce permitted to be produced (e.g 500,000 litres of milk)" disabled>
+				</div>
 
                         <!-- Container for Notes -->
                         <div class = "inputbox">
@@ -161,11 +165,8 @@ EstateFow Y2 Project 2025-->
                 <!-- Submit button is initially disabled, as user will only be able to submit details when in the amend state-->
                 <input type="submit" value = "Update Record" name = "submit" class ="button" id="submit" disabled>
 				<!-- Note, on click reset re-locks fields -->
-                <input type="reset" value = "Reset" name = "reset" class ="button" onclick="toggleLock()">
+                <input type="reset" value = "Reset" name = "reset" class ="button" onclick="lock()">
             </div>
         </form>
     <!-- End Main Content Area -->
     </div>
-
-</body>
-</html>

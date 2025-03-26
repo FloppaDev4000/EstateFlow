@@ -57,7 +57,7 @@ EstateFow Y2 Project 2025-->
 
                         <!-- Container for Location -->
                         <div class = "inputbox">
-                            <label for ="location">Location: </label><br>
+                            <label for ="location">Location: <span class="required">*</span></label><br>
                             <input type="text" name="location" id="location" required placeholder="Carlow" disabled>
                         </div>
 
@@ -92,7 +92,7 @@ EstateFow Y2 Project 2025-->
                         
                         <!-- Container for Viewing Times -->
                         <div class = "inputbox">
-                            <label for = "viewing_times">Viewing Times: </label><br>
+                            <label for = "viewing_times">Viewing Times: <span class="required">*</span></label><br>
 					<!-- Pattern  allows for any alphabetic/number character, space's hyphens and colons-->
 					<input type="text" name="viewing_times" id="viewing_times" placeholder= "Weekends 12pm - 5pm" required pattern="[A-Za-z \d\-\:]+" title="The following characters are only permitted: A-Z (Upper/lowercase) digits, - and :" disabled>
 				</div> 
@@ -127,7 +127,7 @@ EstateFow Y2 Project 2025-->
 
                         <!-- Container for Residence Details -->
                         <div class = "inputbox">
-                            <label for ="details">Residence Details: </label><br>
+                            <label for ="details">Residence Details: <span class="required">*</span></label><br>
                             <input type="text" name="details" id="details" required placeholder="4 bedroom period residence in need of repair" disabled>
                         </div>
 

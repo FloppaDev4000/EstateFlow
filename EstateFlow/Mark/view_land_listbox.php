@@ -28,6 +28,16 @@
         // Property values
         $type = $row['type'];
         $address = $row['address'];
+		//Split the address into parts, so the user doesn't see the delimteter
+		$adrs = explode(', ', $address);
+		//If the second result in the split array has a value, then concatenate all of the address for the lsitbox
+		if(!empty($adrs[1])){
+		$displayAdrs = $adrs[0] . ', ' . $adrs[1] . ', ' . $adrs[2];
+		}
+		else{
+			//Otherwise, we can assume that just the first result in the array has contents
+			$displayAdrs = $adrs[0];
+		}
         $eircode = $row['eircode'];
         $location = $row['location'];
         $status = $row['status'];
@@ -47,7 +57,7 @@
 		//Assign allText all of the values, separated by the delim '#'
         $allText = "$type#$address#$eircode#$location#$status#$owner#$highest_bid#$asking_price#$viewing_times#$property_id#$id#$acres#$ownerName#$buildings#$residence_details#$quotas#$notes#";
         // Assigns each field in the listbox with the values and displays each entry via their eircode
-        echo "<option value = '$allText'>$eircode ($address)</option>";
+        echo "<option value = '$allText'>$eircode ($displayAdrs)</option>";
     }
 
     // End the select (listbox)

@@ -1,4 +1,4 @@
-<!-- Name:  Mark Lambert, Student ID:   C00192497, Purpose: add_land listbox.php 12/2/2025 -->
+<!-- Name:  Mark Lambert, Student ID: C00192497, Purpose: add_land listbox.php 12/2/2025 -->
 <?php
 // Include php script that connects to the db
     include "../db.inc.php";
@@ -14,7 +14,7 @@
     }
 
     // Creates a dropdown list (<select>) with a id listbox, when the user clicks the dropdown the function populate() when a user is clicked
-    echo "<br><select name = 'listbox' id = 'listbox' onclick = 'populate()' required>";
+    echo "<br><select name = 'listbox' id = 'listbox' onclick = 'populate();' required>";
     // populate(), populates the forms inputboxes with further information from the db about the person
 
     //Adds a hidden option to the listbox, which is hidden and disabled so that the user can't accidentally add this to the D/B

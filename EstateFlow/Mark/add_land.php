@@ -11,7 +11,15 @@ EstateFlow Project Y2 2025 -->
     // Set variables for POST
     // Generic Property Details
     $property_type = $_POST['property_type'];
-    $adrs = $_POST['adrs'] . " " . $_POST['adrs2'] . " " . $_POST['adrs3'];
+	//Concatenate the address into a single string w/ the delimter ", ", but only if adrs2 isn't empty
+	if(!empty($_POST['adrs2'])){
+    	$adrs = $_POST['adrs'] . ", " . $_POST['adrs2'] . ", " . $_POST['adrs3'];
+	}
+	else
+	{
+		//Otherwise, we can assume that just the line 1 was input by the user
+		$adrs = $_POST['adrs'];	
+	}
     $eircode = $_POST['eircode'];
     $location = $_POST['location'];
     $status = $_POST['status'];

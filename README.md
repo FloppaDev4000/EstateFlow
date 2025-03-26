@@ -1,10 +1,10 @@
-# EstateFlow - Estate Agency Management System  
+# ![EstateFlow Logo](https://github.com/lambert-27/EstateFlow/blob/main/EstateFlow/images/icon_readme.png?raw=true) EstateFlow - Estate Agency Management System  
 **Software Development - Year 2, Semester 2**  
 **South East Technological University**
 
 ## Technologies Used
 - HTML, CSS, PHP, JavaScript  
-- Web Server: Blacknight  
+- Web Server for Deployment: Blacknight  
 - Database: MySQL (phpMyAdmin)  
 
 ## Project Description  
